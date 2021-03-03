@@ -2,7 +2,7 @@ openapi: 3.0.0
 info:
   title: EssAuth
   version: '1.0'
-  description: 'This group of api has apis various apis like addUser, getUser, Login, Applynow. see their endpoints for more understanding.'
+  description: 'This group of api has various apis like addUser, getUser, Login, Applynow, etc. For detailed information kindly check the endpoints.'
   contact:
     name: snaffle
 servers:
@@ -55,7 +55,7 @@ paths:
                      </SOAP-ENV:addUserResponse>
                      </SOAP-ENV:Body>
                     </SOAP-ENV:Envelope>
-      description: This Api is Used For Add User
+      description: This api is used for adding a user.
       requestBody:
         content:
           application/soap+xml:
