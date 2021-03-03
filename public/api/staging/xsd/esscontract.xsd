@@ -1,0 +1,92 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<xs:schema xmlns:tns="http://essentialconnects.test" xmlns:xs="http://www.w3.org/2001/XMLSchema" version="1.0" targetNamespace="http://essentialconnects.test">
+
+	<xs:include schemaLocation="http://essentialconnects.test/api/staging/xsd/defaults.xsd"/>
+	<xs:element name="contractDetails" type="tns:contractDetails" />
+	<xs:element name="emailDocumentDetails" nillable="true" type="tns:emailDocumentDetails"/>
+	<xs:element name="contractFilesDetails" nillable="true" type="tns:contractFilesDetails"/>
+	<xs:element name="uploadDocumentResponse" nillable="true" type="tns:uploadDocumentResponse"/>
+	<xs:element name="uploadDocumentsResponse" nillable="true" type="tns:uploadDocumentsResponse"/>
+
+	<xs:element name="InvalidContractException" nillable="true" type="tns:InvalidParameterException"/>
+	<xs:element name="getContractPaymentsResponse" nillable="true" type="tns:getContractPaymentsResponse"/>
+	<xs:element name="getContractProductsResponse" nillable="true" type="tns:getContractProductsResponse"/>
+	<xs:element name="getDocumentsResponse" nillable="true" type="xs:int"/>
+
+	<xs:complexType name="getContractPaymentsResponse">
+		<xs:sequence>
+			<xs:element name="contract_payments" type="tns:contract_payments" minOccurs="1" maxOccurs="1"/>
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="contract_payments">
+		<xs:sequence>
+			<xs:element name="contract_payment" type="tns:contract_payment" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="contract_payment">
+		<xs:sequence>
+			<xs:element name="amount" type="xs:string" minOccurs="0" maxOccurs="1" />
+			<xs:element name="date" type="xs:string" minOccurs="0" maxOccurs="1" />
+			<xs:element name="type" type="xs:string" minOccurs="0" maxOccurs="1" />
+		</xs:sequence>	
+	</xs:complexType>
+
+	<xs:complexType name="getContractProductsResponse">
+		<xs:sequence>
+			<xs:element name="contract_products" type="tns:contract_products" minOccurs="1" maxOccurs="1"/>
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="contractDetails">
+		<xs:sequence>
+		    <xs:element name="contract_id" type="xs:int" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="verify_details" type="tns:verifyDetails" minOccurs="1" maxOccurs="1"/>
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="emailDocumentDetails">
+		<xs:sequence>
+		    <xs:element name="letter_slug" type="xs:string" minOccurs="1" maxOccurs="1"/>
+		    <xs:element name="contract_id" type="xs:int" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="verify_details" type="tns:verifyDetails" minOccurs="1" maxOccurs="1"/>
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="contractFileDetails">
+		<xs:sequence>
+		    <xs:element name="file_details" type="tns:fileDetails" minOccurs="1" maxOccurs="1"/>
+		    <xs:element name="contract_id" type="xs:int" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="verify_details" type="tns:verifyDetails" minOccurs="1" maxOccurs="1"/>
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="contractFilesDetails">
+		<xs:sequence>
+		    <xs:element name="files" type="tns:fileDetails" minOccurs="1" maxOccurs="unbounded"/>
+		    <xs:element name="contract_id" type="xs:int" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="verify_details" type="tns:verifyDetails" minOccurs="1" maxOccurs="1"/>
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="uploadDocumentResponse">
+		<xs:sequence>
+		    <xs:element name="path" type="xs:string" minOccurs="1" maxOccurs="1"/>
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="uploadDocumentsResponse">
+		<xs:sequence>
+		    <xs:element name="files" type="tns:files" minOccurs="1" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="InvalidContractException">
+		<xs:sequence>
+			<xs:element name="error_code" type="xs:int" minOccurs="0"/>
+			<xs:element name="message" type="xs:string" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+
+</xs:schema>

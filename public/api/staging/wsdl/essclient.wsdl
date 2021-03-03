@@ -1,0 +1,331 @@
+<definitions 
+   xmlns="http://schemas.xmlsoap.org/wsdl/" 
+   xmlns:tns="http://essentialconnects.test"
+   xmlns:wsp="http://www.w3.org/ns/ws-policy" 
+   xmlns:xsd="http://www.w3.org/2001/XMLSchema" 
+   xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" 
+   targetNamespace="http://essentialconnects.test"
+   name="EssClientServices"
+   >
+   <types>
+          <xsd:schema><xsd:import namespace="http://essentialconnects.test" schemaLocation="http://essentialconnects.test/api/staging/xsd/essclient.xsd"/></xsd:schema>
+   </types>
+
+   <message name="ProductNotAvailableException">
+         <part name="fault" element="tns:ProductNotAvailableException"/>
+   </message>
+
+   <message name="InvalidUserException">
+         <part name="fault" element="tns:InvalidUserException"/>
+   </message>
+
+   <message name="UnserviceableAddressException">
+         <part name="fault" element="tns:UnserviceableAddressException"/>
+   </message>
+
+   <message name="InvalidAuthenticationException">
+         <part name="fault" element="tns:InvalidAuthenticationException"/>
+   </message>
+
+   <message name="InvalidParameterException">
+         <part name="fault" element="tns:InvalidParameterException"/>
+   </message>
+
+   <message name="InvalidClientException">
+         <part name="fault" element="tns:InvalidClientException"/>
+   </message>
+
+   <message name="ClientExistsException">
+         <part name="fault" element="tns:ClientExistsException"/>
+   </message>
+
+   <message name="InvalidEmailException">
+         <part name="fault" element="tns:InvalidEmailException"/>
+   </message>
+
+   <message name="InvalidTokenException">
+         <part name="fault" element="tns:InvalidTokenException"/>
+   </message>
+
+   <message name="TokenExpiredException">
+         <part name="fault" element="tns:TokenExpiredException"/>
+   </message>
+
+    <message name="UserAlreadyExistsException">
+         <part name="fault" element="tns:UserAlreadyExistsException"/>
+   </message>
+
+   <message name="InvalidContractException">
+         <part name="fault" element="tns:InvalidContractException"/>
+   </message>
+
+   <message name="TokenCodeExpiredException">
+         <part name="fault" element="tns:TokenCodeExpiredException"/>
+   </message>
+
+   <message name="TokenCodeAlreadyVerifiedException">
+         <part name="fault" element="tns:TokenCodeAlreadyVerifiedException"/>
+   </message>
+
+   <message name="MaxContractReachedException">
+         <part name="fault" element="tns:MaxContractReachedException"/>
+   </message>
+
+   <message name="getClientContracts">
+      <part name="parameters" element="tns:userDetails" />
+   </message>
+
+   <message name="getClientContractsResponse">
+      <part name="contracts" element="tns:getClientContractsResponse" />
+   </message>
+
+   <message name="addContract">
+      <part name="parameters" element="tns:addContract" />
+   </message>
+
+    <message name="addContractResponse">
+      <part name="parameters" element="tns:addContractResponse" />
+   </message>
+
+   <message name="editContract">
+      <part name="parameters" element="tns:editContract" />
+   </message>
+
+    <message name="editContractResponse">
+      <part name="parameters" element="tns:editContractResponse" />
+   </message>
+
+   <message name="addCreditCard">
+      <part name="parameters" element="tns:addCreditCard" />
+   </message>
+
+    <message name="addCreditCardResponse">
+      <part name="parameters" element="tns:addCreditCardResponse" />
+   </message>
+
+   <message name="addDirectDebit">
+      <part name="parameters" element="tns:addDirectDebit" />
+   </message>
+
+    <message name="addDirectDebitResponse">
+      <part name="parameters" element="tns:addDirectDebitResponse" />
+   </message>
+
+   <message name="addIdentifyingDocuments">
+      <part name="parameters" element="tns:addIdentifyingDocuments" />
+   </message>
+
+   <message name="addIdentifyingDocumentsResponse">
+      <part name="parameters" element="tns:addIdentifyingDocumentsResponse" />
+   </message>
+
+   <message name="verifyToken">
+      <part name="parameters" element="tns:verifyToken" />
+   </message>
+
+   <message name="verifyTokenResponse">
+      <part name="parameters" element="tns:verifyTokenResponse" />
+   </message>
+
+   <message name="resendVerifyToken">
+      <part name="parameters" element="tns:resendVerifyToken" />
+   </message>
+
+   <message name="resendVerifyTokenResponse">
+      <part name="parameters" element="tns:resendVerifyTokenResponse" />
+   </message>
+
+   <portType name="EssClient">
+
+      <operation name="getClientContracts">
+         <input message="tns:getClientContracts" />
+         <output message="tns:getClientContractsResponse"/>
+         <fault message="tns:InvalidAuthenticationException" name="InvalidAuthenticationException" />
+         <fault message="tns:InvalidParameterException" name="InvalidParameterException" />
+         <fault message="tns:InvalidClientException" name="InvalidClientException" />
+         <fault message="tns:TokenExpiredException" name="TokenExpiredException" />
+      </operation>
+
+      <operation name="addContract">
+         <input message="tns:addContract" />
+         <output message="tns:addContractResponse"/>
+         <fault message="tns:InvalidAuthenticationException" name="InvalidAuthenticationException" />
+         <fault message="tns:InvalidParameterException" name="InvalidParameterException" />
+         <fault message="tns:TokenExpiredException" name="TokenExpiredException" />
+         <fault message="tns:UnserviceableAddressException" name="UnserviceableAddressException" />
+         <fault message="tns:InvalidClientException" name="InvalidClientException" />
+         <fault message="tns:ClientExistsException" name="ClientExistsException" />
+         <fault message="tns:ProductNotAvailableException" name="ProductNotAvailableException" />
+         <fault message="tns:MaxContractReachedException" name="MaxContractReachedException" />
+         <fault message="tns:UserAlreadyExistsException" name="UserAlreadyExistsException" />
+      </operation>
+
+      <operation name="editContract">
+         <input message="tns:editContract" />
+         <output message="tns:editContractResponse"/>
+         <fault message="tns:InvalidAuthenticationException" name="InvalidAuthenticationException" />
+         <fault message="tns:InvalidParameterException" name="InvalidParameterException" />
+         <fault message="tns:TokenExpiredException" name="TokenExpiredException" />
+         <fault message="tns:UnserviceableAddressException" name="UnserviceableAddressException" />
+         <fault message="tns:InvalidClientException" name="InvalidClientException" />
+         <fault message="tns:InvalidContractException" name="InvalidContractException" />
+      </operation>
+
+      <operation name="addCreditCard">
+         <input message="tns:addCreditCard" />
+         <output message="tns:addCreditCardResponse"/>
+         <fault message="tns:InvalidAuthenticationException" name="InvalidAuthenticationException" />
+         <fault message="tns:InvalidParameterException" name="InvalidParameterException" />
+         <fault message="tns:TokenExpiredException" name="TokenExpiredException" />
+         <fault message="tns:InvalidUserException" name="InvalidUserException" />
+         <fault message="tns:InvalidClientException" name="InvalidClientException" />
+      </operation>
+
+      <operation name="addDirectDebit">
+         <input message="tns:addDirectDebit" />
+         <output message="tns:addDirectDebitResponse"/>
+         <fault message="tns:InvalidAuthenticationException" name="InvalidAuthenticationException" />
+         <fault message="tns:InvalidParameterException" name="InvalidParameterException" />
+         <fault message="tns:TokenExpiredException" name="TokenExpiredException" />
+         <fault message="tns:InvalidUserException" name="InvalidUserException" />
+         <fault message="tns:InvalidClientException" name="InvalidClientException" />
+      </operation>
+
+      <operation name="addIdentifyingDocuments">
+         <input message="tns:addIdentifyingDocuments" />
+         <output message="tns:addIdentifyingDocumentsResponse"/>
+         <fault message="tns:InvalidAuthenticationException" name="InvalidAuthenticationException" />
+         <fault message="tns:InvalidParameterException" name="InvalidParameterException" />
+         <fault message="tns:TokenExpiredException" name="TokenExpiredException" />
+         <fault message="tns:UnserviceableAddressException" name="UnserviceableAddressException" />
+         <fault message="tns:InvalidClientException" name="InvalidClientException" />
+      </operation>
+
+      <operation name="verifyToken">
+         <input message="tns:verifyToken" />
+         <output message="tns:verifyTokenResponse"/>
+         <fault message="tns:InvalidAuthenticationException" name="InvalidAuthenticationException" />
+         <fault message="tns:InvalidParameterException" name="InvalidParameterException" />
+         <fault message="tns:TokenExpiredException" name="TokenExpiredException" />
+         <fault message="tns:InvalidUserException" name="InvalidUserException" />
+         <fault message="tns:InvalidClientException" name="InvalidClientException" />
+         <fault message="tns:TokenCodeExpiredException" name="TokenCodeExpiredException" />
+         <fault message="tns:TokenCodeAlreadyVerifiedException" name="TokenCodeAlreadyVerifiedException" />
+      </operation>
+
+      <operation name="resendVerifyToken">
+         <input message="tns:resendVerifyToken" />
+         <output message="tns:resendVerifyTokenResponse"/>
+         <fault message="tns:InvalidAuthenticationException" name="InvalidAuthenticationException" />
+         <fault message="tns:InvalidParameterException" name="InvalidParameterException" />
+         <fault message="tns:TokenExpiredException" name="TokenExpiredException" />
+         <fault message="tns:InvalidUserException" name="InvalidUserException" />
+         <fault message="tns:InvalidClientException" name="InvalidClientException" />
+      </operation>
+
+   </portType>
+
+   <binding name="EssClientPortBinding" type="tns:EssClient">
+      <soap:binding style="rpc" transport="http://schemas.xmlsoap.org/soap/http" />
+
+      <operation name="getClientContracts">
+         <soap:operation soapAction=""/>
+         <input><soap:body use="literal"/></input>
+         <output><soap:body use="literal"/></output>
+         <fault name="InvalidAuthenticationException"><soap:fault name="InvalidAuthenticationException" use="literal"/></fault>
+         <fault name="InvalidParameterException"><soap:fault name="InvalidParameterException" use="literal"/></fault>
+         <fault name="InvalidClientException"><soap:fault name="InvalidClientException" use="literal"/></fault>
+         <fault name="TokenExpiredException"><soap:fault name="TokenExpiredException" use="literal"/></fault>
+      </operation>
+      
+      <operation name="addContract">
+         <soap:operation soapAction=""/>
+         <input><soap:body use="literal"/></input>
+         <output><soap:body use="literal"/></output>
+         <fault name="InvalidAuthenticationException"><soap:fault name="InvalidAuthenticationException" use="literal"/></fault>
+         <fault name="InvalidParameterException"><soap:fault name="InvalidParameterException" use="literal"/></fault>
+         <fault name="TokenExpiredException"><soap:fault name="TokenExpiredException" use="literal"/></fault>
+         <fault name="UnserviceableAddressException"><soap:fault name="UnserviceableAddressException" use="literal"/></fault>
+         <fault name="InvalidClientException"><soap:fault name="InvalidClientException" use="literal"/></fault>
+         <fault name="ClientExistsException"><soap:fault name="ClientExistsException" use="literal"/></fault>
+         <fault name="ProductNotAvailableException"><soap:fault name="ProductNotAvailableException" use="literal"/></fault>
+         <fault name="MaxContractReachedException"><soap:fault name="MaxContractReachedException" use="literal"/></fault>
+         <fault name="UserAlreadyExistsException"><soap:fault name="UserAlreadyExistsException" use="literal"/></fault>
+      </operation>
+
+      <operation name="editContract">
+         <soap:operation soapAction=""/>
+         <input><soap:body use="literal"/></input>
+         <output><soap:body use="literal"/></output>
+         <fault name="InvalidAuthenticationException"><soap:fault name="InvalidAuthenticationException" use="literal"/></fault>
+         <fault name="InvalidParameterException"><soap:fault name="InvalidParameterException" use="literal"/></fault>
+         <fault name="TokenExpiredException"><soap:fault name="TokenExpiredException" use="literal"/></fault>
+         <fault name="UnserviceableAddressException"><soap:fault name="UnserviceableAddressException" use="literal"/></fault>
+         <fault name="InvalidClientException"><soap:fault name="InvalidClientException" use="literal"/></fault>
+         <fault name="InvalidContractException"><soap:fault name="InvalidContractException" use="literal"/></fault>
+      </operation>
+
+      <operation name="addCreditCard">
+         <soap:operation soapAction=""/>
+         <input><soap:body use="literal"/></input>
+         <output><soap:body use="literal"/></output>
+         <fault name="InvalidAuthenticationException"><soap:fault name="InvalidAuthenticationException" use="literal"/></fault>
+         <fault name="InvalidParameterException"><soap:fault name="InvalidParameterException" use="literal"/></fault>
+         <fault name="TokenExpiredException"><soap:fault name="TokenExpiredException" use="literal"/></fault>
+         <fault name="InvalidUserException"><soap:fault name="InvalidUserException" use="literal"/></fault>
+         <fault name="InvalidClientException"><soap:fault name="InvalidClientException" use="literal"/></fault>
+      </operation>
+
+      <operation name="addDirectDebit">
+         <soap:operation soapAction=""/>
+         <input><soap:body use="literal"/></input>
+         <output><soap:body use="literal"/></output>
+         <fault name="InvalidAuthenticationException"><soap:fault name="InvalidAuthenticationException" use="literal"/></fault>
+         <fault name="InvalidParameterException"><soap:fault name="InvalidParameterException" use="literal"/></fault>
+         <fault name="TokenExpiredException"><soap:fault name="TokenExpiredException" use="literal"/></fault>
+         <fault name="InvalidUserException"><soap:fault name="InvalidUserException" use="literal"/></fault>
+         <fault name="InvalidClientException"><soap:fault name="InvalidClientException" use="literal"/></fault>
+      </operation>
+
+      <operation name="addIdentifyingDocuments">
+         <soap:operation soapAction=""/>
+         <input><soap:body use="literal"/></input>
+         <output><soap:body use="literal"/></output>
+         <fault name="InvalidAuthenticationException"><soap:fault name="InvalidAuthenticationException" use="literal"/></fault>
+         <fault name="InvalidParameterException"><soap:fault name="InvalidParameterException" use="literal"/></fault>
+         <fault name="TokenExpiredException"><soap:fault name="TokenExpiredException" use="literal"/></fault>
+         <fault name="UnserviceableAddressException"><soap:fault name="UnserviceableAddressException" use="literal"/></fault>
+         <fault name="InvalidClientException"><soap:fault name="InvalidClientException" use="literal"/></fault>
+      </operation>
+
+      <operation name="verifyToken">
+         <soap:operation soapAction=""/>
+         <input><soap:body use="literal"/></input>
+         <output><soap:body use="literal"/></output>
+         <fault name="InvalidAuthenticationException"><soap:fault name="InvalidAuthenticationException" use="literal"/></fault>
+         <fault name="InvalidParameterException"><soap:fault name="InvalidParameterException" use="literal"/></fault>
+         <fault name="TokenExpiredException"><soap:fault name="TokenExpiredException" use="literal"/></fault>
+         <fault name="InvalidClientException"><soap:fault name="InvalidClientException" use="literal"/></fault>
+         <fault name="TokenCodeExpiredException"><soap:fault name="TokenCodeExpiredException" use="literal"/></fault>
+         <fault name="TokenCodeAlreadyVerifiedException"><soap:fault name="TokenCodeAlreadyVerifiedException" use="literal"/></fault>
+      </operation>
+
+      <operation name="resendVerifyToken">
+         <soap:operation soapAction=""/>
+         <input><soap:body use="literal"/></input>
+         <output><soap:body use="literal"/></output>
+         <fault name="InvalidAuthenticationException"><soap:fault name="InvalidAuthenticationException" use="literal"/></fault>
+         <fault name="InvalidParameterException"><soap:fault name="InvalidParameterException" use="literal"/></fault>
+         <fault name="TokenExpiredException"><soap:fault name="TokenExpiredException" use="literal"/></fault>
+         <fault name="InvalidClientException"><soap:fault name="InvalidClientException" use="literal"/></fault>
+      </operation>
+
+   </binding>
+
+   <service name="EssClientServices">
+      <port binding="tns:EssClientPortBinding" name="EssClientPort">
+         <soap:address location="http://essentialconnects.test/api/v1/wsdl/essclient" />
+      </port>
+   </service>
+   
+</definitions>

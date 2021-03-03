@@ -1,0 +1,457 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<xs:schema xmlns:tns="http://essentialconnects.test" xmlns:xs="http://www.w3.org/2001/XMLSchema" version="1.0" targetNamespace="http://essentialconnects.test">
+
+	<xs:element name="findClientResponse" nillable="true" type="tns:findClientResponse"/>
+	<xs:element name="userDetails" type="tns:userDetails" />
+	<xs:element name="verifyDetails" type="tns:verifyDetails" />
+	<xs:element name="userFindDetails" type="tns:userFindDetails"/>
+	<xs:element name="enquiry" type="tns:enquiry"/>
+	
+	<xs:element name="InvalidSecurityTokenException" nillable="true" type="tns:InvalidSecurityTokenException"/>
+	<xs:element name="InvalidAuthenticationException" nillable="true" type="tns:InvalidAuthenticationException"/>
+	<xs:element name="InvalidParameterException" nillable="true" type="tns:InvalidParameterException"/>
+	<xs:element name="InvalidUserException" nillable="true" type="tns:InvalidUserException"/>
+	<xs:element name="UnserviceableAddressException" nillable="true" type="tns:UnserviceableAddressException"/>
+	<xs:element name="InvalidEmailException" nillable="true" type="tns:InvalidEmailException"/>
+	<xs:element name="InvalidPasswordException" nillable="true" type="tns:InvalidPasswordException"/>
+	<xs:element name="InvalidClientException" nillable="true" type="tns:InvalidClientException"/>
+	<xs:element name="ClientExistsException" nillable="true" type="tns:ClientExistsException"/>
+	<xs:element name="TokenExpiredException" nillable="true" type="tns:TokenExpiredException"/>
+	<xs:element name="InvalidDobException" nillable="true" type="tns:InvalidDobException"/>
+	<xs:element name="InvalidMedicareExpiryException" nillable="true" type="tns:InvalidMedicareExpiryException"/>
+	<xs:element name="InvalidCrnException" nillable="true" type="tns:InvalidCrnException"/>
+	<xs:element name="InvalidMedicareNumberException" nillable="true" type="tns:InvalidMedicareNumberException"/>
+	<xs:element name="InvalidMedicareReferenceNumberException" nillable="true" type="tns:InvalidMedicareReferenceNumberException"/>
+	<xs:element name="ProductNotAvailableException" nillable="true" type="tns:ProductNotAvailableException"/>
+	<xs:element name="TokenCodeExpiredException" nillable="true" type="tns:TokenCodeExpiredException"/>
+	<xs:element name="TokenCodeAlreadyVerifiedException" nillable="true" type="tns:TokenCodeAlreadyVerifiedException"/>
+
+	<xs:complexType name="postcodeMatches">
+		<xs:sequence>
+			<xs:element name="postcode" type="tns:postcode" minOccurs="1" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="postcode">
+		<xs:sequence>
+			<xs:element name="suburb" type="xs:string" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="postcode" type="xs:string" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="state" type="xs:string" minOccurs="1" maxOccurs="1"/>
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="enquiry">
+		<xs:sequence>
+			<xs:element name="enquiry" type="xs:string" minOccurs="0" maxOccurs="1"/>
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="findClientResponse">
+		<xs:sequence>
+			<xs:element name="email" type="xs:string" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="mobile" type="xs:string" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="hash" type="xs:string" minOccurs="0" maxOccurs="1"/>
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="verifyDetails">
+		<xs:sequence>
+			<xs:element name="hash" type="xs:string" minOccurs="1" maxOccurs="1"/>
+		   	<xs:element name="email" type="xs:string" minOccurs="1" maxOccurs="1"/>
+		    <xs:element name="ip_address" type="xs:string" minOccurs="1" maxOccurs="1"/>
+		</xs:sequence>
+	</xs:complexType>
+	
+	<xs:complexType name="userDetails">
+		<xs:sequence>
+			<xs:element name="verify_details" type="tns:verifyDetails" minOccurs="1" maxOccurs="1"/>
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="userFindDetails">
+		<xs:sequence>
+			<xs:element name="dob" type="xs:string" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="name_first" type="xs:string" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="name_last" type="xs:string" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="suburb" type="xs:string" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="ip_address" type="xs:string" minOccurs="1" maxOccurs="1"/>
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="contract">
+		<xs:sequence>
+			<xs:element name="id" type="xs:string" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="date" type="xs:string" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="timestamp" type="xs:string" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="status" type="xs:string" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="default_payment_type" type="xs:string" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="contract_type" type="xs:string" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="payment_type" type="xs:string" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="marketing_source" type="xs:string" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="rental_rate" type="xs:string" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="contract_term" type="xs:string" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="payment_frequency" type="xs:string" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="initial_receivables" type="xs:string" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="refunds" type="xs:string" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="total_received" type="xs:string" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="additional_costs" type="xs:string" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="total_receivables" type="xs:string" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="payments_remaining" type="xs:string" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="balance_remaining" type="xs:string" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="rollover_details" type="tns:rollover_details" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="contract_products" type="tns:contract_products" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="termination" type="tns:termination" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="authorised" type="xs:int" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="assessment" type="tns:assessment" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="need_documents" type="xs:boolean" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="contract_payment_methods" type="tns:contract_payment_methods" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="delivery_fee" type="xs:string" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="service_fee" type="xs:string" minOccurs="0" maxOccurs="1"/>
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="assessment">
+		<xs:sequence>
+			<xs:element name="result" type="xs:int" minOccurs="1" maxOccurs="1"/>
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="contract_products">
+		<xs:sequence>
+			<xs:element name="contract_product" type="tns:contract_product" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="contract_product">
+		<xs:sequence>
+			<xs:element name="product_id" type="xs:integer" minOccurs="0" maxOccurs="1" />
+			<xs:element name="code" type="xs:string" minOccurs="0" maxOccurs="1" />
+			<xs:element name="description" type="xs:string" minOccurs="0" maxOccurs="1" />
+			<xs:element name="price" type="xs:string" minOccurs="0" maxOccurs="1" />
+			<xs:element name="retail_value" type="xs:string" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="rrp" type="xs:string" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="delivered" type="xs:integer" minOccurs="1" maxOccurs="1" />
+			<xs:element name="image_url" type="xs:string" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="contract_product_upgrades" type="tns:contract_product_upgrades" minOccurs="1" maxOccurs="1" />
+		</xs:sequence>	
+	</xs:complexType>
+
+	<xs:complexType name="contract_product_upgrades">
+		<xs:sequence>
+			<xs:element name="contract_product_upgrade" type="tns:contract_product_upgrade" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="contract_product_upgrade">
+		<xs:sequence>
+			<xs:element name="rate" type="xs:string" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="description" type="xs:string" minOccurs="1" maxOccurs="1"/>
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="termination">
+		<xs:sequence>
+			<xs:element name="term_type" type="xs:string" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="user" type="xs:string" minOccurs="1" maxOccurs="1"/>
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="rollover_details">
+		<xs:sequence>
+			<xs:element name="can_rollover" type="xs:int" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="description" type="xs:string" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="twelve_month_price" type="xs:string" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="eighteen_month_price" type="xs:string" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="twently_four_month_price" type="xs:string" minOccurs="0" maxOccurs="1"/>
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="client">
+		<xs:sequence>
+			<xs:element name="client_id" type="xs:int" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="default_payment_type" type="xs:string" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="title" type="xs:string" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="name_first" type="xs:string" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="name_last" type="xs:string" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="name_middle" type="xs:string" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="dob" type="xs:string" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="email" type="xs:string" minOccurs="1" maxOccurs="1"/>
+		   	<xs:element name="mobile" type="xs:string" minOccurs="1" maxOccurs="1"/>
+		   	<xs:element name="mobile_verified" type="xs:boolean" minOccurs="0" maxOccurs="1"/>
+		   	<xs:element name="phone" type="xs:string" minOccurs="1" maxOccurs="1"/>
+		   	<xs:element name="crn" type="xs:string" minOccurs="0" maxOccurs="1"/>
+		   	<xs:element name="license" type="xs:string" minOccurs="0" maxOccurs="1"/>
+		   	<xs:element name="medicare" type="xs:string" minOccurs="0" maxOccurs="1"/>
+		   	<xs:element name="passport" type="xs:string" minOccurs="0" maxOccurs="1"/>
+		   	<xs:element name="living_situation" type="xs:string" minOccurs="1" maxOccurs="1"/>
+		   	<xs:element name="dependents" type="xs:int" minOccurs="1" maxOccurs="1"/>
+		   	<xs:element name="relationship" type="xs:string" minOccurs="1" maxOccurs="1"/>
+		   	<xs:element name="shared" type="xs:int" minOccurs="1" maxOccurs="1"/>
+		   	<xs:element name="address_unit_number" type="xs:string" minOccurs="1" maxOccurs="1"/>
+		   	<xs:element name="address_number" type="xs:string" minOccurs="1" maxOccurs="1"/>
+		   	<xs:element name="address_name" type="xs:string" minOccurs="1" maxOccurs="1"/>
+		   	<xs:element name="address_city" type="xs:string" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="address_postcode" type="xs:string" minOccurs="1" maxOccurs="1"/>
+		   	<xs:element name="address_state" type="xs:string" minOccurs="1" maxOccurs="1"/>
+		   	<xs:element name="delivery_address_unit_number" type="xs:string" minOccurs="1" maxOccurs="1"/>
+		   	<xs:element name="delivery_address_number" type="xs:string" minOccurs="1" maxOccurs="1"/>
+		   	<xs:element name="delivery_address_name" type="xs:string" minOccurs="1" maxOccurs="1"/>
+		   	<xs:element name="delivery_address_city" type="xs:string" minOccurs="1" maxOccurs="1"/>
+		   	<xs:element name="delivery_address_postcode" type="xs:string" minOccurs="1" maxOccurs="1"/>
+		   	<xs:element name="delivery_address_state" type="xs:string" minOccurs="1" maxOccurs="1"/>
+		   	<xs:element name="nlr_name_first" type="xs:string" minOccurs="1" maxOccurs="1"/>
+		   	<xs:element name="nlr_name_last" type="xs:string" minOccurs="1" maxOccurs="1"/>
+		   	<xs:element name="nlr_phone" type="xs:string" minOccurs="1" maxOccurs="1"/>
+		   	<xs:element name="nlr_address_unit_number" type="xs:string" minOccurs="1" maxOccurs="1"/>
+		   	<xs:element name="nlr_address_number" type="xs:string" minOccurs="1" maxOccurs="1"/>
+		   	<xs:element name="nlr_address_name" type="xs:string" minOccurs="1" maxOccurs="1"/>
+		   	<xs:element name="nlr_address_city" type="xs:string" minOccurs="1" maxOccurs="1"/>
+		   	<xs:element name="nlr_address_postcode" type="xs:string" minOccurs="1" maxOccurs="1"/>
+		   	<xs:element name="nlr_address_state" type="xs:string" minOccurs="1" maxOccurs="1"/>
+		   	<xs:element name="nlr_relationship" type="xs:string" minOccurs="1" maxOccurs="1"/>
+		   	<xs:element name="contracts" type="tns:contracts" minOccurs="1" maxOccurs="1"/>
+		   	<xs:element name="identifying_documents" type="tns:identifying_documents" minOccurs="1" maxOccurs="1"/>
+		   	<xs:element name="client_income" type="tns:client_income" minOccurs="1" maxOccurs="1"/>
+		   	<xs:element name="client_deductions" type="tns:client_deductions" minOccurs="1" maxOccurs="1"/>
+		   	<xs:element name="last_updated" type="xs:string" minOccurs="1" maxOccurs="1"/>
+		   	<xs:element name="spending_value" type="xs:string" minOccurs="1" maxOccurs="1"/>
+		   	<xs:element name="ezidebit_customer_id" type="xs:string" minOccurs="1" maxOccurs="1"/>
+		   	<xs:element name="reached_max_contracts_in_period" type="xs:int" minOccurs="0" maxOccurs="1"/>
+		   	<xs:element name="active_contracts" type="xs:int" minOccurs="1" maxOccurs="1"/>
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="contract_payment_methods">
+			<xs:sequence>
+				<xs:element name="contract_payment_method" type="tns:contract_payment_method" minOccurs="0" maxOccurs="unbounded"/>
+			</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="contract_payment_method">
+			<xs:sequence>
+				<xs:element name="id" type="xs:int" minOccurs="1" maxOccurs="1"/>
+				<xs:element name="relationship_id" type="xs:int" minOccurs="1" maxOccurs="1"/>
+				<xs:element name="primary" type="xs:boolean" minOccurs="1" maxOccurs="1"/>
+				<xs:element name="updated" type="xs:string" minOccurs="1" maxOccurs="1"/>
+				<xs:element name="type" type="xs:string" minOccurs="1" maxOccurs="1"/>
+			</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="identifying_documents">
+			<xs:sequence>
+				<xs:element name="identifying_document" type="tns:identifying_document" minOccurs="0" maxOccurs="unbounded"/>
+			</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="identifying_document">
+			<xs:sequence>
+				<xs:element name="name" type="xs:string" minOccurs="1" maxOccurs="1"/>
+				<xs:element name="type" type="xs:string" minOccurs="1" maxOccurs="1"/>
+			</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="contracts">
+			<xs:sequence>
+				<xs:element name="contract" type="tns:contract" minOccurs="0" maxOccurs="unbounded"/>
+			</xs:sequence>
+	</xs:complexType>
+	
+	<xs:complexType name="client_income">
+		<xs:sequence>
+			<xs:element name="income" type="tns:income" minOccurs="1" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="income">
+		<xs:sequence>
+			<xs:element name="type" type="xs:string" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="frequency" type="xs:int" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="amount" type="xs:string" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="id" type="xs:int" minOccurs="0" maxOccurs="1"/>
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="client_deductions">
+		<xs:sequence>
+			<xs:element name="deductions" type="tns:deductions" minOccurs="1" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="deductions">
+		<xs:sequence>
+			<xs:element name="type" type="xs:string" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="frequency" type="xs:int" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="amount" type="xs:string" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="id" type="xs:int" minOccurs="0" maxOccurs="1"/>
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="fileDetails">
+		<xs:sequence>
+		    <xs:element name="filename" type="xs:string" minOccurs="1" maxOccurs="1"/>
+		    <xs:element name="mime" type="xs:string" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="size" type="xs:string" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="path" type="xs:string" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="temp_filename" type="xs:string" minOccurs="0" maxOccurs="1"/>
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="files">
+		<xs:sequence>
+			<xs:element name="file_details" type="tns:fileDetails" minOccurs="1" maxOccurs="1"/>
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="creditCardDetails">
+		<xs:sequence>
+			<xs:element name="credit_cards" type="tns:credit_cards" minOccurs="1" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="credit_cards">
+		<xs:sequence>
+			<xs:element name="id" type="xs:int" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="last_digits" type="xs:string" minOccurs="1" maxOccurs="1"/>
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="directDebitDetails">
+		<xs:sequence>
+			<xs:element name="direct_debits" type="tns:direct_debits" minOccurs="1" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="direct_debits">
+		<xs:sequence>
+			<xs:element name="id" type="xs:int" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="last_digits" type="xs:string" minOccurs="1" maxOccurs="1"/>
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="TokenExpiredException">
+		<xs:sequence>
+			<xs:element name="error_code" type="xs:int" minOccurs="0"/>
+			<xs:element name="message" type="xs:string" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="InvalidSecurityTokenException">
+		<xs:sequence>
+			<xs:element name="error_code" type="xs:int" minOccurs="0"/>
+			<xs:element name="message" type="xs:string" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="InvalidAuthenticationException">
+		<xs:sequence>
+			<xs:element name="error_code" type="xs:int" minOccurs="0"/>
+			<xs:element name="message" type="xs:string" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="InvalidParameterException">
+		<xs:sequence>
+			<xs:element name="error_code" type="xs:int" minOccurs="0"/>
+			<xs:element name="message" type="xs:string" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="InvalidUserException">
+		<xs:sequence>
+			<xs:element name="error_code" type="xs:int" minOccurs="0"/>
+			<xs:element name="message" type="xs:string" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="InvalidEmailException">
+		<xs:sequence>
+			<xs:element name="error_code" type="xs:int" minOccurs="0"/>
+			<xs:element name="message" type="xs:string" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="InvalidPasswordException">
+		<xs:sequence>
+			<xs:element name="error_code" type="xs:int" minOccurs="0"/>
+			<xs:element name="message" type="xs:string" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="UnserviceableAddressException">
+		<xs:sequence>
+			<xs:element name="error_code" type="xs:int" minOccurs="0"/>
+			<xs:element name="message" type="xs:string" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="InvalidClientException">
+		<xs:sequence>
+			<xs:element name="error_code" type="xs:int" minOccurs="0"/>
+			<xs:element name="message" type="xs:string" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="ClientExistsException">
+		<xs:sequence>
+			<xs:element name="error_code" type="xs:int" minOccurs="0"/>
+			<xs:element name="message" type="xs:string" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="InvalidDobException">
+		<xs:sequence>
+			<xs:element name="error_code" type="xs:int" minOccurs="0"/>
+			<xs:element name="message" type="xs:string" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="InvalidCrnException">
+		<xs:sequence>
+			<xs:element name="error_code" type="xs:int" minOccurs="0"/>
+			<xs:element name="message" type="xs:string" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="InvalidMedicareNumberException">
+		<xs:sequence>
+			<xs:element name="error_code" type="xs:int" minOccurs="0"/>
+			<xs:element name="message" type="xs:string" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="InvalidMedicareReferenceNumberException">
+		<xs:sequence>
+			<xs:element name="error_code" type="xs:int" minOccurs="0"/>
+			<xs:element name="message" type="xs:string" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="InvalidMedicareExpiryException">
+		<xs:sequence>
+			<xs:element name="error_code" type="xs:int" minOccurs="0"/>
+			<xs:element name="message" type="xs:string" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="ProductNotAvailableException">
+		<xs:sequence>
+			<xs:element name="error_code" type="xs:int" minOccurs="0"/>
+			<xs:element name="message" type="xs:string" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="TokenCodeExpiredException">
+		<xs:sequence>
+			<xs:element name="error_code" type="xs:int" minOccurs="0"/>
+			<xs:element name="message" type="xs:string" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="TokenCodeAlreadyVerifiedException">
+		<xs:sequence>
+			<xs:element name="error_code" type="xs:int" minOccurs="0"/>
+			<xs:element name="message" type="xs:string" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+
+</xs:schema>

@@ -1,0 +1,206 @@
+<definitions 
+   xmlns="http://schemas.xmlsoap.org/wsdl/" 
+   xmlns:tns="http://essentialconnects.test"
+   xmlns:wsp="http://www.w3.org/ns/ws-policy" 
+   xmlns:xsd="http://www.w3.org/2001/XMLSchema" 
+   xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" 
+   targetNamespace="http://essentialconnects.test"
+   name="EssContractServices"
+   >
+   <types>
+          <xsd:schema><xsd:import namespace="http://essentialconnects.test" schemaLocation="http://essentialconnects.test/api/xsd/esscontract.xsd"/></xsd:schema>
+   </types>
+
+   <message name="InvalidAuthenticationException">
+         <part name="fault" element="tns:InvalidAuthenticationException"/>
+   </message>
+
+   <message name="InvalidParameterException">
+         <part name="fault" element="tns:InvalidParameterException"/>
+   </message>
+
+   <message name="InvalidClientException">
+         <part name="fault" element="tns:InvalidClientException"/>
+   </message>
+
+   <message name="InvalidContractException">
+         <part name="fault" element="tns:InvalidContractException"/>
+   </message>
+
+   <message name="TokenExpiredException">
+         <part name="fault" element="tns:TokenExpiredException"/>
+   </message>
+
+   <message name="getContractPayments">
+      <part name="parameters" element="tns:contractDetails" />
+   </message>
+
+   <message name="getContractPaymentsResponse">
+      <part name="response" element="tns:getContractPaymentsResponse" />
+   </message>
+
+   <message name="getContractProducts">
+      <part name="parameters" element="tns:contractDetails" />
+   </message>
+
+   <message name="getContractProductsResponse">
+      <part name="response" element="tns:getContractProductsResponse" />
+   </message>
+
+   <message name="getDocuments">
+      <part name="parameters" element="tns:contractDetails" />
+   </message>
+
+   <message name="getDocumentsResponse">
+      <part name="response" element="tns:getDocumentsResponse" />
+   </message>
+
+   <message name="emailDocument">
+      <part name="parameters" element="tns:emailDocumentDetails" />
+   </message>
+
+   <message name="uploadDocument">
+      <part name="parameters" element="tns:contractFileDetails" />
+   </message>
+
+   <message name="uploadDocumentResponse">
+      <part name="response" element="tns:uploadDocumentResponse" />
+   </message>
+
+   <message name="uploadDocuments">
+      <part name="parameters" element="tns:contractFilesDetails" />
+   </message>
+
+   <message name="uploadDocumentsResponse">
+      <part name="response" element="tns:uploadDocumentsResponse" />
+   </message>
+
+   <portType name="EssContract">
+
+      <operation name="getContractPayments">
+         <input message="tns:getContractPayments" />
+         <output message="tns:getContractPaymentsResponse"/>
+         <fault message="tns:InvalidAuthenticationException" name="InvalidAuthenticationException" />
+         <fault message="tns:InvalidParameterException" name="InvalidParameterException" />
+         <fault message="tns:InvalidClientException" name="InvalidClientException" />
+         <fault message="tns:InvalidContractException" name="InvalidContractException" />
+         <fault message="tns:TokenExpiredException" name="TokenExpiredException" />
+      </operation>  
+
+      <operation name="getContractProducts">
+         <input message="tns:getContractProducts" />
+         <output message="tns:getContractProductsResponse"/>
+         <fault message="tns:InvalidAuthenticationException" name="InvalidAuthenticationException" />
+         <fault message="tns:InvalidParameterException" name="InvalidParameterException" />
+         <fault message="tns:InvalidClientException" name="InvalidClientException" />
+         <fault message="tns:InvalidContractException" name="InvalidContractException" />
+         <fault message="tns:TokenExpiredException" name="TokenExpiredException" />
+      </operation>  
+
+      <operation name="getDocuments">
+         <input message="tns:getDocuments" />
+         <output message="tns:getDocumentsResponse"/>
+         <fault message="tns:InvalidAuthenticationException" name="InvalidAuthenticationException" />
+         <fault message="tns:InvalidParameterException" name="InvalidParameterException" />
+         <fault message="tns:InvalidClientException" name="InvalidClientException" />
+         <fault message="tns:InvalidContractException" name="InvalidContractException" />
+         <fault message="tns:TokenExpiredException" name="TokenExpiredException" />
+      </operation>
+
+      <operation name="emailDocument">
+         <input message="tns:emailDocument" />
+      </operation> 
+
+      <operation name="uploadDocument">
+         <input message="tns:uploadDocument" />
+         <output message="tns:uploadDocumentResponse"/>
+         <fault message="tns:InvalidAuthenticationException" name="InvalidAuthenticationException" />
+         <fault message="tns:InvalidParameterException" name="InvalidParameterException" />
+         <fault message="tns:InvalidClientException" name="InvalidClientException" />
+         <fault message="tns:InvalidContractException" name="InvalidContractException" />
+         <fault message="tns:TokenExpiredException" name="TokenExpiredException" />
+      </operation> 
+
+      <operation name="uploadDocuments">
+         <input message="tns:uploadDocuments" />
+         <output message="tns:uploadDocumentsResponse"/>
+         <fault message="tns:InvalidAuthenticationException" name="InvalidAuthenticationException" />
+         <fault message="tns:InvalidParameterException" name="InvalidParameterException" />
+         <fault message="tns:InvalidClientException" name="InvalidClientException" />
+         <fault message="tns:InvalidContractException" name="InvalidContractException" />
+         <fault message="tns:TokenExpiredException" name="TokenExpiredException" />
+      </operation>  
+
+   </portType>
+
+   <binding name="EssContractPortBinding" type="tns:EssContract">
+      <soap:binding style="rpc" transport="http://schemas.xmlsoap.org/soap/http" />
+     
+      <operation name="getContractPayments">
+         <soap:operation soapAction=""/>
+         <input><soap:body use="literal"/></input>
+         <output><soap:body use="literal"/></output>
+         <fault name="InvalidAuthenticationException"><soap:fault name="InvalidAuthenticationException" use="literal"/></fault>
+         <fault name="InvalidParameterException"><soap:fault name="InvalidParameterException" use="literal"/></fault>
+         <fault name="InvalidClientException"><soap:fault name="InvalidClientException" use="literal"/></fault>
+         <fault name="InvalidContractException"><soap:fault name="InvalidContractException" use="literal"/></fault>
+         <fault name="TokenExpiredException"><soap:fault name="TokenExpiredException" use="literal"/></fault>
+      </operation>
+
+      <operation name="getContractProducts">
+         <soap:operation soapAction=""/>
+         <input><soap:body use="literal"/></input>
+         <output><soap:body use="literal"/></output>
+         <fault name="InvalidAuthenticationException"><soap:fault name="InvalidAuthenticationException" use="literal"/></fault>
+         <fault name="InvalidParameterException"><soap:fault name="InvalidParameterException" use="literal"/></fault>
+         <fault name="InvalidClientException"><soap:fault name="InvalidClientException" use="literal"/></fault>
+         <fault name="InvalidContractException"><soap:fault name="InvalidContractException" use="literal"/></fault>
+         <fault name="TokenExpiredException"><soap:fault name="TokenExpiredException" use="literal"/></fault>
+      </operation>
+
+      <operation name="getDocuments">
+         <soap:operation soapAction=""/>
+         <input><soap:body use="literal"/></input>
+         <output><soap:body use="literal"/></output>
+         <fault name="InvalidAuthenticationException"><soap:fault name="InvalidAuthenticationException" use="literal"/></fault>
+         <fault name="InvalidParameterException"><soap:fault name="InvalidParameterException" use="literal"/></fault>
+         <fault name="InvalidClientException"><soap:fault name="InvalidClientException" use="literal"/></fault>
+         <fault name="InvalidContractException"><soap:fault name="InvalidContractException" use="literal"/></fault>
+         <fault name="TokenExpiredException"><soap:fault name="TokenExpiredException" use="literal"/></fault>
+      </operation>
+
+      <operation name="emailDocument">
+         <soap:operation soapAction=""/>
+         <input><soap:body use="literal"/></input>
+      </operation>
+
+      <operation name="uploadDocument">
+         <soap:operation soapAction=""/>
+         <input><soap:body use="literal"/></input>
+         <output><soap:body use="literal"/></output>
+         <fault name="InvalidAuthenticationException"><soap:fault name="InvalidAuthenticationException" use="literal"/></fault>
+         <fault name="InvalidParameterException"><soap:fault name="InvalidParameterException" use="literal"/></fault>
+         <fault name="InvalidClientException"><soap:fault name="InvalidClientException" use="literal"/></fault>
+         <fault name="InvalidContractException"><soap:fault name="InvalidContractException" use="literal"/></fault>
+         <fault name="TokenExpiredException"><soap:fault name="TokenExpiredException" use="literal"/></fault>
+      </operation>
+
+      <operation name="uploadDocuments">
+         <soap:operation soapAction=""/>
+         <input><soap:body use="literal"/></input>
+         <output><soap:body use="literal"/></output>
+         <fault name="InvalidAuthenticationException"><soap:fault name="InvalidAuthenticationException" use="literal"/></fault>
+         <fault name="InvalidParameterException"><soap:fault name="InvalidParameterException" use="literal"/></fault>
+         <fault name="InvalidClientException"><soap:fault name="InvalidClientException" use="literal"/></fault>
+         <fault name="InvalidContractException"><soap:fault name="InvalidContractException" use="literal"/></fault>
+         <fault name="TokenExpiredException"><soap:fault name="TokenExpiredException" use="literal"/></fault>
+      </operation>
+
+   </binding>
+
+   <service name="EssContractServices">
+      <port binding="tns:EssContractPortBinding" name="EssContractPort">
+         <soap:address location="http://essentialconnects.test/api/v1/wsdl/esscontract" />
+      </port>
+   </service>
+</definitions>

@@ -1,0 +1,237 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<xs:schema xmlns:tns="http://essentialconnects.test" xmlns:xs="http://www.w3.org/2001/XMLSchema" version="1.0" targetNamespace="http://essentialconnects.test">
+
+	<xs:include schemaLocation="http://essentialconnects.test/api/xsd/defaults.xsd"/>
+	<xs:element name="addContract" nillable="true" type="tns:addContract"/>
+	<xs:element name="addContractResponse" nillable="true" type="tns:addContractResponse"/>
+	<xs:element name="editContract" nillable="true" type="tns:editContract"/>
+	<xs:element name="editContractResponse" nillable="true" type="tns:editContractResponse"/>
+	<xs:element name="addCreditCard" nillable="true" type="tns:addCreditCard"/>
+	<xs:element name="addCreditCardResponse" nillable="true" type="tns:addCreditCardResponse"/>
+	<xs:element name="addDirectDebit" nillable="true" type="tns:addDirectDebit"/>
+	<xs:element name="addDirectDebitResponse" nillable="true" type="tns:addDirectDebitResponse"/>
+	<xs:element name="addIdentifyingDocuments" nillable="true" type="tns:addIdentifyingDocuments"/>
+	<xs:element name="addIdentifyingDocumentsResponse" nillable="true" type="tns:addIdentifyingDocumentsResponse"/>
+	
+	<xs:element name="verifyToken" nillable="true" type="tns:verifyToken"/>
+	<xs:element name="verifyTokenResponse" nillable="true" type="tns:verifyTokenResponse"/>
+	<xs:element name="resendVerifyToken" nillable="true" type="tns:resendVerifyToken"/>
+	<xs:element name="resendVerifyTokenResponse" nillable="true" type="tns:resendVerifyTokenResponse"/>
+
+	<xs:element name="getClientContractsResponse" nillable="true" type="tns:getClientContractsResponse"/>
+	<xs:element name="UserAlreadyExistsException" nillable="true" type="tns:UserAlreadyExistsException"/>
+	<xs:element name="InvalidTokenException" nillable="true" type="tns:InvalidTokenException"/>
+	<xs:element name="MaxContractReachedException" nillable="true" type="tns:MaxContractReachedException" />
+
+	<xs:complexType name="addContract">
+		<xs:sequence>
+			<xs:element name="verify_details" type="tns:verifyDetails" minOccurs="1" maxOccurs="1"/>
+		   	<xs:element name="client_details" type="tns:client_details" minOccurs="0" maxOccurs="1"/>
+		   	<xs:element name="contract_details" type="tns:contract_details" minOccurs="1" maxOccurs="1"/>
+		   	<xs:element name="client_products" type="tns:client_products" minOccurs="1" maxOccurs="1"/>
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="addCreditCard">
+		<xs:sequence>
+			<xs:element name="verify_details" type="tns:verifyDetails" minOccurs="1" maxOccurs="1"/>
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="addCreditCardResponse">
+		<xs:sequence>
+			<xs:element name="hash" type="xs:string" minOccurs="0" maxOccurs="1" />
+			<xs:element name="credit_card_details" type="tns:creditCardDetails" minOccurs="0" maxOccurs="1"/>
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="addDirectDebit">
+		<xs:sequence>
+			<xs:element name="verify_details" type="tns:verifyDetails" minOccurs="1" maxOccurs="1"/>
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="addDirectDebitResponse">
+		<xs:sequence>
+			<xs:element name="hash" type="xs:string" minOccurs="0" maxOccurs="1" />
+			<xs:element name="direct_debit_details" type="tns:directDebitDetails" minOccurs="0" maxOccurs="1"/>
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="editContract">
+		<xs:sequence>
+			<xs:element name="verify_details" type="tns:verifyDetails" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="contract_details" type="tns:contract_details" minOccurs="1" maxOccurs="1"/>
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="editContractResponse">
+		<xs:sequence>
+			<xs:element name="hash" type="xs:string" minOccurs="0" maxOccurs="1" />
+		   	<xs:element name="contract" type="tns:contract" minOccurs="1" maxOccurs="1"/>
+		   	<xs:element name="credit_card_details" type="tns:creditCardDetails" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="direct_debit_details" type="tns:directDebitDetails" minOccurs="0" maxOccurs="1"/>
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="client_details">
+		<xs:sequence>
+			<xs:element name="crn" type="xs:string" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="delivery_address_unit_number" type="xs:string" minOccurs="0" maxOccurs="1"/>
+		   	<xs:element name="delivery_address_number" type="xs:string" minOccurs="0" maxOccurs="1"/>
+		   	<xs:element name="delivery_address_name" type="xs:string" minOccurs="0" maxOccurs="1"/>
+		   	<xs:element name="delivery_address_city" type="xs:string" minOccurs="0" maxOccurs="1"/>
+		   	<xs:element name="delivery_address_postcode" type="xs:string" minOccurs="0" maxOccurs="1"/>
+		   	<xs:element name="delivery_address_state" type="xs:string" minOccurs="0" maxOccurs="1"/>
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="contract_details">
+		<xs:sequence>
+			<xs:element name="contract_id" type="xs:int" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="contract_type_label" type="xs:string" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="contract_term" type="xs:int" minOccurs="1" maxOccurs="1"/>
+		   	<xs:element name="payment_frequency" type="xs:int" minOccurs="1" maxOccurs="1"/>
+		   	<xs:element name="marketing_source" type="xs:string" minOccurs="1" maxOccurs="1"/>
+		   	<xs:element name="financial_situation" type="xs:int" minOccurs="0" maxOccurs="1"/>
+		   	<xs:element name="financial_situation_detail" type="xs:string" minOccurs="0" maxOccurs="1"/>
+		   	<xs:element name="renting_reason" type="xs:string" minOccurs="0" maxOccurs="1"/>
+		   	<xs:element name="payment_type" type="xs:string" minOccurs="0" maxOccurs="1"/>
+		   	<xs:element name="delivery_fee" type="xs:string" minOccurs="0" maxOccurs="1"/>
+		   	<xs:element name="service_fee" type="xs:string" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="default_payment_type_id" type="xs:string" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="crn" type="xs:string" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="reference" type="xs:string" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="alternative_payment_type" type="xs:string" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="client_credit_card_id" type="xs:int" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="type" type="xs:string" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="cardholders_name" type="xs:string" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="number" type="xs:string" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="expiry_date" type="xs:string" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="client_direct_debit_id" type="xs:int" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="financial_institution" type="xs:string" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="branch" type="xs:string" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="bsb_number" type="xs:string" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="account_number" type="xs:string" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="previous_contract_id" type="xs:int" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="utm_tags" type="tns:utmTags" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="google_ads_tags" type="tns:googleAdsTags" minOccurs="0" maxOccurs="1"/>
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="googleAdsTags">
+		<xs:sequence>
+			<xs:element name="source" type="xs:string" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="device" type="xs:string" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="campaign" type="xs:string" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="adgroup" type="xs:string" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="keyword" type="xs:string" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="matchtype" type="xs:string" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="placement" type="xs:string" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="adposition" type="xs:string" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="location" type="xs:string" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="gclid" type="xs:string" minOccurs="0" maxOccurs="1"/>
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="utmTags">
+		<xs:sequence>
+			<xs:element name="source" type="xs:string" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="medium" type="xs:string" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="campaign" type="xs:string" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="term" type="xs:string" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="content" type="xs:string" minOccurs="0" maxOccurs="1"/>
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="client_products">
+		<xs:sequence>
+			<xs:element name="products" type="tns:product" minOccurs="1" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="product">
+		<xs:sequence>
+			<xs:element name="product_id" type="xs:int" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="actual_rental" type="xs:string" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="qty" type="xs:int" minOccurs="1" maxOccurs="1"/>
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="addIdentifyingDocuments">
+		<xs:sequence>
+			<xs:element name="verify_details" type="tns:verifyDetails" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="upload" type="tns:fileDetails" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="type" type="xs:string" minOccurs="0" maxOccurs="1" />
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="addIdentifyingDocumentsResponse">
+		<xs:sequence>
+			<xs:element name="files" type="tns:files" minOccurs="0" maxOccurs="unbounded"/>
+			<xs:element name="hash" type="xs:string" minOccurs="0" maxOccurs="1" />
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="verifyToken">
+		<xs:sequence>
+			<xs:element name="verify_details" type="tns:verifyDetails" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="token" type="xs:string" minOccurs="1" maxOccurs="1" />
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="verifyTokenResponse">
+		<xs:sequence>
+			<xs:element name="hash" type="xs:string" minOccurs="0" maxOccurs="1" />
+			<xs:element name="client" type="tns:client" minOccurs="1" maxOccurs="1"/>
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="resendVerifyToken">
+		<xs:sequence>
+			<xs:element name="verify_details" type="tns:verifyDetails" minOccurs="1" maxOccurs="1"/>
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="resendVerifyTokenResponse">
+		<xs:sequence>
+			<xs:element name="hash" type="xs:string" minOccurs="0" maxOccurs="1" />
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="addContractResponse">
+		<xs:sequence>
+			<xs:element name="contract" type="tns:contract" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="hash" type="xs:string" minOccurs="0" maxOccurs="1" />
+			<xs:element name="credit_card_details" type="tns:creditCardDetails" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="direct_debit_details" type="tns:directDebitDetails" minOccurs="0" maxOccurs="1"/>
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="getClientContractsResponse">
+		<xs:sequence>
+			<xs:element name="contracts" type="tns:contract" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	
+	<xs:complexType name="UserAlreadyExistsException">
+		<xs:sequence>
+			<xs:element name="error_code" type="xs:int" minOccurs="0"/>
+			<xs:element name="message" type="xs:string" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="InvalidTokenException">
+		<xs:sequence>
+			<xs:element name="error_code" type="xs:int" minOccurs="0"/>
+			<xs:element name="message" type="xs:string" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="MaxContractReachedException">
+		<xs:sequence>
+			<xs:element name="error_code" type="xs:int" minOccurs="0"/>
+			<xs:element name="message" type="xs:string" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+</xs:schema>

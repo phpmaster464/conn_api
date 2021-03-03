@@ -1,0 +1,263 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<xs:schema xmlns:tns="http://essentialconnects.test" xmlns:xs="http://www.w3.org/2001/XMLSchema" version="1.0" targetNamespace="http://essentialconnects.test">
+	<xs:include schemaLocation="http://essentialconnects.test/api/staging/xsd/defaults.xsd"/>
+	<xs:element name="addEnquiry" nillable="true" type="tns:addEnquiry"/>
+	<xs:element name="addEnquiryResponse" nillable="true" type="xs:int"/>
+	<xs:element name="forgotPasswordResponse" nillable="true" type="xs:int"/>
+	<xs:element name="addUser" nillable="true" type="tns:addUser"/>
+	<xs:element name="addUserResponse" nillable="true" type="tns:addUserResponse"/>
+	<xs:element name="confirmation" nillable="true" type="tns:confirmation"/>
+	<xs:element name="forgotPassword" nillable="true" type="tns:forgotPassword"/>
+	<xs:element name="getUserResponse" nillable="true" type="tns:getUserResponse"/>
+	<xs:element name="login" type="tns:login" />
+	<xs:element name="loginResponse" nillable="true" type="tns:loginResponse"/>
+	<xs:element name="resetPassword" nillable="true" type="tns:resetPassword"/>
+	<xs:element name="resetResponse" nillable="true" type="xs:int"/>
+	<xs:element name="token" nillable="true" type="tns:token"/>
+	<xs:element name="tokenResponse" nillable="true" type="xs:int"/>
+	<xs:element name="canService" nillable="true" type="tns:canService"/>
+	<xs:element name="applyNow" nillable="true" type="tns:applyNow"/>
+	<xs:element name="applyNowResponse" nillable="true" type="tns:applyNowResponse"/>
+	<xs:element name="canServiceResponse" nillable="true" type="tns:canServiceResponse"/>
+	<xs:element name="InvalidLoginException" nillable="true" type="tns:InvalidLoginException"/>
+	<xs:element name="UserNotVipException" nillable="true" type="tns:UserNotVipException"/>
+	<xs:element name="UserAlreadyExistsException" nillable="true" type="tns:UserAlreadyExistsException"/>
+	<xs:element name="InvalidCountryException" nillable="true" type="tns:InvalidCountryException"/>
+
+	<xs:complexType name="forgotPassword">
+		<xs:sequence>
+			<xs:element name="email" type="xs:string" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="url" type="xs:string" minOccurs="1" maxOccurs="1"/>
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="applyNow">
+		<xs:sequence>
+			<xs:element name="name_first" type="xs:string" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="name_last" type="xs:string" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="email" type="xs:string" minOccurs="1" maxOccurs="1"/>
+		   	<xs:element name="mobile" type="xs:string" minOccurs="1" maxOccurs="1"/>
+		   	<xs:element name="phone" type="xs:string" minOccurs="1" maxOccurs="1"/>
+		   	<xs:element name="address_unit_number" type="xs:string" minOccurs="1" maxOccurs="1"/>
+		   	<xs:element name="address_number" type="xs:string" minOccurs="1" maxOccurs="1"/>
+		   	<xs:element name="address_name" type="xs:string" minOccurs="1" maxOccurs="1"/>
+		   	<xs:element name="address_city" type="xs:string" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="address_postcode" type="xs:string" minOccurs="1" maxOccurs="1"/>
+		   	<xs:element name="address_state" type="xs:string" minOccurs="1" maxOccurs="1"/>
+		   	<xs:element name="product_id" type="xs:int" minOccurs="1" maxOccurs="1"/>
+		   	<xs:element name="comment" type="xs:string" minOccurs="1" maxOccurs="1"/>
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="applyNowResponse">
+		<xs:sequence>
+			<xs:element name="result" type="xs:int" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="postcodes" type="tns:postcodeMatches" minOccurs="0" maxOccurs="1"/>
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="canService">
+		<xs:sequence>
+			<xs:element name="postcode" type="xs:string" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="suburb" type="xs:string" minOccurs="1" maxOccurs="1"/>
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="canServiceResponse">
+		<xs:sequence>
+			<xs:element name="postcode" type="xs:string" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="suburb" type="xs:string" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="service" type="xs:int" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="limited" type="xs:int" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="products" type="xs:int" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="addEnquiry">
+		<xs:sequence>
+			<xs:element name="name" type="xs:string" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="email" type="xs:string" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="contact" type="xs:string" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="enquiry" type="xs:string" minOccurs="1" maxOccurs="1"/>
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="resetPassword">
+		<xs:sequence>
+			<xs:element name="email" type="xs:string" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="hash" type="xs:string" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="password" type="xs:string" minOccurs="1" maxOccurs="1"/>
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="login">
+		<xs:sequence>
+		   <xs:element name="email" type="xs:string" minOccurs="1" maxOccurs="1"/>
+		   <xs:element name="password" type="xs:string" minOccurs="1" maxOccurs="1"/>
+		    <xs:element name="ip_address" type="xs:string" minOccurs="1" maxOccurs="1"/>
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="loginResponse">
+		<xs:sequence>
+			<xs:element name="return" type="tns:loginResult" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="loginResult">
+		<xs:sequence>
+			<xs:element name="hash" type="xs:string" minOccurs="0" />
+			<xs:element name="error_message" type="xs:string" minOccurs="0" />
+		</xs:sequence>	
+	</xs:complexType>
+
+	<xs:complexType name="confirmation">
+		<xs:sequence>
+			<xs:element name="verify_details" type="tns:verifyDetails" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="type" type="xs:string" minOccurs="1" maxOccurs="1"/>
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="token">
+		<xs:sequence>
+			<xs:element name="verify_details" type="tns:verifyDetails" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="token" type="xs:string" minOccurs="1" maxOccurs="1"/>
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="addUser">
+		<xs:sequence>
+			<xs:element name="client_id" type="xs:int" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="dob_day" type="xs:string" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="dob_month" type="xs:string" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="dob_year" type="xs:string" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="email" type="xs:string" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="name_first" type="xs:string" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="name_last" type="xs:string" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="name_middle" type="xs:string" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="contact" type="xs:string" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="mobile" type="xs:string" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="phone" type="xs:string" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="address_state" type="xs:string" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="address_postcode" type="xs:string" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="crn" type="xs:string" minOccurs="0" maxOccurs="1"/>
+		   	<xs:element name="license" type="tns:license" minOccurs="0" maxOccurs="1"/>
+		   	<xs:element name="medicare" type="tns:medicare" minOccurs="0" maxOccurs="1"/>
+		   	<xs:element name="confirmation" type="xs:int" minOccurs="0" maxOccurs="1"/>
+		   	<xs:element name="consent" type="xs:int" minOccurs="0" maxOccurs="1"/>
+		   	<xs:element name="passport" type="tns:passport" minOccurs="0" maxOccurs="1"/>
+		   	<xs:element name="password" type="xs:string" minOccurs="1" maxOccurs="1"/>
+		    <xs:element name="security_code" type="xs:string" minOccurs="0" maxOccurs="1"/>
+		    <xs:element name="ip_address" type="xs:string" minOccurs="1" maxoccurs="1"/>
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="license">
+		<xs:sequence>
+			<xs:element name="upload" type="tns:fileDetails" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="number" type="xs:string" minOccurs="0" maxOccurs="1"/>
+		   	<xs:element name="state_code" type="xs:string" minOccurs="0" maxOccurs="1"/>
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="passport">
+		<xs:sequence>
+			<xs:element name="number" type="xs:string" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="country" type="xs:string" minOccurs="0" maxOccurs="1"/>
+		   	<xs:element name="country_code" type="xs:string" minOccurs="0" maxOccurs="1"/>
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="medicare">
+		<xs:sequence>
+			<xs:element name="upload" type="tns:fileDetails" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="number" type="xs:string" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="reference_number" type="xs:string" minOccurs="1" maxOccurs="1"/>
+		   	<xs:element name="middle_name" type="xs:string" minOccurs="1" maxOccurs="1"/>
+		   	<xs:element name="expiry_date_month" type="xs:string" minOccurs="1" maxOccurs="1"/>
+		   	<xs:element name="expiry_date_year" type="xs:string" minOccurs="1" maxOccurs="1"/>
+		   	<xs:element name="card_colour" type="xs:string" minOccurs="1" maxOccurs="1"/>
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="addUserResponse">
+		<xs:sequence>
+			<xs:element name="hash" type="xs:string" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="reference" type="xs:string" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="email" type="xs:string" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="name_first" type="xs:string" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="name_last" type="xs:string" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="mobile" type="xs:string" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="phone" type="xs:string" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="client_match" type="xs:boolean" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="confirmation_methods" type="tns:confirmationMethods" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="files" type="tns:files" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="user">
+		<xs:sequence>
+			<xs:element name="reference" type="xs:string" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="name_first" type="xs:string" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="name_last" type="xs:string" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="dob" type="xs:string" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="email" type="xs:string" minOccurs="1" maxOccurs="1"/>
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="getUserResponse">
+		<xs:sequence>
+			<xs:element name="user" type="tns:user" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="client" type="tns:client" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="credit_card_details" type="tns:creditCardDetails" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="direct_debit_details" type="tns:directDebitDetails" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="client_exists" type="xs:boolean" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="client_match" type="xs:boolean" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="confirmation_methods" type="tns:confirmationMethods" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="service" type="xs:int" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="limited" type="xs:int" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="products" type="xs:int" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="confirmationMethods">
+		<xs:sequence>
+			<xs:element name="methods" type="tns:methods" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="methods">
+		<xs:sequence>
+			<xs:element name="method" type="xs:string" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="value" type="xs:string" minOccurs="1" maxOccurs="1"/>
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="InvalidLoginException">
+		<xs:sequence>
+			<xs:element name="message" type="xs:string" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="UserNotVipException">
+		<xs:sequence>
+			<xs:element name="message" type="xs:string" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="UserAlreadyExistsException">
+		<xs:sequence>
+			<xs:element name="error_code" type="xs:int" minOccurs="0"/>
+			<xs:element name="message" type="xs:string" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="InvalidCountryException">
+		<xs:sequence>
+			<xs:element name="error_code" type="xs:int" minOccurs="0"/>
+			<xs:element name="message" type="xs:string" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+	
+
+</xs:schema>

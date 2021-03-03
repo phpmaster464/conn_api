@@ -1,0 +1,96 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<xs:schema xmlns:tns="http://essentialconnects.test" xmlns:xs="http://www.w3.org/2001/XMLSchema" version="1.0" targetNamespace="http://essentialconnects.test">
+
+	<xs:include schemaLocation="http://essentialconnects.test/api/xsd/defaults.xsd"/>
+	<xs:element name="addClient" nillable="true" type="tns:addClient"/>
+	<xs:element name="addClientResponse" nillable="true" type="tns:addClientResponse"/>
+	<xs:element name="addEnquiry" nillable="true" type="tns:addEnquiry"/>
+	<xs:element name="addEnquiryResponse" nillable="true" type="xs:int"/>
+	<xs:element name="hasChanged" nillable="true" type="tns:hasChanged"/>
+	<xs:element name="hasChangedResponse" nillable="true" type="xs:int"/>
+
+	<xs:complexType name="addClient">
+		<xs:sequence>
+			<xs:element name="verify_details" type="tns:verifyDetails" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="client_details" type="tns:client_details" minOccurs="1" maxOccurs="1"/>
+		   	<xs:element name="client_income" type="tns:client_income" minOccurs="1" maxOccurs="1"/>
+		   	<xs:element name="client_deductions" type="tns:client_deductions" minOccurs="1" maxOccurs="1"/>
+		   	<xs:element name="employment_type" type="xs:string" minOccurs="0" maxOccurs="1"/>
+		   	<xs:element name="employer_name" type="xs:string" minOccurs="0" maxOccurs="1"/>
+		   	<xs:element name="employer_address" type="xs:string" minOccurs="0" maxOccurs="1"/>
+		   	<xs:element name="employment_day_of_payment" type="xs:string" minOccurs="0" maxOccurs="1"/>
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="client_details">
+		<xs:sequence>
+			<xs:element name="title" type="xs:string" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="name_first" type="xs:string" minOccurs="1" maxOccurs="1"/>
+		   	<xs:element name="name_last" type="xs:string" minOccurs="1" maxOccurs="1"/>
+		   	<xs:element name="name_middle" type="xs:string" minOccurs="1" maxOccurs="1"/>
+		   	<xs:element name="email" type="xs:string" minOccurs="1" maxOccurs="1"/>
+		   	<xs:element name="mobile" type="xs:string" minOccurs="0" maxOccurs="1"/>
+		   	<xs:element name="phone" type="xs:string" minOccurs="0" maxOccurs="1"/>
+		   	<xs:element name="dob" type="xs:string" minOccurs="1" maxOccurs="1"/>
+		   	<xs:element name="address_unit_number" type="xs:string" minOccurs="0" maxOccurs="1"/>
+		   	<xs:element name="address_number" type="xs:string" minOccurs="1" maxOccurs="1"/>
+		   	<xs:element name="address_name" type="xs:string" minOccurs="1" maxOccurs="1"/>
+		   	<xs:element name="address_city" type="xs:string" minOccurs="1" maxOccurs="1"/>
+		   	<xs:element name="address_postcode" type="xs:string" minOccurs="1" maxOccurs="1"/>
+		   	<xs:element name="address_state" type="xs:string" minOccurs="1" maxOccurs="1"/>
+		   	<xs:element name="different_delivery_address" type="xs:int" minOccurs="0" maxOccurs="1"/>
+		   	<xs:element name="previous_address_unit_number" type="xs:string" minOccurs="0" maxOccurs="1"/>
+		   	<xs:element name="previous_address_number" type="xs:string" minOccurs="0" maxOccurs="1"/>
+		   	<xs:element name="previous_address_name" type="xs:string" minOccurs="0" maxOccurs="1"/>
+		   	<xs:element name="previous_address_city" type="xs:string" minOccurs="0" maxOccurs="1"/>
+		   	<xs:element name="previous_address_postcode" type="xs:string" minOccurs="0" maxOccurs="1"/>
+		   	<xs:element name="previous_address_state" type="xs:string" minOccurs="0" maxOccurs="1"/>
+		   	<xs:element name="address_period" type="xs:int" minOccurs="0" maxOccurs="1"/>
+		   	<xs:element name="delivery_address_unit_number" type="xs:string" minOccurs="0" maxOccurs="1"/>
+		   	<xs:element name="delivery_address_number" type="xs:string" minOccurs="0" maxOccurs="1"/>
+		   	<xs:element name="delivery_address_name" type="xs:string" minOccurs="0" maxOccurs="1"/>
+		   	<xs:element name="delivery_address_city" type="xs:string" minOccurs="0" maxOccurs="1"/>
+		   	<xs:element name="delivery_address_postcode" type="xs:string" minOccurs="0" maxOccurs="1"/>
+		   	<xs:element name="delivery_address_state" type="xs:string" minOccurs="0" maxOccurs="1"/>
+		   	<xs:element name="dependents" type="xs:int" minOccurs="1" maxOccurs="1"/>
+		   	<xs:element name="relationship" type="xs:string" minOccurs="1" maxOccurs="1"/>
+		   	<xs:element name="living_situation" type="xs:string" minOccurs="1" maxOccurs="1"/>
+		   	<xs:element name="shared" type="xs:int" minOccurs="1" maxOccurs="1"/>
+		   	<xs:element name="nlr_name_first" type="xs:string" minOccurs="1" maxOccurs="1"/>
+		   	<xs:element name="nlr_name_last" type="xs:string" minOccurs="1" maxOccurs="1"/>
+		   	<xs:element name="nlr_phone" type="xs:string" minOccurs="1" maxOccurs="1"/>
+		   	<xs:element name="nlr_address_unit_number" type="xs:string" minOccurs="0" maxOccurs="1"/>
+		   	<xs:element name="nlr_address_number" type="xs:string" minOccurs="0" maxOccurs="1"/>
+		   	<xs:element name="nlr_address_name" type="xs:string" minOccurs="0" maxOccurs="1"/>
+		   	<xs:element name="nlr_address_city" type="xs:string" minOccurs="0" maxOccurs="1"/>
+		   	<xs:element name="nlr_address_postcode" type="xs:string" minOccurs="0" maxOccurs="1"/>
+		   	<xs:element name="nlr_address_state" type="xs:string" minOccurs="0" maxOccurs="1"/>
+		   	<xs:element name="nlr_relationship" type="xs:string" minOccurs="1" maxOccurs="1"/>
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="addClientResponse">
+		<xs:sequence>
+			<xs:element name="hash" type="xs:string" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="email" type="xs:string" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="client" type="tns:client" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="service" type="xs:int" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="limited" type="xs:int" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="products" type="xs:int" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="addEnquiry">
+		<xs:sequence>
+			<xs:element name="verify_details" type="tns:verifyDetails" minOccurs="1" maxOccurs="1"/>
+		   	<xs:element name="enquiry" type="xs:string"  minOccurs="1" maxOccurs="1"/>
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="hasChanged">
+		<xs:sequence>
+			<xs:element name="verify_details" type="tns:verifyDetails" minOccurs="1" maxOccurs="1"/>
+		</xs:sequence>
+	</xs:complexType>
+
+</xs:schema>
