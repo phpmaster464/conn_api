@@ -1,0 +1,197 @@
+openapi: 3.0.0
+info:
+  title: AddUser
+  version: '1.0'
+  description: This Api is used for adding new Users
+  contact:
+    name: snaffle
+servers:
+  - url: 'https://esscontacts.newpathstudio.com.au/api/v1/wsdl/essauth?wsdl'
+paths:
+  /adduser:
+    post:
+      summary: Add User
+      operationId: post-adduser
+      responses:
+        '200':
+          description: The success response has following information.
+          headers: {}
+          content:
+            application/xml:
+              schema:
+                type: object
+                properties:
+                  hash:
+                    type: string
+                  email:
+                    type: string
+                  name_first:
+                    type: string
+                  name_last:
+                    type: string
+                  mobile:
+                    type: string
+                  phone:
+                    type: string
+                  client_match:
+                    type: string
+              examples:
+                example-1:
+                  value: |-
+                    <SOAP-ENV:Envelope xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/">
+                     <SOAP-ENV:Body>
+                     <SOAP-ENV:addUserResponse>
+                     <parameters>
+                     <hash>eyJpdiI6IlZNY2NlUWw4TEFtYVhyVW54R0FzdlE9PSIsInZhbHVlIjoiNlFlOXUxdWJ1WWRlUDVWOEJaQlZxa1wvYzJJRlBQQ0RF
+                    K1g5ZTFnckNMZHY5M09DUEUwMVdsa21Fd3lOQjE1MzJKZ0dwbmRUdXhIUlNlb2FHbnVpZkxBPT0iLCJtYWMiOiIwNzZiZTkwNGMzYWM3MD
+                    U1ZTFiYjA2NWVkYTg3ODMyYTNmYjljYWMyNjEwZjBiYzIzM2I1MGI1NjQxMDljNmZjIn0=</hash>
+                     <email>harlan.gray4@gmail.com</email>
+                     <name_first>Harlan</name_first>
+                     <name_last>Gray</name_last>
+                     <mobile>0421123456</mobile>
+                     <phone>0421123456</phone>
+                     <client_match>false</client_match>
+                     </parameters>
+                     </SOAP-ENV:addUserResponse>
+                     </SOAP-ENV:Body>
+                    </SOAP-ENV:Envelope>
+      description: This Api is Used For Add User
+      requestBody:
+        content:
+          application/soap+xml:
+            schema:
+              type: object
+              properties:
+                dob_day:
+                  type: string
+                dob_month:
+                  type: string
+                dob_year:
+                  type: string
+                email:
+                  type: string
+                name_first:
+                  type: string
+                name_last:
+                  type: string
+                mobile:
+                  type: string
+                phone:
+                  type: string
+                address_state:
+                  type: string
+                address_postcode:
+                  type: string
+                crn:
+                  type: string
+                confirmation:
+                  type: string
+                consent:
+                  type: string
+                passport_number:
+                  type: string
+                passport_country:
+                  type: string
+                country_code:
+                  type: string
+                password:
+                  type: string
+                security_code:
+                  type: string
+                ip_address:
+                  type: string
+            examples:
+              example-1:
+                value: |
+                  <soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:dev="https://esscontacts.newpathstudio.com.au">
+
+                  <soapenv:Header/>
+
+                  <soapenv:Body>
+
+                  <dev:addUser>
+
+                  <dev:addUser>
+
+
+
+                  <dob_day>7</dob_day>
+
+                  <dob_month>11</dob_month>
+
+                  <dob_year>1994</dob_year>
+
+                  <email>chirakmistry@chirak.com</email>
+
+                  <name_first>Chirak</name_first>
+
+                  <name_last>Mistry</name_last>
+
+
+
+                  <mobile>0489797675</mobile>
+
+
+
+                  <phone>0415191613</phone>
+
+                  <address_state>vic</address_state>
+
+                  <address_postcode>3153</address_postcode>
+
+
+
+                  <crn>789654123O</crn>
+
+
+
+
+
+                  <confirmation>1</confirmation>
+
+
+
+                  <consent>1</consent>
+
+                  <passport>
+
+                  <number>N12345</number>
+
+                  <country>Australia</country>
+
+                  <country_code>AU</country_code>
+
+                  </passport>
+
+                  <password>test$123</password>
+
+                  <security_code>123456789</security_code>
+
+                  <ip_address>19.168.0.1</ip_address>
+
+                  </dev:addUser>
+
+                  </dev:addUser>
+
+                  </soapenv:Body>
+
+                  </soapenv:Envelope>
+          application/json:
+            schema:
+              type: object
+              properties: {}
+            examples: {}
+          application/xml:
+            schema:
+              type: object
+              properties: {}
+        description: The Requested Body is passed through XML file which has following parameters.
+      parameters: []
+    parameters: []
+components:
+  schemas: {}
+  securitySchemes: {}
+  parameters: {}
+  examples: {}
+tags:
+  - name: Add Users
