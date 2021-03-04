@@ -1,0 +1,887 @@
+openapi: 3.0.0
+info:
+  title: EssClient
+  version: '1.0'
+servers:
+  - url: 'http://localhost:3000'
+paths:
+  /addContract:
+    post:
+      summary: ''
+      operationId: post-addContract
+      description: 'API to add Contract to given client , stores Contract Deatails in BOS Admin site.'
+      requestBody:
+        content:
+          application/xml:
+            schema:
+              description: ''
+              type: object
+              properties:
+                Header: {}
+                Body:
+                  type: object
+                  properties:
+                    addContract:
+                      type: object
+                      properties:
+                        addContract:
+                          type: object
+                          properties:
+                            verify_details:
+                              type: object
+                              properties:
+                                hash:
+                                  type: string
+                                  minLength: 1
+                                email:
+                                  type: string
+                                  minLength: 1
+                                ip_address:
+                                  type: string
+                                  minLength: 1
+                              required:
+                                - hash
+                                - email
+                                - ip_address
+                            client_details:
+                              type: object
+                              properties:
+                                crn:
+                                  type: string
+                                  minLength: 1
+                                delivery_address_unit_number:
+                                  type: string
+                                  minLength: 1
+                                delivery_address_number:
+                                  type: string
+                                  minLength: 1
+                                delivery_address_name:
+                                  type: string
+                                  minLength: 1
+                                delivery_address_city:
+                                  type: string
+                                  minLength: 1
+                                delivery_address_postcode:
+                                  type: string
+                                  minLength: 1
+                                delivery_address_state:
+                                  type: string
+                                  minLength: 1
+                              required:
+                                - crn
+                                - delivery_address_unit_number
+                                - delivery_address_number
+                                - delivery_address_name
+                                - delivery_address_city
+                                - delivery_address_postcode
+                                - delivery_address_state
+                            contract_details:
+                              type: object
+                              properties:
+                                contract_term:
+                                  type: string
+                                  minLength: 1
+                                payment_frequency:
+                                  type: string
+                                  minLength: 1
+                                marketing_source:
+                                  type: string
+                                  minLength: 1
+                                default_payment_type_id:
+                                  type: string
+                                  minLength: 1
+                                payment_type:
+                                  type: string
+                                  minLength: 1
+                              required:
+                                - contract_term
+                                - payment_frequency
+                                - marketing_source
+                                - default_payment_type_id
+                                - payment_type
+                            client_products:
+                              type: array
+                              uniqueItems: true
+                              minItems: 1
+                              items:
+                                required:
+                                  - product_id
+                                  - actual_rental
+                                  - qty
+                                properties:
+                                  product_id:
+                                    type: string
+                                    minLength: 1
+                                  actual_rental:
+                                    type: string
+                                    minLength: 1
+                                  qty:
+                                    type: string
+                                    minLength: 1
+                          required:
+                            - verify_details
+                            - client_details
+                            - contract_details
+                            - client_products
+                      required:
+                        - addContract
+                  required:
+                    - addContract
+              required:
+                - Body
+            examples:
+              Example Request:
+                value: |-
+                  <soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:dev="http://dev.essentialconnects.com">
+                  <soapenv:Header/>
+                  <soapenv:Body>
+                  <dev:addContract>
+                  <dev:addContract>
+                  <verify_details>
+                  <hash>eyJpdiI6IkFmczF2bnRcL0pCRWdoNEt3bTFFNjJ3PT0iLCJ2YWx1ZSI6IjVIMmI3UnBERkYzUldRNE56QXpNZGJHbnAyNFJ3Z3RiT0xGQ
+                  UN6SnFjVmkxWHJrNCtuUFhqcXlMVDFtSVd4MFBNWlwvYVA3U0lRaWxZblNFMVBwQTFQdz09IiwibWFjIjoiYWE5NmE0NzVkMDQ1ODNhNzI4
+                  MDAzZmVlZTlmOWY4ZWYzZWI5NzA5MDYxOTZiMjMzN2EzYWI4MGUzYzYzNmMzMSJ9</hash>
+                  <email>harlan.gray4@gmail.com</email>
+                  <ip_address>19.168.0.1</ip_address>
+                  </verify_details>
+                  <client_details>
+                  <crn>123456789E</crn>
+                  <delivery_address_unit_number>24</delivery_address_unit_number>
+                  <delivery_address_number>440</delivery_address_number>
+                  <delivery_address_name>Stud Road</delivery_address_name>
+                  <delivery_address_city>Bayswater</delivery_address_city>
+                  <delivery_address_postcode>3153</delivery_address_postcode>
+                  <delivery_address_state>Vic</delivery_address_state>
+                  </client_details>
+                  <contract_details>
+                  <contract_term>12</contract_term>
+                  <payment_frequency>2</payment_frequency>
+                  <marketing_source>1</marketing_source>
+                  <default_payment_type_id>Centrepay</default_payment_type_id>
+                  <payment_type>Austudya</payment_type>
+                  </contract_details>
+                  <client_products>
+                  <products>
+                  <product_id>1</product_id>
+                  <actual_rental>10.50</actual_rental>
+                  <qty>2</qty>
+                  </products>
+                  <products>
+                  <product_id>2</product_id>
+                  <actual_rental>12.30</actual_rental>
+                  <qty>3</qty>
+                  </products>
+                  </client_products>
+                  </dev:addContract>
+                  </dev:addContract>
+                  </soapenv:Body>
+                  </soapenv:Envelope>
+          application/json:
+            schema:
+              type: object
+              properties: {}
+        description: |
+          Hash
+          Email
+          IP Address
+          CRN
+          Delivery Address Unit Number
+          Delivery Address Number
+          Delivery Address Name
+          Delivery Address City
+          Delivery Address Postcode
+          Delivery Address State
+          Contract Term
+          Payment Frequency
+          Marketing Source
+          Default Payment Type Id
+          Payment Type
+          Products
+            - Product Id
+            - Actual Rental
+            - Qty
+  /AddCreditCard:
+    get:
+      summary: Your GET endpoint
+      tags: []
+      operationId: get-AddCreditCard
+      description: Add Credit Card for the User hash provided.
+      requestBody:
+        content:
+          application/xml:
+            schema:
+              description: ''
+              type: object
+              properties:
+                Header: {}
+                Body:
+                  type: object
+                  properties:
+                    addCreditCard:
+                      type: object
+                      properties:
+                        addCreditCard:
+                          type: object
+                          properties:
+                            verify_details:
+                              type: object
+                              properties:
+                                hash:
+                                  type: string
+                                  minLength: 1
+                                email:
+                                  type: string
+                                  minLength: 1
+                                ip_address:
+                                  type: string
+                                  minLength: 1
+                              required:
+                                - hash
+                                - email
+                                - ip_address
+                          required:
+                            - verify_details
+                      required:
+                        - addCreditCard
+                  required:
+                    - addCreditCard
+              required:
+                - Body
+            examples:
+              Example Request:
+                value: |-
+                  <soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:dev="http://dev.essentialconnects.com">
+                  <soapenv:Header/>
+                  <soapenv:Body>
+                  <dev:addCreditCard>
+                  <dev:addCreditCard>
+                  <verify_details> <hash>eyJpdiI6IitQVElHalZkc2NrNEt3d3ZpV05nTFE9PSIsInZhbHVlIjoiTFRcL0RkS0VvZ1ZRNGc4YlJMVmlqd2
+                  NJRWZTQVFkc1YzVkIzd2RkaWZJRGJcLzdcL3pFeDB3UmtlUEk3Y090UHVBUnQ2Qk05TXh0eThHNGRuOHhmTndaZHc9PSIsIm1hYyI6ImQ3
+                  M2Q4NmI1NzYyOGM1MTVmNTA2ZmVlMjcxMDg4MmUyNWFmNWM4NDQ0ZTYwMjg1YWNiNDlkMjMxNGYzMzFkZWIifQ==</hash>
+                  <email>harlan.gray4@gmail.com</email>
+                  <ip_address>19.168.0.1</ip_address>
+                  </verify_details>
+                  </dev:addCreditCard>
+                  </dev:addCreditCard>
+                  </soapenv:Body>
+                  </soapenv:Envelope>
+      responses:
+        '200':
+          description: ''
+          content:
+            application/xml:
+              schema:
+                description: ''
+                type: object
+                properties:
+                  Body:
+                    type: object
+                    properties:
+                      addCreditCardResponse:
+                        type: object
+                        properties:
+                          parameters:
+                            type: object
+                            properties:
+                              hash:
+                                type: string
+                                minLength: 1
+                              credit_card_details:
+                                type: array
+                                items:
+                                  required: []
+                                  properties: {}
+                            required:
+                              - hash
+                              - credit_card_details
+                        required:
+                          - parameters
+                    required:
+                      - addCreditCardResponse
+                required:
+                  - Body
+              examples:
+                Example Response:
+                  value: |-
+                    <SOAP-ENV:Envelope xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/">
+                    <SOAP-ENV:Body>
+                    <SOAP-ENV:addCreditCardResponse>
+                    <parameters>
+                    <hash>eyJpdiI6IjQ1blkrMVd5aEtqc3pMK1ZHZitXckE9PSIsInZhbHVlIjoic3pKc2ZLOGpaeVFQRGZBMFwvOUk4SFJtYTFlUENUV1pEUCs
+                    2aG5IdEdNcTRKQWRFS0pFOHRBT0JsWlg2dW1UQ3Z2UDlJRkJwV210anpBRExVTDg4R2dnPT0iLCJtYWMiOiIwOWYyZGI4YjI0YWE3NTRkM
+                    GJmZWQ5ZjBmMzdhZDJjNjQ3NGY2ZDcwYWU2NDE2NjY1ZjUzMGY5NWVmZDcyZDVjIn0=</hash>
+                    <credit_card_details/>
+                    </parameters>
+                    </SOAP-ENV:addCreditCardResponse>
+                    </SOAP-ENV:Body>
+                    </SOAP-ENV:Envelope>
+  /AddDirectDebit:
+    post:
+      summary: ''
+      operationId: post-AddDirectDebit
+      responses:
+        '200':
+          description: ''
+          content:
+            application/xml:
+              schema:
+                description: ''
+                type: object
+                properties:
+                  Body:
+                    type: object
+                    properties:
+                      addDirectDebitResponse:
+                        type: object
+                        properties:
+                          parameters:
+                            type: object
+                            properties:
+                              hash:
+                                type: string
+                                minLength: 1
+                              direct_debit_details:
+                                type: array
+                                items:
+                                  required: []
+                                  properties: {}
+                            required:
+                              - hash
+                              - direct_debit_details
+                        required:
+                          - parameters
+                    required:
+                      - addDirectDebitResponse
+                required:
+                  - Body
+              examples:
+                Example Response:
+                  value: |-
+                    <SOAP-ENV:Envelope xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/">
+                    <SOAP-ENV:Body>
+                    <SOAP-ENV:addDirectDebitResponse>
+                    <parameters> <hash>eyJpdiI6ImpGQ0NOVExqQW8yOHhtdTNHQkFZSmc9PSIsInZhbHVlIjoiMFdoSnhrT0U3SjJjQXpobFFOaVY4R
+                    StJMVQxRWpSM2Z0d1NsZ1wvRTN4ODZEVDI2bTJjRkdURW9HbXlVejJCakU1dUFMWE8xajlKR0N1eUd0RE16VThBPT0iLCJtYWMiOiI1ODZh
+                    OTcwNDA5NGViMzE3MzNiZTliYjBiYThjMGM1YzY4NTRmMjFmZmFkMjYzNzljZmIzM2RlZTFiNWU1NzMyIn0=</hash>
+                    <direct_debit_details/>
+                    </parameters>
+                    </SOAP-ENV:addDirectDebitResponse>
+                    </SOAP-ENV:Body>
+                    </SOAP-ENV:Envelope>
+            application/json:
+              schema:
+                type: object
+                properties: {}
+      description: Adding Debit Details for the User has provided.
+      requestBody:
+        content:
+          application/xml:
+            schema:
+              description: ''
+              type: object
+              properties:
+                Header: {}
+                Body:
+                  type: object
+                  properties:
+                    addDirectDebit:
+                      type: object
+                      properties:
+                        addDirectDebit:
+                          type: object
+                          properties:
+                            verify_details:
+                              type: object
+                              properties:
+                                hash:
+                                  type: string
+                                  minLength: 1
+                                email:
+                                  type: string
+                                  minLength: 1
+                                ip_address:
+                                  type: string
+                                  minLength: 1
+                              required:
+                                - hash
+                                - email
+                                - ip_address
+                          required:
+                            - verify_details
+                      required:
+                        - addDirectDebit
+                  required:
+                    - addDirectDebit
+              required:
+                - Body
+            examples:
+              Example Request:
+                value: |-
+                  <soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:dev="http://dev.essentialconnects.com">
+                  <soapenv:Header/>
+                  <soapenv:Body>
+                  <dev:addDirectDebit>
+                  <dev:addDirectDebit>
+                  <verify_details> <hash>eyJpdiI6IitQVElHalZkc2NrNEt3d3ZpV05nTFE9PSIsInZhbHVlIjoiTFRcL0RkS0VvZ1ZRNGc4YlJMVmlqd2
+                  NJRWZTQVFkc1YzVkIzd2RkaWZJRGJcLzdcL3pFeDB3UmtlUEk3Y090UHVBUnQ2Qk05TXh0eThHNGRuOHhmTndaZHc9PSIsIm1hYyI6ImQ3
+                  M2Q4NmI1NzYyOGM1MTVmNTA2ZmVlMjcxMDg4MmUyNWFmNWM4NDQ0ZTYwMjg1YWNiNDlkMjMxNGYzMzFkZWIifQ==</hash>
+                  <email>harlan.gray4@gmail.com</email>
+                  <ip_address>19.168.0.1</ip_address>
+                  </verify_details>
+                  </dev:addDirectDebit>
+                  </dev:addDirectDebit>
+                  </soapenv:Body>
+                  </soapenv:Envelope>
+  /AddIdentifyingDocuments:
+    post:
+      summary: ''
+      operationId: post-AddIdentifyingDocuments
+      responses:
+        '200':
+          description: Email and Hash of User whose documents have been submitted
+      description: Used for Storing Documents of Clients
+      requestBody:
+        content:
+          application/xml:
+            schema:
+              description: ''
+              type: object
+              properties:
+                Header: {}
+                Body:
+                  type: object
+                  properties:
+                    addIdentifyingDocuments:
+                      type: object
+                      properties:
+                        addIdentifyingDocuments:
+                          type: object
+                          properties:
+                            verify_details:
+                              type: object
+                              properties:
+                                hash:
+                                  type: string
+                                  minLength: 1
+                                email:
+                                  type: string
+                                  minLength: 1
+                                ip_address:
+                                  type: string
+                                  minLength: 1
+                              required:
+                                - hash
+                                - email
+                                - ip_address
+                            upload:
+                              type: object
+                              properties:
+                                filename:
+                                  type: string
+                                  minLength: 1
+                                mime:
+                                  type: string
+                                  minLength: 1
+                                size:
+                                  type: string
+                                  minLength: 1
+                                path:
+                                  type: string
+                                  minLength: 1
+                                temp_filename:
+                                  type: string
+                                  minLength: 1
+                              required:
+                                - filename
+                                - mime
+                                - size
+                                - path
+                                - temp_filename
+                            type:
+                              type: string
+                              minLength: 1
+                          required:
+                            - verify_details
+                            - upload
+                            - type
+                      required:
+                        - addIdentifyingDocuments
+                  required:
+                    - addIdentifyingDocuments
+              required:
+                - Body
+            examples:
+              Example Request:
+                value: |-
+                  <soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:dev="http://dev.essentialconnects.com">
+                  <soapenv:Header/>
+                  <soapenv:Body>
+                  <dev:addIdentifyingDocuments>
+                  <dev:addIdentifyingDocuments>
+                  <verify_details>
+                  <hash>eyJpdiI6IitQVElHalZkc2NrNEt3d3ZpV05nTFE9PSIsInZhbHVlIjoiTFRcL0RkS0VvZ1ZRNGc4YlJMVmlqd2NJRWZTQVFkc1YzVkIzd2RkaW
+                  ZJRGJcLzdcL3pFeDB3UmtlUEk3Y090UHVBUnQ2Qk05TXh0eThHNGRuOHhmTndaZHc9PSIsIm1hYyI6ImQ3M2Q4NmI1NzYyOGM1MTVmNT
+                  A2ZmVlMjcxMDg4MmUyNWFmNWM4NDQ0ZTYwMjg1YWNiNDlkMjMxNGYzMzFkZWIifQ==</hash>
+                  <email>harlan.gray4@gmail.com</email>
+                  <ip_address>19.168.0.1</ip_address>
+                  </verify_details>
+                  <upload>
+                  <filename>?</filename>
+                  <mime>?</mime>
+                  <size>?</size>
+                  <!--Optional:-->
+                  <path>?</path>
+                  <!--Optional:-->
+                  <temp_filename>?</temp_filename>
+                  </upload>
+                  <!--Optional:-->
+                  <type>?</type>
+                  </dev:addIdentifyingDocuments>
+                  </dev:addIdentifyingDocuments>
+                  </soapenv:Body>
+                  </soapenv:Envelope>
+        description: |-
+          Hash
+          Email
+          IP Address
+          Filename
+          Mime
+          Size
+          Path
+          Temporary File Name
+          Type
+  /EditContract:
+    post:
+      summary: ''
+      operationId: post-EditContract
+      responses:
+        '200':
+          description: Contract Details
+          content:
+            application/xml:
+              schema:
+                type: object
+                properties: {}
+              examples:
+                Example Requets:
+                  value: |-
+                    <SOAP-ENV:Envelope xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/">
+                    <SOAP-ENV:Body>
+                    <SOAP-ENV:getClientContractsResponse>
+                    <contracts/>
+                    </SOAP-ENV:getClientContractsResponse>
+                    </SOAP-ENV:Body>
+                    </SOAP-ENV:Envelope>
+      requestBody:
+        content:
+          application/xml:
+            schema:
+              description: ''
+              type: object
+              properties:
+                Header: {}
+                Body:
+                  type: object
+                  properties:
+                    editContract:
+                      type: object
+                      properties:
+                        editContract:
+                          type: object
+                          properties:
+                            verify_details:
+                              type: object
+                              properties:
+                                hash:
+                                  type: string
+                                  minLength: 1
+                                email:
+                                  type: string
+                                  minLength: 1
+                                ip_address:
+                                  type: string
+                                  minLength: 1
+                              required:
+                                - hash
+                                - email
+                                - ip_address
+                            contract_details:
+                              type: object
+                              properties:
+                                contract_id:
+                                  type: string
+                                  minLength: 1
+                                contract_term:
+                                  type: string
+                                  minLength: 1
+                                payment_frequency:
+                                  type: string
+                                  minLength: 1
+                                marketing_source:
+                                  type: string
+                                  minLength: 1
+                                payment_type:
+                                  type: string
+                                  minLength: 1
+                                default_payment_type_id:
+                                  type: string
+                                  minLength: 1
+                                crn:
+                                  type: string
+                                  minLength: 1
+                                reference:
+                                  type: string
+                                  minLength: 1
+                                alternative_payment_type:
+                                  type: string
+                                  minLength: 1
+                                client_credit_card_id:
+                                  type: string
+                                  minLength: 1
+                                type:
+                                  type: string
+                                  minLength: 1
+                                cardholders_name:
+                                  type: string
+                                  minLength: 1
+                                number:
+                                  type: string
+                                  minLength: 1
+                                expiry_date:
+                                  type: string
+                                  minLength: 1
+                                client_direct_debit_id:
+                                  type: string
+                                  minLength: 1
+                                financial_institution:
+                                  type: string
+                                  minLength: 1
+                                branch:
+                                  type: string
+                                  minLength: 1
+                                bsb_number:
+                                  type: string
+                                  minLength: 1
+                                account_number:
+                                  type: string
+                                  minLength: 1
+                                previous_contract_id:
+                                  type: string
+                                  minLength: 1
+                              required:
+                                - contract_id
+                                - contract_term
+                                - payment_frequency
+                                - marketing_source
+                                - payment_type
+                                - default_payment_type_id
+                                - crn
+                                - reference
+                                - alternative_payment_type
+                                - client_credit_card_id
+                                - type
+                                - cardholders_name
+                                - number
+                                - expiry_date
+                                - client_direct_debit_id
+                                - financial_institution
+                                - branch
+                                - bsb_number
+                                - account_number
+                                - previous_contract_id
+                          required:
+                            - verify_details
+                            - contract_details
+                      required:
+                        - editContract
+                  required:
+                    - editContract
+              required:
+                - Body
+            examples:
+              Example Request:
+                value: |-
+                  <soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:dev="http://dev.essentialconnects.com">
+                  <soapenv:Header/>
+                  <soapenv:Body>
+                  <dev:editContract>
+                  <dev:editContract>
+                  <verify_details>
+                  <hash>?</hash>
+                  <email>?</email>
+                  <ip_address>?</ip_address>
+                  </verify_details>
+                  <contract_details>
+                  <!--Optional:-->
+                  <contract_id>?</contract_id>
+                  <contract_term>?</contract_term>
+                  <payment_frequency>?</payment_frequency>
+                  <marketing_source>?</marketing_source>
+                  <!--Optional:-->
+                  <payment_type>?</payment_type>
+                  <!--Optional:-->
+                  <default_payment_type_id>?</default_payment_type_id>
+                  <!--Optional:-->
+                  <crn>?</crn>
+                  <!--Optional:-->
+                  <reference>?</reference>
+                  <!--Optional:-->
+                  <alternative_payment_type>?</alternative_payment_type>
+                  <!--Optional:-->
+                  <client_credit_card_id>?</client_credit_card_id>
+                  <!--Optional:-->
+                  <type>?</type>
+                  <!--Optional:-->
+                  <cardholders_name>?</cardholders_name>
+                  <!--Optional:-->
+                  <number>?</number>
+                  <!--Optional:-->
+                  <expiry_date>?</expiry_date>
+                  <!--Optional:-->
+                  <client_direct_debit_id>?</client_direct_debit_id>
+                  <!--Optional:-->
+                  <financial_institution>?</financial_institution>
+                  <!--Optional:-->
+                  <branch>?</branch>
+                  <!--Optional:-->
+                  <bsb_number>?</bsb_number>
+                  <!--Optional:-->
+                  <account_number>?</account_number>
+                  <!--Optional:-->
+                  <previous_contract_id>?</previous_contract_id>
+                  </contract_details>
+                  </dev:editContract>
+                  </dev:editContract>
+                  </soapenv:Body>
+                  </soapenv:Envelope>
+        description: |-
+          HASH
+          Email
+          IP Address
+          Contract Id
+          Contract Term
+          Payment Frequency
+          Marketing Source
+          Payment Type
+          Default Payment Type Id
+          CRN
+          Reference
+          Alternative Payment Type
+          Client Credit Card Id
+          Type
+          Cardholders Name
+          Number
+          Expiry Date
+          Client Direct Debit Id
+          Financial Institution
+          Branch
+          Bsb Number
+          Account Number
+          Previous Contract Id
+  /GetClientContracts:
+    post:
+      summary: ''
+      operationId: post-GetClientContracts
+      responses:
+        '200':
+          description: Client Contarcts
+          content:
+            application/xml:
+              schema:
+                description: ''
+                type: object
+                properties:
+                  Body:
+                    type: object
+                    properties:
+                      getClientContractsResponse:
+                        type: object
+                        properties:
+                          contracts:
+                            type: array
+                            items:
+                              required: []
+                              properties: {}
+                        required:
+                          - contracts
+                    required:
+                      - getClientContractsResponse
+                required:
+                  - Body
+              examples:
+                Example Response:
+                  value: |-
+                    <SOAP-ENV:Envelope xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/">
+                    <SOAP-ENV:Body>
+                    <SOAP-ENV:getClientContractsResponse>
+                    <contracts/>
+                    </SOAP-ENV:getClientContractsResponse>
+                    </SOAP-ENV:Body>
+                    </SOAP-ENV:Envelope>
+      description: Fetch Client Contracts using Email and hash of the client
+      requestBody:
+        content:
+          application/xml:
+            schema:
+              description: ''
+              type: object
+              properties:
+                Header: {}
+                Body:
+                  type: object
+                  properties:
+                    getClientContracts:
+                      type: object
+                      properties:
+                        userDetails:
+                          type: object
+                          properties:
+                            verify_details:
+                              type: object
+                              properties:
+                                hash:
+                                  type: string
+                                  minLength: 1
+                                email:
+                                  type: string
+                                  minLength: 1
+                                ip_address:
+                                  type: string
+                                  minLength: 1
+                              required:
+                                - hash
+                                - email
+                                - ip_address
+                          required:
+                            - verify_details
+                      required:
+                        - userDetails
+                  required:
+                    - getClientContracts
+              required:
+                - Body
+            examples:
+              Example Request:
+                value: |-
+                  <soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:dev="http://dev.essentialconnects.com">
+                  <soapenv:Header/>
+                  <soapenv:Body>
+                  <dev:getClientContracts>
+                  <dev:userDetails>
+                  <verify_details>
+                  <hash>eyJpdiI6IjhCK3VuVlwveDJvbUU0c3dPYUo4ZExBPT0iLCJ2YWx1ZSI6ImhzSUhzV1VQallsd05oc2p0djRZK1RQOVl6VUl1RG55Rk1JVnZ
+                  MUEFcLzhCUmpvWDEzVHNCWDBqMU1ncTV5NlI2VFJLR3hcL1BpWTJXN2M2ZmYzVnJVcmc9PSIsIm1hYyI6IjM5MjJjZDc1MDMyZTZiYTYyY
+                  2NmYWFmMGY0YmQxZDYxNjYzZDY3ODBiYTY2NGI2MmU4OWU4YTBkOGIxYzc3OGQifQ==</hash>
+                  <email>harlan.gray@gmail.com</email>
+                  <ip_address>19.168.0.1</ip_address>
+                  </verify_details>
+                  </dev:userDetails>
+                  </dev:getClientContracts>
+                  </soapenv:Body>
+                  </soapenv:Envelope>
+        description: |-
+          Hash
+          Email
+          IP Address
+components:
+  schemas: {}
