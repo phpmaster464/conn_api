@@ -9,7 +9,7 @@ paths:
     post:
       summary: ''
       operationId: post-addContract
-      description: 'API to add Contract to given client , stores Contract Deatails in BOS Admin site.'
+      description: 'API is used to add Contract to given client, stores Contract Details in BOS Admin site.'
       requestBody:
         content:
           application/xml:
@@ -181,31 +181,13 @@ paths:
               type: object
               properties: {}
         description: |
-          Hash
-          Email
-          IP Address
-          CRN
-          Delivery Address Unit Number
-          Delivery Address Number
-          Delivery Address Name
-          Delivery Address City
-          Delivery Address Postcode
-          Delivery Address State
-          Contract Term
-          Payment Frequency
-          Marketing Source
-          Default Payment Type Id
-          Payment Type
-          Products
-            - Product Id
-            - Actual Rental
-            - Qty
+          Hash,Email,IP Address,CRN,Delivery Address Unit Number,Delivery Address Number,Delivery Address Name,Delivery Address City,Delivery Address Postcode,Delivery Address State,Contract Term,Payment Frequency,Marketing Source,Default Payment Type Id,Payment Type,Products: Product Id,Actual Rental,Qty
   /AddCreditCard:
     get:
       summary: Your GET endpoint
       tags: []
       operationId: get-AddCreditCard
-      description: Add Credit Card for the User hash provided.
+      description: API is used to Add Credit Card for User that is provided.
       requestBody:
         content:
           application/xml:
@@ -372,7 +354,7 @@ paths:
               schema:
                 type: object
                 properties: {}
-      description: Adding Debit Details for the User has provided.
+      description: API is used to add Debit Details for User that is provided.
       requestBody:
         content:
           application/xml:
@@ -439,7 +421,7 @@ paths:
       responses:
         '200':
           description: Email and Hash of User whose documents have been submitted
-      description: Used for Storing Documents of Clients
+      description: API is used for Storing Documents of Clients.
       requestBody:
         content:
           application/xml:
@@ -540,16 +522,7 @@ paths:
                   </dev:addIdentifyingDocuments>
                   </soapenv:Body>
                   </soapenv:Envelope>
-        description: |-
-          Hash
-          Email
-          IP Address
-          Filename
-          Mime
-          Size
-          Path
-          Temporary File Name
-          Type
+        description: 'Hash,Email,IP Address,Filename,Mime,Size,Path,Temporary File Name,Type'
   /EditContract:
     post:
       summary: ''
@@ -754,30 +727,7 @@ paths:
                   </dev:editContract>
                   </soapenv:Body>
                   </soapenv:Envelope>
-        description: |-
-          HASH
-          Email
-          IP Address
-          Contract Id
-          Contract Term
-          Payment Frequency
-          Marketing Source
-          Payment Type
-          Default Payment Type Id
-          CRN
-          Reference
-          Alternative Payment Type
-          Client Credit Card Id
-          Type
-          Cardholders Name
-          Number
-          Expiry Date
-          Client Direct Debit Id
-          Financial Institution
-          Branch
-          Bsb Number
-          Account Number
-          Previous Contract Id
+        description: 'HASH,Email,IP Address,Contract Id,Contract Term,Payment Frequency,Marketing Source,Payment Type,Default Payment Type Id,CRN,Reference,Alternative Payment Type,Client Credit Card Id,Type,Cardholders Name,Number,Expiry Date,Client Direct,Debit Id,Financial Institution,Branch,Bsb Number,Account Number,Previous Contract Id'
   /GetClientContracts:
     post:
       summary: ''
@@ -818,7 +768,7 @@ paths:
                     </SOAP-ENV:getClientContractsResponse>
                     </SOAP-ENV:Body>
                     </SOAP-ENV:Envelope>
-      description: Fetch Client Contracts using Email and hash of the client
+      description: API is used to fetch Client Contracts using Email and hash of the client.
       requestBody:
         content:
           application/xml:
@@ -879,9 +829,6 @@ paths:
                   </dev:getClientContracts>
                   </soapenv:Body>
                   </soapenv:Envelope>
-        description: |-
-          Hash
-          Email
-          IP Address
+        description: 'Hash,Email,IP Address'
 components:
   schemas: {}

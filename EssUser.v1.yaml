@@ -412,7 +412,7 @@ paths:
                     </SOAP-ENV:addClientResponse>
                     </SOAP-ENV:Body>
                     </SOAP-ENV:Envelope>
-      description: 'API to add client details and Income , Expense Details in BOS admin site'
+      description: 'API is used to add client details,Income & Expense Details in BOS admin site.'
       requestBody:
         content:
           application/xml:
@@ -661,44 +661,9 @@ paths:
                   </soapenv:Body>
                   </soapenv:Envelope>
         description: |
-          HASH
-          Email
-          Ip Address
-          Verify Details
-          Client Details
-          Title
-          Name First
-          Name Last
-          Name Middle
-          Mobile
-          Phone
-          DOB
-          Address Unit Number
-          Address Number
-          Address Name>
-          Address City
-          Address Postcode
-          Address State
-          Dependents
-          Relationship
-          Living Situation
-          Shared
-          Nlr Name First
-          Nlr Name Last
-          Nlr Phone
-          Nlr Relationship
-          Client Details
-          Client Income
-          Income
-          Type
-          Frequency
-          Amount
-          Client Deductions
-          Deductions
-          Type
-          Frequency
-          Amount
-          ID
+          HASH,Email,Ip Address,Verify Details,Client Details,Title,Name First,Name Last,Name Middle,Mobile,Phone,DOB,Address Unit Number,Address Number,Address Name,Address City,Address Postcode,Address State,Dependents,Relationship,Living Situation
+          Shared,Nlr Name First,Nlr Name Last,Nlr Phone,Nlr Relationship,Client Details,Client Income,Income,Type,Frequency,Amount
+          Client Deductions,Deductions,Type,Frequency,Amount,ID
   /AddEnquiry:
     post:
       summary: ''
@@ -737,7 +702,7 @@ paths:
                     </SOAP-ENV:addEnquiryResponse>
                     </SOAP-ENV:Body>
                     </SOAP-ENV:Envelope>
-      description: 'Adds Enquiry to Essentials Connects not BOS admin site , the data being stored is message, date added, messaegable_id, messageable_type'
+      description: 'API is used to add Enquiry to Essentials Connects but not BOS admin site, the data being stored is message, date added, messaegable_id, messageable_type'
       requestBody:
         content:
           application/xml:
@@ -802,10 +767,7 @@ paths:
                   </dev:addEnquiry>
                   </soapenv:Body>
                   </soapenv:Envelope>
-        description: |-
-          Email
-          Ip Address
-          Enquiry
+        description: 'Email,Ip Address,Enquiry'
   /HasChanged:
     post:
       summary: ''
@@ -844,7 +806,7 @@ paths:
                     </SOAP-ENV:hasChangedResponse>
                     </SOAP-ENV:Body>
                     </SOAP-ENV:Envelope>
-      description: Checks if user's IP address has been changed or not
+      description: API is used to check if user's IP address has been changed or not.
       requestBody:
         content:
           application/xml:
@@ -905,8 +867,6 @@ paths:
                   </dev:hasChanged>
                   </soapenv:Body>
                   </soapenv:Envelope>
-        description: |-
-          Email
-          IP Address
+        description: 'Email,IP Address'
 components:
   schemas: {}

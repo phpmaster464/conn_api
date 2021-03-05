@@ -303,14 +303,7 @@ paths:
       operationId: post-GetUser
       responses:
         '200':
-          description: |-
-            User Details
-            First Name
-            Last Name
-            DOB
-            Email
-            Client Exists
-            Client Match
+          description: 'User Details,First Name,Last Name,DOB,Email,Client Exists & Client Match'
           content:
             application/xml:
               schema:
@@ -500,7 +493,7 @@ paths:
                     </SOAP-ENV:loginResponse>
                     </SOAP-ENV:Body>
                     </SOAP-ENV:Envelope>
-      description: Login API used to allow access to the Essentials Connects Site.
+      description: Login API is used to allow access to the Essentials Connects Site.
       requestBody:
         content:
           application/xml:
@@ -1045,7 +1038,7 @@ paths:
                   </soapenv:Body>
                   </soapenv:Envelope>
         description: Email
-      description: 'Send an email to user with password reset token. Note : No response is given.'
+      description: 'Send an email to user with password reset token. Note: No response is given.'
   /ResetPassword:
     post:
       summary: ''
@@ -1170,10 +1163,8 @@ paths:
                   </dev:resetPassword>
                   </soapenv:Body>
                   </soapenv:Envelope>
-        description: |-
-          Email
-          Hash
-      description: 'API to reset User Password , Response is passed as "TRUE" if success.'
+        description: 'Email,Hash'
+      description: 'API is used to reset User Password, Response is passed as "TRUE" if success.'
 components:
   schemas: {}
   securitySchemes:
