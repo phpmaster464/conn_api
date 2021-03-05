@@ -1,0 +1,1221 @@
+openapi: 3.0.0
+info:
+  title: ESSAuth
+  version: '1.0'
+servers:
+  - url: 'https://esscontacts.newpathstudio.com.au/api/v1/wsdl/essauth?wsdl'
+paths:
+  addUser:
+    post:
+      summary: Create New User
+      operationId: post-user
+      responses:
+        '200':
+          description: User Created
+          content:
+            application/xml:
+              schema:
+                description: ''
+                type: object
+                properties:
+                  Body:
+                    type: object
+                    properties:
+                      addUserResponse:
+                        type: object
+                        properties:
+                          parameters:
+                            type: object
+                            properties:
+                              hash:
+                                type: string
+                                minLength: 1
+                              email:
+                                type: string
+                                minLength: 1
+                              name_first:
+                                type: string
+                                minLength: 1
+                              name_last:
+                                type: string
+                                minLength: 1
+                              mobile:
+                                type: string
+                                minLength: 1
+                              phone:
+                                type: string
+                                minLength: 1
+                              client_match:
+                                type: string
+                                minLength: 1
+                            required:
+                              - hash
+                              - email
+                              - name_first
+                              - name_last
+                              - mobile
+                              - phone
+                              - client_match
+                        required:
+                          - parameters
+                    required:
+                      - addUserResponse
+                required:
+                  - Body
+              examples:
+                New User Bob Fellow:
+                  value:
+                    id: 12
+                    firstName: Bob
+                    lastName: Fellow
+                    email: bob.fellow@gmail.com
+                    dateOfBirth: '1996-08-24'
+                    emailVerified: false
+                    createDate: '2020-11-18'
+            application/json:
+              schema:
+                type: object
+                properties: {}
+            multipart/form-data:
+              schema:
+                type: object
+                properties: {}
+            text/html:
+              schema:
+                description: ''
+                type: object
+                properties:
+                  Body:
+                    type: object
+                    properties:
+                      addUserResponse:
+                        type: object
+                        properties:
+                          parameters:
+                            type: object
+                            properties:
+                              hash:
+                                type: string
+                                minLength: 1
+                              email:
+                                type: string
+                                minLength: 1
+                              name_first:
+                                type: string
+                                minLength: 1
+                              name_last:
+                                type: string
+                                minLength: 1
+                              mobile:
+                                type: string
+                                minLength: 1
+                              phone:
+                                type: string
+                                minLength: 1
+                              client_match:
+                                type: string
+                                minLength: 1
+                            required:
+                              - hash
+                              - email
+                              - name_first
+                              - name_last
+                              - mobile
+                              - phone
+                              - client_match
+                        required:
+                          - parameters
+                    required:
+                      - addUserResponse
+                required:
+                  - Body
+              examples:
+                Example Response:
+                  value: |-
+                    <SOAP-ENV:Envelope xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/">
+                    <SOAP-ENV:Body>
+                    <SOAP-ENV:addUserResponse>
+                    <parameters>
+                    <hash>eyJpdiI6IlZNY2NlUWw4TEFtYVhyVW54R0FzdlE9PSIsInZhbHVlIjoiNlFlOXUxdWJ1WWRlUDVWOEJaQlZxa1wvYzJJRlBQQ0RF
+                    K1g5ZTFnckNMZHY5M09DUEUwMVdsa21Fd3lOQjE1MzJKZ0dwbmRUdXhIUlNlb2FHbnVpZkxBPT0iLCJtYWMiOiIwNzZiZTkwNGMzYWM3MD
+                    U1ZTFiYjA2NWVkYTg3ODMyYTNmYjljYWMyNjEwZjBiYzIzM2I1MGI1NjQxMDljNmZjIn0=</hash>
+                    <email>harlan.gray4@gmail.com</email>
+                    <name_first>Harlan</name_first>
+                    <name_last>Gray</name_last>
+                    <mobile>0421123456</mobile>
+                    <phone>0421123456</phone>
+                    <client_match>false</client_match>
+                    </parameters>
+                    </SOAP-ENV:addUserResponse>
+                    </SOAP-ENV:Body>
+                    </SOAP-ENV:Envelope>
+      requestBody:
+        content:
+          application/xml:
+            schema:
+              description: ''
+              type: object
+              properties:
+                Header: {}
+                Body:
+                  type: object
+                  properties:
+                    addUser:
+                      type: object
+                      properties:
+                        addUser:
+                          type: object
+                          properties:
+                            dob_day:
+                              type: string
+                              minLength: 1
+                            dob_month:
+                              type: string
+                              minLength: 1
+                            dob_year:
+                              type: string
+                              minLength: 1
+                            email:
+                              type: string
+                              minLength: 1
+                            name_first:
+                              type: string
+                              minLength: 1
+                            name_last:
+                              type: string
+                              minLength: 1
+                            mobile:
+                              type: string
+                              minLength: 1
+                            phone:
+                              type: string
+                              minLength: 1
+                            address_state:
+                              type: string
+                              minLength: 1
+                            address_postcode:
+                              type: string
+                              minLength: 1
+                            crn:
+                              type: string
+                              minLength: 1
+                            confirmation:
+                              type: string
+                              minLength: 1
+                            consent:
+                              type: string
+                              minLength: 1
+                            passport:
+                              type: object
+                              properties:
+                                number:
+                                  type: string
+                                  minLength: 1
+                                country:
+                                  type: string
+                                  minLength: 1
+                                country_code:
+                                  type: string
+                                  minLength: 1
+                              required:
+                                - number
+                                - country
+                                - country_code
+                            password:
+                              type: string
+                              minLength: 1
+                            security_code:
+                              type: string
+                              minLength: 1
+                            ip_address:
+                              type: string
+                              minLength: 1
+                          required:
+                            - dob_day
+                            - dob_month
+                            - dob_year
+                            - email
+                            - name_first
+                            - name_last
+                            - mobile
+                            - phone
+                            - address_state
+                            - address_postcode
+                            - crn
+                            - confirmation
+                            - consent
+                            - passport
+                            - password
+                            - security_code
+                            - ip_address
+                      required:
+                        - addUser
+                  required:
+                    - addUser
+              required:
+                - Body
+            examples:
+              Create User Bob Fellow:
+                value:
+                  firstName: Bob
+                  lastName: Fellow
+                  email: bob.fellow@gmail.com
+                  dateOfBirth: '1996-08-24'
+              Example Request:
+                value: |-
+                  <soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:dev="http://dev.essentialconnects.com">
+                  <soapenv:Header/>
+                  <soapenv:Body>
+                  <dev:addUser>
+                  <dev:addUser>
+                  <dob_day>1</dob_day>
+                  <dob_month>1</dob_month>
+                  <dob_year>2000</dob_year>
+                  <email>harlan.gray4@gmail.com</email>
+                  <name_first>Harlan</name_first>
+                  <name_last>Gray</name_last>
+                  <mobile>0421123456</mobile>
+                  <phone>0421123456</phone>
+                  <address_state>vic</address_state>
+                  <address_postcode>3153</address_postcode>
+                  <crn>123456789E</crn>
+                  <confirmation>1</confirmation>
+                  <consent>1</consent>
+                  <passport>
+                  <number>123456789E</number>
+                  <country>Australia</country>
+                  <country_code>AU</country_code>
+                  </passport>
+                  <password>test$123</password>
+                  <security_code>123456789</security_code>
+                  <ip_address>19.168.0.1</ip_address>
+                  </dev:addUser>
+                  </dev:addUser>
+                  </soapenv:Body>
+                  </soapenv:Envelope>
+        description: |-
+          DOB Day,Month,Year 
+          Email
+          First Name
+          Last Name
+          Mobile
+          Phone
+          Address State
+          Address Postcode
+          CRN number
+          Confirmation
+          Consent
+          Passport Number
+          Passport Cuuntry (By default Australia only)
+          Passport Country Code (By default AU)
+          Password
+          Security Code
+          Ip Address
+      description: 'Creates a user in Essentials Connects API site , this created a reference for the Client that will be stored in BOS Admin site.'
+    parameters: []
+  /GetUser:
+    post:
+      summary: ''
+      operationId: post-GetUser
+      responses:
+        '200':
+          description: |-
+            User Details
+            First Name
+            Last Name
+            DOB
+            Email
+            Client Exists
+            Client Match
+          content:
+            application/xml:
+              schema:
+                description: ''
+                type: object
+                properties:
+                  Body:
+                    type: object
+                    properties:
+                      getUserResponse:
+                        type: object
+                        properties:
+                          parameters:
+                            type: object
+                            properties:
+                              user:
+                                type: object
+                                properties:
+                                  name_first:
+                                    type: string
+                                    minLength: 1
+                                  name_last:
+                                    type: string
+                                    minLength: 1
+                                  dob:
+                                    type: string
+                                    minLength: 1
+                                  email:
+                                    type: string
+                                    minLength: 1
+                                required:
+                                  - name_first
+                                  - name_last
+                                  - dob
+                                  - email
+                              client_exists:
+                                type: string
+                                minLength: 1
+                              client_match:
+                                type: string
+                                minLength: 1
+                            required:
+                              - user
+                              - client_exists
+                              - client_match
+                        required:
+                          - parameters
+                    required:
+                      - getUserResponse
+                required:
+                  - Body
+              examples:
+                Example Response:
+                  value: |-
+                    <SOAP-ENV:Envelope xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/">
+                    <SOAP-ENV:Body>
+                    <SOAP-ENV:getUserResponse>
+                    <parameters>
+                    <user>
+                    <name_first>Harlan</name_first>
+                    <name_last>Gray</name_last>
+                    <dob>2000-01-01</dob>
+                    <email>harlan.gray4@gmail.com</email>
+                    </user>
+                    <client_exists>false</client_exists>
+                    <client_match>false</client_match>
+                    </parameters>
+                    </SOAP-ENV:getUserResponse>
+                    </SOAP-ENV:Body>
+                    </SOAP-ENV:Envelope>
+            application/json:
+              schema:
+                type: object
+                properties: {}
+      description: Fetch User details using Email address and verify the same usign the hash provided.
+      requestBody:
+        content:
+          application/xml:
+            schema:
+              description: ''
+              type: object
+              properties:
+                Header: {}
+                Body:
+                  type: object
+                  properties:
+                    getUser:
+                      type: object
+                      properties:
+                        userDetails:
+                          type: object
+                          properties:
+                            verify_details:
+                              type: object
+                              properties:
+                                hash:
+                                  type: string
+                                  minLength: 1
+                                email:
+                                  type: string
+                                  minLength: 1
+                                ip_address:
+                                  type: string
+                                  minLength: 1
+                              required:
+                                - hash
+                                - email
+                                - ip_address
+                          required:
+                            - verify_details
+                      required:
+                        - userDetails
+                  required:
+                    - getUser
+              required:
+                - Body
+            examples:
+              Example Request:
+                value: |-
+                  <soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:dev="http://dev.essentialconnects.com">
+                  <soapenv:Header/>
+                  <soapenv:Body>
+                  <dev:getUser>
+                  <dev:userDetails>
+                  <verify_details>
+                  <hash>eyJpdiI6IlZNY2NlUWw4TEFtYVhyVW54R0FzdlE9PSIsInZhbHVlIjoiNlFlOXUxdWJ1WWRlUDVWOEJaQlZxa1wvYzJJRlBQQ0R
+                  FK1g5ZTFnckNMZHY5M09DUEUwMVdsa21Fd3lOQjE1MzJKZ0dwbmRUdXhIUlNlb2FHbnVpZkxBPT0iLCJtYWMiOiIwNzZiZTkwNGMzYWM3M
+                  DU1ZTFiYjA2NWVkYTg3ODMyYTNmYjljYWMyNjEwZjBiYzIzM2I1MGI1NjQxMDljNmZjIn0=</hash>
+                  <email>harlan.gray4@gmail.com</email>
+                  <ip_address>19.168.0.1</ip_address>
+                  </verify_details>
+                  </dev:userDetails>
+                  </dev:getUser>
+                  </soapenv:Body>
+                  </soapenv:Envelope>
+  /Login:
+    post:
+      summary: ''
+      operationId: post-Login
+      responses:
+        '200':
+          description: Hash
+          content:
+            application/xml:
+              schema:
+                description: ''
+                type: object
+                properties:
+                  Body:
+                    type: object
+                    required:
+                      - loginResponse
+                    properties:
+                      loginResponse:
+                        type: object
+                        required:
+                          - parameters
+                        properties:
+                          parameters:
+                            type: object
+                            required:
+                              - return
+                            properties:
+                              return:
+                                type: object
+                                required:
+                                  - hash
+                                properties:
+                                  hash:
+                                    type: string
+                                    minLength: 1
+                required:
+                  - Body
+              examples:
+                Example Response:
+                  value: |-
+                    <SOAP-ENV:Envelope xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/">
+                    <SOAP-ENV:Body>
+                    <SOAP-ENV:loginResponse>
+                    <parameters>
+                    <return>
+                    <hash>eyJpdiI6IlNXRTBhOHVaUmlWUTVHUkNidkVlcHc9PSIsInZhbHVlIjoiY0xFZ1Y5dHNscVBnbllsT3RzOCtINEVwQWc3bWJFWksy
+                    RnYwblN3N0JEeUlKaHVPVVRHTW1KVkdneUVNN3VjQXZBbVRMUUxmMkphdTdlcForbEZFdGc9PSIsIm1hYyI6IjkwOWM1N2QwZDA2NWQw
+                    OWYzZTA1ZWUzOGQ1ZDk1NzkyMzY3MmQyODFiMTc4NTc1NGU1YTFlODNiYTIxY2ZhNDYifQ==</hash>
+                    </return>
+                    </parameters>
+                    </SOAP-ENV:loginResponse>
+                    </SOAP-ENV:Body>
+                    </SOAP-ENV:Envelope>
+      description: Login API used to allow access to the Essentials Connects Site.
+      requestBody:
+        content:
+          application/xml:
+            schema:
+              description: ''
+              type: object
+              properties:
+                Header: {}
+                Body:
+                  type: object
+                  properties:
+                    login:
+                      type: object
+                      properties:
+                        login:
+                          type: object
+                          properties:
+                            email:
+                              type: string
+                              minLength: 1
+                            password:
+                              type: string
+                              minLength: 1
+                            ip_address:
+                              type: string
+                              minLength: 1
+                          required:
+                            - email
+                            - password
+                            - ip_address
+                      required:
+                        - login
+                  required:
+                    - login
+              required:
+                - Body
+            examples:
+              Example Request:
+                value: |-
+                  <soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:dev="http://dev.essentialconnects.com">
+                  <soapenv:Header/>
+                  <soapenv:Body>
+                  <dev:login>
+                  <dev:login>
+                  <email>harlan.gray4@gmail.com</email>
+                  <password>test$123</password>
+                  <ip_address>19.168.0.1</ip_address>
+                  </dev:login>
+                  </dev:login>
+                  </soapenv:Body>
+                  </soapenv:Envelope>
+  /ApplyNow:
+    post:
+      summary: ''
+      operationId: post-ApplyNow
+      responses:
+        '200':
+          description: result
+          content:
+            application/xml:
+              schema:
+                description: ''
+                type: object
+                properties:
+                  Body:
+                    type: object
+                    properties:
+                      applyNowResponse:
+                        type: object
+                        properties:
+                          parameters:
+                            type: object
+                            properties:
+                              result:
+                                type: string
+                                minLength: 1
+                            required:
+                              - result
+                        required:
+                          - parameters
+                    required:
+                      - applyNowResponse
+                required:
+                  - Body
+              examples:
+                Example Response:
+                  value: |-
+                    <SOAP-ENV:Envelope xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/">
+                    <SOAP-ENV:Body>
+                    <SOAP-ENV:applyNowResponse>
+                    <parameters>
+                    <result>1</result>
+                    </parameters>
+                    </SOAP-ENV:applyNowResponse>
+                    </SOAP-ENV:Body>
+                    </SOAP-ENV:Envelope>
+      description: Adds a record to apply_now_applications in essentials connects database but not in BOS admin site
+      requestBody:
+        content:
+          application/xml:
+            schema:
+              description: ''
+              type: object
+              properties:
+                Header: {}
+                Body:
+                  type: object
+                  properties:
+                    applyNow:
+                      type: object
+                      properties:
+                        applyNow:
+                          type: object
+                          properties:
+                            name_first:
+                              type: string
+                              minLength: 1
+                            name_last:
+                              type: string
+                              minLength: 1
+                            email:
+                              type: string
+                              minLength: 1
+                            mobile:
+                              type: string
+                              minLength: 1
+                            phone:
+                              type: string
+                              minLength: 1
+                            address_unit_number:
+                              type: string
+                              minLength: 1
+                            address_number:
+                              type: string
+                              minLength: 1
+                            address_name:
+                              type: string
+                              minLength: 1
+                            address_city:
+                              type: string
+                              minLength: 1
+                            address_postcode:
+                              type: string
+                              minLength: 1
+                            address_state:
+                              type: string
+                              minLength: 1
+                            product_id:
+                              type: string
+                              minLength: 1
+                            comment:
+                              type: string
+                              minLength: 1
+                          required:
+                            - name_first
+                            - name_last
+                            - email
+                            - mobile
+                            - phone
+                            - address_unit_number
+                            - address_number
+                            - address_name
+                            - address_city
+                            - address_postcode
+                            - address_state
+                            - product_id
+                            - comment
+                      required:
+                        - applyNow
+                  required:
+                    - applyNow
+              required:
+                - Body
+            examples:
+              Example Request:
+                value: |-
+                  <soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:dev="http://dev.essentialconnects.com">
+                  <soapenv:Header/>
+                  <soapenv:Body>
+                  <dev:applyNow>
+                  <dev:applyNow>
+                  <name_first>Harlan</name_first>
+                  <name_last>Gray</name_last>
+                  <email>harlan.gray@gmail.com</email>
+                  <mobile>0421360421</mobile>
+                  <phone>0421360421</phone>
+                  <address_unit_number>24</address_unit_number>
+                  <address_number>440</address_number>
+                  <address_name>Stud Road</address_name>
+                  <address_city>Bayswater</address_city>
+                  <address_postcode>3153</address_postcode>
+                  <address_state>VIC</address_state>
+                  <product_id>1</product_id>
+                  <comment>Some Comment</comment>
+                  </dev:applyNow>
+                  </dev:applyNow>
+                  </soapenv:Body>
+                  </soapenv:Envelope>
+        description: |-
+          First Name
+          Last Name
+          Email
+          Mobile
+          Phone
+          Address Unit Number
+          Address Name
+          Address City
+          Address Number
+          Address Postcode
+          Address State
+          Product Id
+          Comment
+  /addEnquiry:
+    post:
+      summary: ''
+      operationId: post-addEnquiry
+      responses:
+        '200':
+          description: returns 1
+          content:
+            application/xml:
+              schema:
+                description: ''
+                type: object
+                properties:
+                  Body:
+                    type: object
+                    properties:
+                      addEnquiryResponse:
+                        type: object
+                        properties:
+                          parameters:
+                            type: string
+                            minLength: 1
+                        required:
+                          - parameters
+                    required:
+                      - addEnquiryResponse
+                required:
+                  - Body
+              examples:
+                Example Response:
+                  value: |-
+                    <SOAP-ENV:Envelope xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/">
+                    <SOAP-ENV:Body>
+                    <SOAP-ENV:addEnquiryResponse>
+                    <parameters>1</parameters>
+                    </SOAP-ENV:addEnquiryResponse>
+                    </SOAP-ENV:Body>
+                    </SOAP-ENV:Envelope>
+      description: Adds an enquiry in public_enquiries in essentials connects and sends email to the email associated with the inquiry.
+      requestBody:
+        content:
+          application/xml:
+            schema:
+              description: ''
+              type: object
+              properties:
+                Header: {}
+                Body:
+                  type: object
+                  properties:
+                    addEnquiry:
+                      type: object
+                      properties:
+                        addEnquiry:
+                          type: object
+                          properties:
+                            name:
+                              type: string
+                              minLength: 1
+                            email:
+                              type: string
+                              minLength: 1
+                            contact:
+                              type: string
+                              minLength: 1
+                            enquiry:
+                              type: string
+                              minLength: 1
+                          required:
+                            - name
+                            - email
+                            - contact
+                            - enquiry
+                      required:
+                        - addEnquiry
+                  required:
+                    - addEnquiry
+              required:
+                - Body
+            examples:
+              Example Request:
+                value: |-
+                  <soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:dev="http://dev.essentialconnects.com">
+                  <soapenv:Header/>
+                  <soapenv:Body>
+                  <dev:addEnquiry>
+                  <dev:addEnquiry>
+                  <name>Harlan</name>
+                  <email>harlan.gray@gmail.com</email>
+                  <contact>0421360421</contact>
+                  <enquiry>Some enqury</enquiry>
+                  </dev:addEnquiry>
+                  </dev:addEnquiry>
+                  </soapenv:Body>
+                  </soapenv:Envelope>
+        description: |
+          Name
+          Email
+          Contact
+          Enquiry
+  /CanService:
+    post:
+      summary: ''
+      operationId: post-CanService
+      responses:
+        '200':
+          description: 'postcode , suburb, limited , products(Multiple)'
+          content:
+            application/xml:
+              schema:
+                description: ''
+                type: object
+                properties:
+                  Body:
+                    type: object
+                    properties:
+                      canServiceResponse:
+                        type: object
+                        properties:
+                          parameters:
+                            type: object
+                            properties:
+                              postcode:
+                                type: string
+                                minLength: 1
+                              suburb:
+                                type: string
+                                minLength: 1
+                              service:
+                                type: string
+                                minLength: 1
+                              limited:
+                                type: string
+                                minLength: 1
+                              products:
+                                type: array
+                                items:
+                                  required: []
+                                  properties: {}
+                            required:
+                              - postcode
+                              - suburb
+                              - service
+                              - limited
+                              - products
+                        required:
+                          - parameters
+                    required:
+                      - canServiceResponse
+                required:
+                  - Body
+              examples:
+                Example Response:
+                  value: |-
+                    <SOAP-ENV:Envelope xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/">
+                    <SOAP-ENV:Body>
+                    <SOAP-ENV:canServiceResponse>
+                    <parameters>
+                    <postcode>3153</postcode>
+                    <suburb>Bayswater</suburb>
+                    <service>1</service>
+                    <limited>0</limited>
+                    <products>1</products>
+                    <products>2</products>
+                    <products>3</products>
+                    <products>4</products>
+                    <products>5</products>
+                    <products>807</products>
+                    <products>999</products>
+                    </parameters>
+                    </SOAP-ENV:canServiceResponse>
+                    </SOAP-ENV:Body>
+                    </SOAP-ENV:Envelope>
+      description: List outs the Products that are available from given Postcode and Suburb
+      requestBody:
+        content:
+          application/xml:
+            schema:
+              description: ''
+              type: object
+              properties:
+                Header: {}
+                Body:
+                  type: object
+                  properties:
+                    canService:
+                      type: object
+                      properties:
+                        canService:
+                          type: object
+                          properties:
+                            postcode:
+                              type: string
+                              minLength: 1
+                            suburb:
+                              type: string
+                              minLength: 1
+                          required:
+                            - postcode
+                            - suburb
+                      required:
+                        - canService
+                  required:
+                    - canService
+              required:
+                - Body
+            examples:
+              Example Request:
+                value: |-
+                  <soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:dev="http://dev.essentialconnects.com">
+                  <soapenv:Header/>
+                  <soapenv:Body>
+                  <dev:canService>
+                  <dev:canService>
+                  <postcode>3153</postcode>
+                  <suburb>Bayswater</suburb>
+                  </dev:canService>
+                  </dev:canService>
+                  </soapenv:Body>
+                  </soapenv:Envelope>
+        description: |-
+          Postcode
+          Suburb
+  /Confirmation:
+    post:
+      summary: ''
+      operationId: post-Confirmation
+      description: 'Send token for Confirmation using Email or SMS , Note : No response is given'
+      requestBody:
+        content:
+          application/xml:
+            schema:
+              description: ''
+              type: object
+              properties:
+                Header: {}
+                Body:
+                  type: object
+                  properties:
+                    confirmation:
+                      type: object
+                      properties:
+                        confirmation:
+                          type: object
+                          properties:
+                            verify_details:
+                              type: object
+                              properties:
+                                hash:
+                                  type: string
+                                  minLength: 1
+                                email:
+                                  type: string
+                                  minLength: 1
+                                ip_address:
+                                  type: string
+                                  minLength: 1
+                              required:
+                                - hash
+                                - email
+                                - ip_address
+                            type:
+                              type: array
+                              items:
+                                required: []
+                                properties: {}
+                          required:
+                            - verify_details
+                            - type
+                      required:
+                        - confirmation
+                  required:
+                    - confirmation
+              required:
+                - Body
+            examples:
+              Example Request:
+                value: |-
+                  <soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:dev="http://dev.essentialconnects.com">
+                  <soapenv:Header/>
+                  <soapenv:Body>
+                  <dev:confirmation>
+                  <dev:confirmation>
+                  <verify_details> <hash>eyJpdiI6IkFmczF2bnRcL0pCRWdoNEt3bTFFNjJ3PT0iLCJ2YWx1ZSI6IjVIMmI3UnBERkYzUldRNE56Q
+                  XpNZGJHbnAyNFJ3Z3RiT0xGQUN6SnFjVmkxWHJrNCtuUFhqcXlMVDFtSVd4MFBNWlwvYVA3U0lRaWxZblNFMVBwQTFQdz09IiwibWFjIjoiY
+                  WE5NmE0NzVkMDQ1ODNhNzI4MDAzZmVlZTlmOWY4ZWYzZWI5NzA5MDYxOTZiMjMzN2EzYWI4MGUzYzYzNmMzMSJ9</hash>
+                  <email>harlan.gray4@gmail.com</email>
+                  <ip_address>19.168.0.1</ip_address>
+                  </verify_details>
+                  <type></type>
+                  </dev:confirmation>
+                  </dev:confirmation>
+                  </soapenv:Body>
+                  </soapenv:Envelope>
+        description: |-
+          Email
+          HASH
+          IP Address
+  /ForgotPassword:
+    post:
+      summary: ''
+      operationId: post-ForgotPassword
+      requestBody:
+        content:
+          application/xml:
+            schema:
+              description: ''
+              type: object
+              properties:
+                Header: {}
+                Body:
+                  type: object
+                  properties:
+                    forgotPassword:
+                      type: object
+                      properties:
+                        forgotPassword:
+                          type: object
+                          properties:
+                            email:
+                              type: string
+                              minLength: 1
+                            url:
+                              type: array
+                              items:
+                                required: []
+                                properties: {}
+                          required:
+                            - email
+                            - url
+                      required:
+                        - forgotPassword
+                  required:
+                    - forgotPassword
+              required:
+                - Body
+            examples:
+              Example Request:
+                value: |-
+                  <soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:dev="http://dev.essentialconnects.com">
+                  <soapenv:Header/>
+                  <soapenv:Body>
+                  <dev:forgotPassword>
+                  <dev:forgotPassword>
+                  <email>harlan.gray4@gmail.com</email>
+                  <url></url>
+                  </dev:forgotPassword>
+                  </dev:forgotPassword>
+                  </soapenv:Body>
+                  </soapenv:Envelope>
+        description: Email
+      description: 'Send an email to user with password reset token. Note : No response is given.'
+  /ResetPassword:
+    post:
+      summary: ''
+      operationId: post-ResetPassword
+      responses:
+        '401':
+          description: Unauthorized
+          content:
+            application/xml:
+              schema:
+                description: ''
+                type: object
+                properties:
+                  Body:
+                    type: object
+                    properties:
+                      Fault:
+                        type: object
+                        properties:
+                          faultcode:
+                            type: string
+                            minLength: 1
+                          faultstring:
+                            type: string
+                            minLength: 1
+                          detail:
+                            type: object
+                            properties:
+                              InvalidSecurityTokenException:
+                                type: object
+                                properties:
+                                  message:
+                                    type: string
+                                    minLength: 1
+                                required:
+                                  - message
+                            required:
+                              - InvalidSecurityTokenException
+                        required:
+                          - faultcode
+                          - faultstring
+                          - detail
+                    required:
+                      - Fault
+                required:
+                  - Body
+              examples:
+                Example Response:
+                  value: |-
+                    <SOAP-ENV:Envelope xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ns1="http://dev.essentialconnects.com">
+                    <SOAP-ENV:Body>
+                    <SOAP-ENV:Fault>
+                    <faultcode>SOAP-ENV:Server</faultcode>
+                    <faultstring>Invalid security token</faultstring>
+                    <detail>
+                    <ns1:InvalidSecurityTokenException>
+                    <message>Invalid security token</message>
+                    </ns1:InvalidSecurityTokenException>
+                    </detail>
+                    </SOAP-ENV:Fault>
+                    </SOAP-ENV:Body>
+                    </SOAP-ENV:Envelope>
+        '':
+          content:
+            application/xml:
+              schema:
+                type: object
+                properties: {}
+              examples:
+                Example Response:
+                  value: {}
+      requestBody:
+        content:
+          application/xml:
+            schema:
+              description: ''
+              type: object
+              properties:
+                Header: {}
+                Body:
+                  type: object
+                  properties:
+                    resetPassword:
+                      type: object
+                      properties:
+                        resetPassword:
+                          type: object
+                          properties:
+                            email:
+                              type: string
+                              minLength: 1
+                            hash:
+                              type: string
+                              minLength: 1
+                            password:
+                              type: string
+                              minLength: 1
+                          required:
+                            - email
+                            - hash
+                            - password
+                      required:
+                        - resetPassword
+                  required:
+                    - resetPassword
+              required:
+                - Body
+            examples:
+              Example Request:
+                value: |-
+                  <soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:dev="http://dev.essentialconnects.com">
+                  <soapenv:Header/>
+                  <soapenv:Body>
+                  <dev:resetPassword>
+                  <dev:resetPassword>
+                  <email>harlan.gray4@gmail.com
+                  </email> <hash>eyJpdiI6IkFmczF2bnRcL0pCRWdoNEt3bTFFNjJ3PT0iLCJ2YWx1ZSI6IjVIMmI3UnBERkYzUldRNE56QXpNZGJHbnAyNF
+                  J3Z3RiT0xGQUN6SnFjVmkxWHJrNCtuUFhqcXlMVDFtSVd4MFBNWlwvYVA3U0lRaWxZblNFMVBwQTFQdz09IiwibWFjIjoiYWE5NmE0NzVkMD
+                  Q1ODNhNzI4MDAzZmVlZTlmOWY4ZWYzZWI5NzA5MDYxOTZiMjMzN2EzYWI4MGUzYzYzNmMzMSJ9</hash>
+                  <password>test$1234</password>
+                  </dev:resetPassword>
+                  </dev:resetPassword>
+                  </soapenv:Body>
+                  </soapenv:Envelope>
+        description: |-
+          Email
+          Hash
+      description: 'API to reset User Password , Response is passed as "TRUE" if success.'
+components:
+  schemas: {}
+  securitySchemes:
+    Username:
+      type: http
+      scheme: basic
+    Password:
+      type: http
+      scheme: basic
+  examples: {}

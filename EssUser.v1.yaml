@@ -1,0 +1,912 @@
+openapi: 3.0.0
+info:
+  title: EssUser
+  version: '1.0'
+servers:
+  - url: 'http://dev.essentialconnects.com/api/v1/wsdl/essuser?wsdl'
+paths:
+  /addClient:
+    post:
+      summary: ''
+      operationId: post-addClient
+      responses:
+        '200':
+          description: ''
+          content:
+            application/xml:
+              schema:
+                description: ''
+                type: object
+                properties:
+                  Body:
+                    type: object
+                    properties:
+                      addClientResponse:
+                        type: object
+                        properties:
+                          parameters:
+                            type: object
+                            properties:
+                              hash:
+                                type: string
+                                minLength: 1
+                              email:
+                                type: string
+                                minLength: 1
+                              client:
+                                type: object
+                                properties:
+                                  client_id:
+                                    type: string
+                                    minLength: 1
+                                  default_payment_type:
+                                    type: array
+                                    items:
+                                      required: []
+                                      properties: {}
+                                  title:
+                                    type: string
+                                    minLength: 1
+                                  name_first:
+                                    type: string
+                                    minLength: 1
+                                  name_last:
+                                    type: string
+                                    minLength: 1
+                                  name_middle:
+                                    type: string
+                                    minLength: 1
+                                  dob:
+                                    type: string
+                                    minLength: 1
+                                  email:
+                                    type: string
+                                    minLength: 1
+                                  mobile:
+                                    type: string
+                                    minLength: 1
+                                  phone:
+                                    type: string
+                                    minLength: 1
+                                  crn:
+                                    type: string
+                                    minLength: 1
+                                  license:
+                                    type: array
+                                    items:
+                                      required: []
+                                      properties: {}
+                                  medicare:
+                                    type: array
+                                    items:
+                                      required: []
+                                      properties: {}
+                                  living_situation:
+                                    type: string
+                                    minLength: 1
+                                  dependents:
+                                    type: string
+                                    minLength: 1
+                                  relationship:
+                                    type: string
+                                    minLength: 1
+                                  shared:
+                                    type: string
+                                    minLength: 1
+                                  address_unit_number:
+                                    type: string
+                                    minLength: 1
+                                  address_number:
+                                    type: string
+                                    minLength: 1
+                                  address_name:
+                                    type: string
+                                    minLength: 1
+                                  address_city:
+                                    type: string
+                                    minLength: 1
+                                  address_postcode:
+                                    type: string
+                                    minLength: 1
+                                  address_state:
+                                    type: string
+                                    minLength: 1
+                                  delivery_address_unit_number:
+                                    type: string
+                                    minLength: 1
+                                  delivery_address_number:
+                                    type: string
+                                    minLength: 1
+                                  delivery_address_name:
+                                    type: string
+                                    minLength: 1
+                                  delivery_address_city:
+                                    type: string
+                                    minLength: 1
+                                  delivery_address_postcode:
+                                    type: string
+                                    minLength: 1
+                                  delivery_address_state:
+                                    type: string
+                                    minLength: 1
+                                  nlr_name_first:
+                                    type: string
+                                    minLength: 1
+                                  nlr_name_last:
+                                    type: string
+                                    minLength: 1
+                                  nlr_phone:
+                                    type: string
+                                    minLength: 1
+                                  nlr_address_unit_number:
+                                    type: array
+                                    items:
+                                      required: []
+                                      properties: {}
+                                  nlr_address_number:
+                                    type: array
+                                    items:
+                                      required: []
+                                      properties: {}
+                                  nlr_address_name:
+                                    type: array
+                                    items:
+                                      required: []
+                                      properties: {}
+                                  nlr_address_city:
+                                    type: array
+                                    items:
+                                      required: []
+                                      properties: {}
+                                  nlr_address_postcode:
+                                    type: array
+                                    items:
+                                      required: []
+                                      properties: {}
+                                  nlr_address_state:
+                                    type: array
+                                    items:
+                                      required: []
+                                      properties: {}
+                                  nlr_relationship:
+                                    type: string
+                                    minLength: 1
+                                  contracts:
+                                    type: array
+                                    items:
+                                      required: []
+                                      properties: {}
+                                  identifying_documents:
+                                    type: array
+                                    items:
+                                      required: []
+                                      properties: {}
+                                  client_income:
+                                    type: array
+                                    uniqueItems: true
+                                    minItems: 1
+                                    items:
+                                      required:
+                                        - type
+                                        - frequency
+                                        - amount
+                                        - id
+                                      properties:
+                                        type:
+                                          type: string
+                                          minLength: 1
+                                        frequency:
+                                          type: string
+                                          minLength: 1
+                                        amount:
+                                          type: string
+                                          minLength: 1
+                                        id:
+                                          type: string
+                                          minLength: 1
+                                  client_deductions:
+                                    type: array
+                                    uniqueItems: true
+                                    minItems: 1
+                                    items:
+                                      required:
+                                        - type
+                                        - frequency
+                                        - amount
+                                        - id
+                                      properties:
+                                        type:
+                                          type: string
+                                          minLength: 1
+                                        frequency:
+                                          type: string
+                                          minLength: 1
+                                        amount:
+                                          type: string
+                                          minLength: 1
+                                        id:
+                                          type: string
+                                          minLength: 1
+                                  last_updated:
+                                    type: string
+                                    minLength: 1
+                                  spending_value:
+                                    type: string
+                                    minLength: 1
+                                  ezidebit_customer_id:
+                                    type: array
+                                    items:
+                                      required: []
+                                      properties: {}
+                                  active_contracts:
+                                    type: string
+                                    minLength: 1
+                                required:
+                                  - client_id
+                                  - default_payment_type
+                                  - title
+                                  - name_first
+                                  - name_last
+                                  - name_middle
+                                  - dob
+                                  - email
+                                  - mobile
+                                  - phone
+                                  - crn
+                                  - license
+                                  - medicare
+                                  - living_situation
+                                  - dependents
+                                  - relationship
+                                  - shared
+                                  - address_unit_number
+                                  - address_number
+                                  - address_name
+                                  - address_city
+                                  - address_postcode
+                                  - address_state
+                                  - delivery_address_unit_number
+                                  - delivery_address_number
+                                  - delivery_address_name
+                                  - delivery_address_city
+                                  - delivery_address_postcode
+                                  - delivery_address_state
+                                  - nlr_name_first
+                                  - nlr_name_last
+                                  - nlr_phone
+                                  - nlr_address_unit_number
+                                  - nlr_address_number
+                                  - nlr_address_name
+                                  - nlr_address_city
+                                  - nlr_address_postcode
+                                  - nlr_address_state
+                                  - nlr_relationship
+                                  - contracts
+                                  - identifying_documents
+                                  - client_income
+                                  - client_deductions
+                                  - last_updated
+                                  - spending_value
+                                  - ezidebit_customer_id
+                                  - active_contracts
+                              service:
+                                type: string
+                                minLength: 1
+                              limited:
+                                type: string
+                                minLength: 1
+                              products:
+                                type: array
+                                items:
+                                  required: []
+                                  properties: {}
+                            required:
+                              - hash
+                              - email
+                              - client
+                              - service
+                              - limited
+                              - products
+                        required:
+                          - parameters
+                    required:
+                      - addClientResponse
+                required:
+                  - Body
+              examples:
+                Example Response:
+                  value: |-
+                    <SOAP-ENV:Envelope xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/">
+                    <SOAP-ENV:Body>
+                    <SOAP-ENV:addClientResponse>
+                    <parameters>
+                    <hash>eyJpdiI6ImJaa1Y0M1l5emc0cU10anlETkpoOFE9PSIsInZhbHVlIjoiZExVTEJiV1ZDVkdFRElackY0WlFaeWNcL2pcLzFxZTF5VnR
+                    GRXlHSVU3OWtQMmpRXC9PWFN3cUhtMUVybzMwN0pPdjFBN3hJdlZCRXptOEh1WGNCMU0wZGc9PSIsIm1hYyI6ImViMTU5ZGJkNWMyM
+                    WFlMmE5ZDAwMDk3ODZlMmNjMzU5ZjY3NmE5MzczNzkzYjNmYjAxNGI0MzZjNDMyYTQzNzQifQ==</hash>
+                    <email>harlan.gray4@gmail.com</email>
+                    <client>
+                    <client_id>2</client_id>
+                    <default_payment_type/>
+                    <title>Mr</title>
+                    <name_first>Harlan</name_first>
+                    <name_last>Gray</name_last>
+                    <name_middle>Peter</name_middle>
+                    <dob>2000-01-01</dob>
+                    <email>harlan.gray4@gmail.com</email>
+                    <mobile>0421123456</mobile>
+                    <phone>0421123456</phone>
+                    <crn>123456789E</crn>
+                    <license/>
+                    <medicare/>
+                    <living_situation>rent</living_situation>
+                    <dependents>0</dependents>
+                    <relationship>Single</relationship>
+                    <shared>0</shared>
+                    <address_unit_number>24</address_unit_number>
+                    <address_number>440</address_number>
+                    <address_name>Stud Road</address_name>
+                    <address_city>Bayswater</address_city>
+                    <address_postcode>3153</address_postcode>
+                    <address_state>Vic</address_state>
+                    <delivery_address_unit_number>24</delivery_address_unit_number>
+                    <delivery_address_number>440</delivery_address_number>
+                    <delivery_address_name>Stud Road</delivery_address_name>
+                    <delivery_address_city>Bayswater</delivery_address_city>
+                    <delivery_address_postcode>3153</delivery_address_postcode>
+                    <delivery_address_state>Vic</delivery_address_state>
+                    <nlr_name_first>Hans</nlr_name_first>
+                    <nlr_name_last>Gray</nlr_name_last>
+                    <nlr_phone>222222</nlr_phone>
+                    <nlr_address_unit_number/>
+                    <nlr_address_number/>
+                    <nlr_address_name/>
+                    <nlr_address_city/>
+                    <nlr_address_postcode/>
+                    <nlr_address_state/>
+                    <nlr_relationship>Brother</nlr_relationship>
+                    <contracts/>
+                    <identifying_documents/>
+                    <client_income>
+                    <income>
+                    <type>1</type>
+                    <frequency>1</frequency>
+                    <amount>100.00</amount>
+                    <id>4</id>
+                    </income>
+                    <income>
+                    <type>1</type>
+                    <frequency>1</frequency>
+                    <amount>100.00</amount>
+                    <id>5</id>
+                    </income>
+                    </client_income>
+                    <client_deductions>
+                    <deductions>
+                    <type>1</type>
+                    <frequency>1</frequency>
+                    <amount>0.00</amount>
+                    <id>1</id>
+                    </deductions>
+                    <deductions>
+                    <type>1</type>
+                    <frequency>1</frequency>
+                    <amount>0.00</amount>
+                    <id>2</id>
+                    </deductions>
+                    </client_deductions>
+                    <last_updated>2019-03-20</last_updated>
+                    <spending_value>60.00</spending_value>
+                    <ezidebit_customer_id/>
+                    <active_contracts>0</active_contracts>
+                    </client>
+                    <service>1</service>
+                    <limited>0</limited>
+                    <products>1</products>
+                    <products>2</products>
+                    <products>3</products>
+                    <products>4</products>
+                    <products>5</products>
+                    <products>807</products>
+                    <products>999</products>
+                    </parameters>
+                    </SOAP-ENV:addClientResponse>
+                    </SOAP-ENV:Body>
+                    </SOAP-ENV:Envelope>
+      description: 'API to add client details and Income , Expense Details in BOS admin site'
+      requestBody:
+        content:
+          application/xml:
+            schema:
+              description: ''
+              type: object
+              properties:
+                Header: {}
+                Body:
+                  type: object
+                  properties:
+                    addClient:
+                      type: object
+                      properties:
+                        addClient:
+                          type: object
+                          properties:
+                            verify_details:
+                              type: object
+                              properties:
+                                hash:
+                                  type: string
+                                  minLength: 1
+                                email:
+                                  type: string
+                                  minLength: 1
+                                ip_address:
+                                  type: string
+                                  minLength: 1
+                              required:
+                                - hash
+                                - email
+                                - ip_address
+                            client_details:
+                              type: object
+                              properties:
+                                title:
+                                  type: string
+                                  minLength: 1
+                                name_first:
+                                  type: string
+                                  minLength: 1
+                                name_last:
+                                  type: string
+                                  minLength: 1
+                                name_middle:
+                                  type: string
+                                  minLength: 1
+                                email:
+                                  type: string
+                                  minLength: 1
+                                mobile:
+                                  type: string
+                                  minLength: 1
+                                phone:
+                                  type: string
+                                  minLength: 1
+                                dob:
+                                  type: string
+                                  minLength: 1
+                                address_unit_number:
+                                  type: string
+                                  minLength: 1
+                                address_number:
+                                  type: string
+                                  minLength: 1
+                                address_name:
+                                  type: string
+                                  minLength: 1
+                                address_city:
+                                  type: string
+                                  minLength: 1
+                                address_postcode:
+                                  type: string
+                                  minLength: 1
+                                address_state:
+                                  type: string
+                                  minLength: 1
+                                dependents:
+                                  type: string
+                                  minLength: 1
+                                relationship:
+                                  type: string
+                                  minLength: 1
+                                living_situation:
+                                  type: string
+                                  minLength: 1
+                                shared:
+                                  type: string
+                                  minLength: 1
+                                nlr_name_first:
+                                  type: string
+                                  minLength: 1
+                                nlr_name_last:
+                                  type: string
+                                  minLength: 1
+                                nlr_phone:
+                                  type: string
+                                  minLength: 1
+                                nlr_relationship:
+                                  type: string
+                                  minLength: 1
+                              required:
+                                - title
+                                - name_first
+                                - name_last
+                                - name_middle
+                                - email
+                                - mobile
+                                - phone
+                                - dob
+                                - address_unit_number
+                                - address_number
+                                - address_name
+                                - address_city
+                                - address_postcode
+                                - address_state
+                                - dependents
+                                - relationship
+                                - living_situation
+                                - shared
+                                - nlr_name_first
+                                - nlr_name_last
+                                - nlr_phone
+                                - nlr_relationship
+                            client_income:
+                              type: array
+                              uniqueItems: true
+                              minItems: 1
+                              items:
+                                required:
+                                  - type
+                                  - frequency
+                                  - amount
+                                properties:
+                                  type:
+                                    type: string
+                                    minLength: 1
+                                  frequency:
+                                    type: string
+                                    minLength: 1
+                                  amount:
+                                    type: string
+                                    minLength: 1
+                            client_deductions:
+                              type: array
+                              uniqueItems: true
+                              minItems: 1
+                              items:
+                                required:
+                                  - type
+                                  - frequency
+                                  - amount
+                                  - id
+                                properties:
+                                  type:
+                                    type: string
+                                    minLength: 1
+                                  frequency:
+                                    type: string
+                                    minLength: 1
+                                  amount:
+                                    type: string
+                                    minLength: 1
+                                  id:
+                                    type: string
+                                    minLength: 1
+                          required:
+                            - verify_details
+                            - client_details
+                            - client_income
+                            - client_deductions
+                      required:
+                        - addClient
+                  required:
+                    - addClient
+              required:
+                - Body
+            examples:
+              Example Request:
+                value: |-
+                  <soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:dev="http://dev.essentialconnects.com">
+                  <soapenv:Header/>
+                  <soapenv:Body>
+                  <dev:addClient>
+                  <dev:addClient>
+                  <verify_details>
+                  <hash>eyJpdiI6IjJ5aWdXbTRwQmRrdTJlVE8wcWFISWc9PSIsInZhbHVlIjoiTUpEdWJkUUZDXC8xb0t0ME1qWmtaUDJkNmkzbHNnN
+                  WcyclFcL2Z3dHJIUFRWVEJkNk0reWVtSHczT2ljQlBDNlE3d3IyTWZ0TU4rdDZHbWdaeWthUzRHdz09IiwibWFjIjoiZjMwNDQwYmI4NDgxMDY4
+                  NTlmYjdlMTc3MTViYTZhZDMyMjk1MDdlZDVkMjdlOGQzZmIxOTI1ZTg2ZDk4NGUyMCJ9</hash>
+                  <email>harlan.gray4@gmail.com</email>
+                  <ip_address>19.168.0.1</ip_address>
+                  </verify_details>
+                  <client_details>
+                  <title>Mr</title>
+                  <name_first>Harlan</name_first>
+                  <name_last>Gray</name_last>
+                  <name_middle>Peter</name_middle>
+                  <email>harlan.gray4@gmail.com</email>
+                  <mobile>0421123456</mobile>
+                  <phone>0421123456</phone>
+                  <dob>2000-01-01</dob>
+                  <address_unit_number>24</address_unit_number>
+                  <address_number>440</address_number>
+                  <address_name>Stud Road</address_name>
+                  <address_city>Bayswater</address_city>
+                  <address_postcode>3153</address_postcode>
+                  <address_state>Vic</address_state>
+                  <dependents>1</dependents>
+                  <relationship>Brother</relationship>
+                  <living_situation>1</living_situation>
+                  <shared>1</shared>
+                  <nlr_name_first>Hans</nlr_name_first>
+                  <nlr_name_last>Gray</nlr_name_last>
+                  <nlr_phone>222222</nlr_phone>
+                  <nlr_relationship>Brother</nlr_relationship>
+                  </client_details>
+                  <client_income>
+                  <income>
+                  <type>1</type>
+                  <frequency>1</frequency>
+                  <amount>100</amount>
+                  </income>
+                  <income>
+                  <type>1</type>
+                  <frequency>1</frequency>
+                  <amount>100</amount>
+                  </income>
+                  </client_income>
+                  <client_deductions>
+                  <deductions>
+                  <type>1</type>
+                  <frequency>1</frequency>
+                  <amount>0</amount>
+                  <id>1</id>
+                  </deductions>
+                  <deductions>
+                  <type>1</type>
+                  <frequency>1</frequency>
+                  <amount>0</amount>
+                  <id>2</id>
+                  </deductions>
+                  </client_deductions>
+                  </dev:addClient>
+                  </dev:addClient>
+                  </soapenv:Body>
+                  </soapenv:Envelope>
+        description: |
+          HASH
+          Email
+          Ip Address
+          Verify Details
+          Client Details
+          Title
+          Name First
+          Name Last
+          Name Middle
+          Mobile
+          Phone
+          DOB
+          Address Unit Number
+          Address Number
+          Address Name>
+          Address City
+          Address Postcode
+          Address State
+          Dependents
+          Relationship
+          Living Situation
+          Shared
+          Nlr Name First
+          Nlr Name Last
+          Nlr Phone
+          Nlr Relationship
+          Client Details
+          Client Income
+          Income
+          Type
+          Frequency
+          Amount
+          Client Deductions
+          Deductions
+          Type
+          Frequency
+          Amount
+          ID
+  /AddEnquiry:
+    post:
+      summary: ''
+      operationId: post-AddEnquiry
+      responses:
+        '200':
+          description: Returns 1
+          content:
+            application/xml:
+              schema:
+                description: ''
+                type: object
+                properties:
+                  Body:
+                    type: object
+                    properties:
+                      addEnquiryResponse:
+                        type: object
+                        properties:
+                          parameters:
+                            type: string
+                            minLength: 1
+                        required:
+                          - parameters
+                    required:
+                      - addEnquiryResponse
+                required:
+                  - Body
+              examples:
+                Example Response:
+                  value: |-
+                    <SOAP-ENV:Envelope xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/">
+                    <SOAP-ENV:Body>
+                    <SOAP-ENV:addEnquiryResponse>
+                    <parameters>1</parameters>
+                    </SOAP-ENV:addEnquiryResponse>
+                    </SOAP-ENV:Body>
+                    </SOAP-ENV:Envelope>
+      description: 'Adds Enquiry to Essentials Connects not BOS admin site , the data being stored is message, date added, messaegable_id, messageable_type'
+      requestBody:
+        content:
+          application/xml:
+            schema:
+              description: ''
+              type: object
+              properties:
+                Header: {}
+                Body:
+                  type: object
+                  properties:
+                    addEnquiry:
+                      type: object
+                      properties:
+                        addEnquiry:
+                          type: object
+                          properties:
+                            verify_details:
+                              type: object
+                              properties:
+                                hash:
+                                  type: string
+                                  minLength: 1
+                                email:
+                                  type: string
+                                  minLength: 1
+                                ip_address:
+                                  type: string
+                                  minLength: 1
+                              required:
+                                - hash
+                                - email
+                                - ip_address
+                            enquiry:
+                              type: string
+                              minLength: 1
+                          required:
+                            - verify_details
+                            - enquiry
+                      required:
+                        - addEnquiry
+                  required:
+                    - addEnquiry
+              required:
+                - Body
+            examples:
+              Example Request:
+                value: |-
+                  <soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:dev="http://dev.essentialconnects.com">
+                  <soapenv:Header/>
+                  <soapenv:Body>
+                  <dev:addEnquiry>
+                  <dev:addEnquiry>
+                  <verify_details> <hash>eyJpdiI6IitQVElHalZkc2NrNEt3d3ZpV05nTFE9PSIsInZhbHVlIjoiTFRcL0RkS0VvZ1ZRNGc4YlJMVmlqd2
+                  NJRWZTQVFkc1YzVkIzd2RkaWZJRGJcLzdcL3pFeDB3UmtlUEk3Y090UHVBUnQ2Qk05TXh0eThHNGRuOHhmTndaZHc9PSIsIm1hYyI6ImQ3
+                  M2Q4NmI1NzYyOGM1MTVmNTA2ZmVlMjcxMDg4MmUyNWFmNWM4NDQ0ZTYwMjg1YWNiNDlkMjMxNGYzMzFkZWIifQ==</hash>
+                  <email>harlan.gray4@gmail.com</email>
+                  <ip_address>19.168.0.1</ip_address>
+                  </verify_details>
+                  <enquiry>Some Enquiry</enquiry>
+                  </dev:addEnquiry>
+                  </dev:addEnquiry>
+                  </soapenv:Body>
+                  </soapenv:Envelope>
+        description: |-
+          Email
+          Ip Address
+          Enquiry
+  /HasChanged:
+    post:
+      summary: ''
+      operationId: post-HasChanged
+      responses:
+        '200':
+          description: Returns 1 or 0
+          content:
+            application/xml:
+              schema:
+                description: ''
+                type: object
+                properties:
+                  Body:
+                    type: object
+                    properties:
+                      hasChangedResponse:
+                        type: object
+                        properties:
+                          parameters:
+                            type: string
+                            minLength: 1
+                        required:
+                          - parameters
+                    required:
+                      - hasChangedResponse
+                required:
+                  - Body
+              examples:
+                Example Response:
+                  value: |-
+                    <SOAP-ENV:Envelope xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/">
+                    <SOAP-ENV:Body>
+                    <SOAP-ENV:hasChangedResponse>
+                    <parameters>0</parameters>
+                    </SOAP-ENV:hasChangedResponse>
+                    </SOAP-ENV:Body>
+                    </SOAP-ENV:Envelope>
+      description: Checks if user's IP address has been changed or not
+      requestBody:
+        content:
+          application/xml:
+            schema:
+              description: ''
+              type: object
+              properties:
+                Header: {}
+                Body:
+                  type: object
+                  properties:
+                    hasChanged:
+                      type: object
+                      properties:
+                        hasChanged:
+                          type: object
+                          properties:
+                            verify_details:
+                              type: object
+                              properties:
+                                hash:
+                                  type: string
+                                  minLength: 1
+                                email:
+                                  type: string
+                                  minLength: 1
+                                ip_address:
+                                  type: string
+                                  minLength: 1
+                              required:
+                                - hash
+                                - email
+                                - ip_address
+                          required:
+                            - verify_details
+                      required:
+                        - hasChanged
+                  required:
+                    - hasChanged
+              required:
+                - Body
+            examples:
+              Example Request:
+                value: |-
+                  <soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:dev="http://dev.essentialconnects.com">
+                  <soapenv:Header/>
+                  <soapenv:Body>
+                  <dev:hasChanged>
+                  <dev:hasChanged>
+                  <verify_details>
+                  <hash>eyJpdiI6IitQVElHalZkc2NrNEt3d3ZpV05nTFE9PSIsInZhbHVlIjoiTFRcL0RkS0VvZ1ZRNGc4YlJMVmlqd2NJRWZTQVFkc1YzVkI
+                  zd2RkaWZJRGJcLzdcL3pFeDB3UmtlUEk3Y090UHVBUnQ2Qk05TXh0eThHNGRuOHhmTndaZHc9PSIsIm1hYyI6ImQ3M2Q4NmI1NzYyOGM1
+                  MTVmNTA2ZmVlMjcxMDg4MmUyNWFmNWM4NDQ0ZTYwMjg1YWNiNDlkMjMxNGYzMzFkZWIifQ==</hash>
+                  <email>harlan.gray4@gmail.com</email>
+                  <ip_address>19.168.0.1</ip_address>
+                  </verify_details>
+                  </dev:hasChanged>
+                  </dev:hasChanged>
+                  </soapenv:Body>
+                  </soapenv:Envelope>
+        description: |-
+          Email
+          IP Address
+components:
+  schemas: {}
