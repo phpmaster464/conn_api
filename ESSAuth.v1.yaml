@@ -293,25 +293,9 @@ paths:
                   </dev:addUser>
                   </soapenv:Body>
                   </soapenv:Envelope>
-        description: |-
-          DOB Day,Month,Year 
-          Email
-          First Name
-          Last Name
-          Mobile
-          Phone
-          Address State
-          Address Postcode
-          CRN number
-          Confirmation
-          Consent
-          Passport Number
-          Passport Cuuntry (By default Australia only)
-          Passport Country Code (By default AU)
-          Password
-          Security Code
-          Ip Address
-      description: 'Creates a user in Essentials Connects API site , this created a reference for the Client that will be stored in BOS Admin site.'
+        description: |
+          DOB Day,DOB Month,DOB Year,Email,First Name,Last Name,Mobile,Phone,Address State,Address Postcode,CRN number,Confirmation,Consent,Passport Number,Passport Cuuntry (By default Australia only),Passport Country Code (By default AU),Password,Security Code & IP Address
+      description: 'Creates a user in Essentials Connects API site, this creates a reference user in Essentials Connects for the Client that will be stored in BOS Admin site.'
     parameters: []
   /GetUser:
     post:
@@ -613,7 +597,7 @@ paths:
                     </SOAP-ENV:applyNowResponse>
                     </SOAP-ENV:Body>
                     </SOAP-ENV:Envelope>
-      description: Adds a record to apply_now_applications in essentials connects database but not in BOS admin site
+      description: Adds a record to apply_now_applications in essentials connects database but not in BOS admin site.
       requestBody:
         content:
           application/xml:
@@ -715,20 +699,7 @@ paths:
                   </dev:applyNow>
                   </soapenv:Body>
                   </soapenv:Envelope>
-        description: |-
-          First Name
-          Last Name
-          Email
-          Mobile
-          Phone
-          Address Unit Number
-          Address Name
-          Address City
-          Address Number
-          Address Postcode
-          Address State
-          Product Id
-          Comment
+        description: 'First Name,Last Name,Email,Mobile,Phone,Address Unit Number,Address Name,Address City,Address Number,Address Postcode,Address State,Product Id,Comment'
   /addEnquiry:
     post:
       summary: ''
@@ -825,10 +796,7 @@ paths:
                   </soapenv:Body>
                   </soapenv:Envelope>
         description: |
-          Name
-          Email
-          Contact
-          Enquiry
+          Name, Email, Contact, Enquiry
   /CanService:
     post:
       summary: ''
@@ -902,7 +870,7 @@ paths:
                     </SOAP-ENV:canServiceResponse>
                     </SOAP-ENV:Body>
                     </SOAP-ENV:Envelope>
-      description: List outs the Products that are available from given Postcode and Suburb
+      description: List outs the Products that are available from given Postcode and Suburb.
       requestBody:
         content:
           application/xml:
@@ -949,14 +917,14 @@ paths:
                   </dev:canService>
                   </soapenv:Body>
                   </soapenv:Envelope>
-        description: |-
-          Postcode
-          Suburb
+        description: 'Postcode,Suburb'
   /Confirmation:
     post:
       summary: ''
       operationId: post-Confirmation
-      description: 'Send token for Confirmation using Email or SMS , Note : No response is given'
+      description: |-
+        Sends token for Confirmation using Email or SMS, 
+        Note: No response is given
       requestBody:
         content:
           application/xml:
@@ -1023,10 +991,7 @@ paths:
                   </dev:confirmation>
                   </soapenv:Body>
                   </soapenv:Envelope>
-        description: |-
-          Email
-          HASH
-          IP Address
+        description: 'Email,HASH,IP Address'
   /ForgotPassword:
     post:
       summary: ''
