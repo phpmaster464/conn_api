@@ -1209,6 +1209,962 @@ paths:
           Email
           Hash
       description: 'API to reset User Password , Response is passed as "TRUE" if success.'
+  /addUserSnaffleStep1:
+    post:
+      summary: ''
+      operationId: post-addUserSnaffle
+      responses:
+        '200':
+          description: 'Email Already Exist '
+        '201':
+          description: Prospect Created Successfully
+          content:
+            application/xml:
+              schema:
+                description: ''
+                type: object
+                properties:
+                  Body:
+                    type: object
+                    properties:
+                      addUserSnaffleResponse:
+                        type: object
+                        properties:
+                          parameters:
+                            type: object
+                            properties:
+                              status:
+                                type: string
+                                minLength: 1
+                              message:
+                                type: string
+                                minLength: 1
+                              prospect_id:
+                                type: string
+                                minLength: 1
+                              title:
+                                type: string
+                                minLength: 1
+                              fname:
+                                type: string
+                                minLength: 1
+                              lname:
+                                type: string
+                                minLength: 1
+                              address_unit_number:
+                                type: string
+                                minLength: 1
+                              address:
+                                type: string
+                                minLength: 1
+                              dob:
+                                type: string
+                                minLength: 1
+                              phone:
+                                type: string
+                                minLength: 1
+                              email:
+                                type: string
+                                minLength: 1
+                            required:
+                              - status
+                              - message
+                              - prospect_id
+                              - title
+                              - fname
+                              - lname
+                              - address_unit_number
+                              - address
+                              - dob
+                              - phone
+                              - email
+                        required:
+                          - parameters
+                    required:
+                      - addUserSnaffleResponse
+                required:
+                  - Body
+              examples:
+                Example Request:
+                  value: "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<SOAP-ENV:Envelope xmlns:SOAP-ENV=\"http://schemas.xmlsoap.org/soap/envelope/\">\n\t<SOAP-ENV:Body>\n\t\t<SOAP-ENV:addUserSnaffleResponse>\n\t\t\t<parameters>\n\t\t\t\t<status>200</status>\n\t\t\t\t<message>Prospect Created Successfully</message>\n\t\t\t\t<prospect_id>11</prospect_id>\n\t\t\t\t<title>Mr</title>\n\t\t\t\t<fname>test</fname>\n\t\t\t\t<lname>test</lname>\n\t\t\t\t<address_unit_number>205</address_unit_number>\n\t\t\t\t<address>Bayswater Rd, Darlinghurst NSW 2010, Australia</address>\n\t\t\t\t<dob>1994-08-07</dob>\n\t\t\t\t<phone>0478965432</phone>\n\t\t\t\t<email>test@user.com</email>\n\t\t\t</parameters>\n\t\t</SOAP-ENV:addUserSnaffleResponse>\n\t</SOAP-ENV:Body>\n</SOAP-ENV:Envelope>"
+        '':
+          description: |-
+            {
+               "Body": {
+                  "addUserSnaffleResponse": {
+                     "parameters": {
+                        "status": "200",
+                        "message": "Prospect Created Successfully",
+                        "prospect_id": "9",
+                        "title": "Mr",
+                        "fname": "Priyal",
+                        "lname": "Desai",
+                        "address_unit_number": "205",
+                        "address": "Bayswater Rd, Darlinghurst NSW 2010, Australia",
+                        "dob": "1994-08-07",
+                        "phone": "0478965432",
+                        "email": "abc@ftery1.com"
+                     }
+                  }
+               }
+            }
+      description: API to add user from Snaffle frontend to BOS in an incremental approach
+      requestBody:
+        content:
+          application/xml:
+            schema:
+              description: ''
+              type: object
+              properties:
+                Header: {}
+                Body:
+                  type: object
+                  properties:
+                    addUserSnaffle:
+                      type: object
+                      properties:
+                        addUserSnaffle:
+                          type: object
+                          properties:
+                            address:
+                              type: string
+                              minLength: 1
+                            address_unit_number:
+                              type: string
+                              minLength: 1
+                            dob_day:
+                              type: string
+                              minLength: 1
+                            dob_month:
+                              type: string
+                              minLength: 1
+                            dob_year:
+                              type: string
+                              minLength: 1
+                            email:
+                              type: string
+                              minLength: 1
+                            fname:
+                              type: string
+                              minLength: 1
+                            lname:
+                              type: string
+                              minLength: 1
+                            phone:
+                              type: string
+                              minLength: 1
+                            title:
+                              type: string
+                              minLength: 1
+                            step_no:
+                              type: string
+                              minLength: 1
+                          required:
+                            - address
+                            - address_unit_number
+                            - dob_day
+                            - dob_month
+                            - dob_year
+                            - email
+                            - fname
+                            - lname
+                            - phone
+                            - title
+                            - step_no
+                      required:
+                        - addUserSnaffle
+                  required:
+                    - addUserSnaffle
+              required:
+                - Body
+            examples:
+              Example request:
+                value: |-
+                  <soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:dev="https://esscontacts.newpathstudio.com.au">
+                  <soapenv:Header/>
+                  <soapenv:Body>
+                  <dev:addUserSnaffle>
+                  <dev:addUserSnaffle>
+                  <address>Bayswater Rd, Darlinghurst NSW 2010, Australia</address>
+                  <address_unit_number>205</address_unit_number>
+                  <dob_day>07</dob_day>
+                  <dob_month>08</dob_month>
+                  <dob_year>1994</dob_year>
+                  <email>test@user.com</email>
+                  <fname>test</fname>
+                  <lname>test</lname>
+                  <phone>0478965432</phone>
+                  <title>Mr</title>
+                  <step_no>1</step_no>
+                  </dev:addUserSnaffle>
+                  </dev:addUserSnaffle>
+                  </soapenv:Body>
+                  </soapenv:Envelope>
+        description: 'address,address_unit_number,dob_day,dob_month,dob_year,email,fname,lname,phone,title,step_no'
+    parameters: []
+  /addUserSnaffleStep2:
+    post:
+      summary: ''
+      operationId: post-addUserSnaffleStep2
+      responses:
+        '200':
+          description: Prospect Updated
+          content:
+            application/xml:
+              schema:
+                description: ''
+                type: object
+                properties:
+                  Body:
+                    type: object
+                    properties:
+                      addUserSnaffleResponse:
+                        type: object
+                        properties:
+                          parameters:
+                            type: object
+                            properties:
+                              status:
+                                type: string
+                                minLength: 1
+                              message:
+                                type: string
+                                minLength: 1
+                              prospect_id:
+                                type: string
+                                minLength: 1
+                              title:
+                                type: string
+                                minLength: 1
+                              fname:
+                                type: string
+                                minLength: 1
+                              lname:
+                                type: string
+                                minLength: 1
+                              address:
+                                type: string
+                                minLength: 1
+                              dob_day:
+                                type: string
+                                minLength: 1
+                              phone:
+                                type: string
+                                minLength: 1
+                              email:
+                                type: string
+                                minLength: 1
+                              drivers_licence:
+                                type: string
+                                minLength: 1
+                              drivers_licence_state:
+                                type: string
+                                minLength: 1
+                              drivers_licence_expiry:
+                                type: string
+                                minLength: 1
+                              medicare_number:
+                                type: string
+                                minLength: 1
+                              medicare_reference:
+                                type: string
+                                minLength: 1
+                              medicare_name:
+                                type: string
+                                minLength: 1
+                              medicare_colour:
+                                type: string
+                                minLength: 1
+                              medicare_expiry:
+                                type: string
+                                minLength: 1
+                              passport_number:
+                                type: string
+                                minLength: 1
+                              passport_issued_by:
+                                type: string
+                                minLength: 1
+                              avoid_verification:
+                                type: string
+                                minLength: 1
+                              living_situation:
+                                type: string
+                                minLength: 1
+                              shared:
+                                type: string
+                                minLength: 1
+                              dependents:
+                                type: string
+                                minLength: 1
+                            required:
+                              - status
+                              - message
+                              - prospect_id
+                              - title
+                              - fname
+                              - lname
+                              - address
+                              - dob_day
+                              - phone
+                              - email
+                              - drivers_licence
+                              - drivers_licence_state
+                              - drivers_licence_expiry
+                              - medicare_number
+                              - medicare_reference
+                              - medicare_name
+                              - medicare_colour
+                              - medicare_expiry
+                              - passport_number
+                              - passport_issued_by
+                              - avoid_verification
+                              - living_situation
+                              - shared
+                              - dependents
+                        required:
+                          - parameters
+                    required:
+                      - addUserSnaffleResponse
+                required:
+                  - Body
+              examples:
+                Example Response:
+                  value: "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<SOAP-ENV:Envelope xmlns:SOAP-ENV=\"http://schemas.xmlsoap.org/soap/envelope/\">\n\t<SOAP-ENV:Body>\n\t\t<SOAP-ENV:addUserSnaffleResponse>\n\t\t\t<parameters>\n\t\t\t\t<status>200</status>\n\t\t\t\t<message>Prospect Step 2 Updated Current Step no is 3</message>\n\t\t\t\t<prospect_id>11</prospect_id>\n\t\t\t\t<title>Mr</title>\n\t\t\t\t<fname>test</fname>\n\t\t\t\t<lname>test</lname>\n\t\t\t\t<address>Bayswater Rd, Darlinghurst NSW 2010, Australia</address>\n\t\t\t\t<dob_day>1994-08-07</dob_day>\n\t\t\t\t<phone>0478965432</phone>\n\t\t\t\t<email>test@user.com</email>\n\t\t\t\t<drivers_licence>254789632P</drivers_licence>\n\t\t\t\t<drivers_licence_state>Australia</drivers_licence_state>\n\t\t\t\t<drivers_licence_expiry>1998-09-02</drivers_licence_expiry>\n\t\t\t\t<medicare_number>968573241O</medicare_number>\n\t\t\t\t<medicare_reference>6</medicare_reference>\n\t\t\t\t<medicare_name>test</medicare_name>\n\t\t\t\t<medicare_colour>Gre</medicare_colour>\n\t\t\t\t<medicare_expiry>2025-01-20</medicare_expiry>\n\t\t\t\t<passport_number>N976584</passport_number>\n\t\t\t\t<passport_issued_by>Australia</passport_issued_by>\n\t\t\t\t<avoid_verification>0</avoid_verification>\n\t\t\t\t<living_situation>Rent</living_situation>\n\t\t\t\t<shared>1</shared>\n\t\t\t\t<dependents>1</dependents>\n\t\t\t</parameters>\n\t\t</SOAP-ENV:addUserSnaffleResponse>\n\t</SOAP-ENV:Body>\n</SOAP-ENV:Envelope>"
+      description: ''
+      requestBody:
+        content:
+          application/xml:
+            schema:
+              description: ''
+              type: object
+              properties:
+                Header: {}
+                Body:
+                  type: object
+                  properties:
+                    addUserSnaffle:
+                      type: object
+                      properties:
+                        addUserSnaffle:
+                          type: object
+                          properties:
+                            step_no:
+                              type: string
+                              minLength: 1
+                            prospect_id:
+                              type: string
+                              minLength: 1
+                            avoid_verification:
+                              type: string
+                              minLength: 1
+                            include_drivers_licence:
+                              type: string
+                              minLength: 1
+                            drivers_licence:
+                              type: string
+                              minLength: 1
+                            drivers_licence_expiry:
+                              type: string
+                              minLength: 1
+                            drivers_licence_state:
+                              type: string
+                              minLength: 1
+                            include_medicare:
+                              type: string
+                              minLength: 1
+                            medicare_colour:
+                              type: string
+                              minLength: 1
+                            medicare_expiry:
+                              type: string
+                              minLength: 1
+                            medicare_name:
+                              type: string
+                              minLength: 1
+                            medicare_number:
+                              type: string
+                              minLength: 1
+                            medicare_reference:
+                              type: string
+                              minLength: 1
+                            include_passport:
+                              type: string
+                              minLength: 1
+                            passport_issued_by:
+                              type: string
+                              minLength: 1
+                            passport_number:
+                              type: string
+                              minLength: 1
+                          required:
+                            - step_no
+                            - prospect_id
+                            - avoid_verification
+                            - include_drivers_licence
+                            - drivers_licence
+                            - drivers_licence_expiry
+                            - drivers_licence_state
+                            - include_medicare
+                            - medicare_colour
+                            - medicare_expiry
+                            - medicare_name
+                            - medicare_number
+                            - medicare_reference
+                            - include_passport
+                            - passport_issued_by
+                            - passport_number
+                      required:
+                        - addUserSnaffle
+                  required:
+                    - addUserSnaffle
+              required:
+                - Body
+            examples:
+              Example Request:
+                value: |-
+                  <soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:dev="https://esscontacts.newpathstudio.com.au">
+                  <soapenv:Header/>
+                  <soapenv:Body>
+                  <dev:addUserSnaffle>
+                  <dev:addUserSnaffle>
+                  <step_no>2</step_no>
+                  <prospect_id>11</prospect_id>
+                  <avoid_verification>0</avoid_verification>
+                  <include_drivers_licence>1</include_drivers_licence>
+                  <drivers_licence>254789632P</drivers_licence>
+                  <drivers_licence_expiry>1998-09-02</drivers_licence_expiry>
+                  <drivers_licence_state>Australia</drivers_licence_state>
+                  <include_medicare>1</include_medicare>
+                  <medicare_colour>Green</medicare_colour>
+                  <medicare_expiry>2025-01-20</medicare_expiry>
+                  <medicare_name>test</medicare_name>
+                  <medicare_number>968573241O</medicare_number>
+                  <medicare_reference>06</medicare_reference>
+                  <include_passport>1</include_passport>
+                  <passport_issued_by>Australia</passport_issued_by>
+                  <passport_number>N976584</passport_number>
+                  </dev:addUserSnaffle>
+                  </dev:addUserSnaffle>
+                  </soapenv:Body>
+                  </soapenv:Envelope>
+        description: 'step_no,prospect_id,avoid_verification,include_drivers_licence,drivers_licence,drivers_licence_expiry,drivers_licence_state,include_medicare,medicare_colour,medicare_expiry,medicare_name,medicare_number,medicare_reference,include_passport,passport_issued_by,passport_number'
+  /addUserSnaffleStep3:
+    post:
+      summary: ''
+      operationId: post-addUserSnaffleStep3
+      responses:
+        '200':
+          description: Updated Prospect Data
+          content:
+            application/xml:
+              schema:
+                description: ''
+                type: object
+                properties:
+                  Body:
+                    type: object
+                    properties:
+                      addUserSnaffleResponse:
+                        type: object
+                        properties:
+                          parameters:
+                            type: object
+                            properties:
+                              status:
+                                type: string
+                                minLength: 1
+                              message:
+                                type: string
+                                minLength: 1
+                              prospect_id:
+                                type: string
+                                minLength: 1
+                              title:
+                                type: string
+                                minLength: 1
+                              fname:
+                                type: string
+                                minLength: 1
+                              lname:
+                                type: string
+                                minLength: 1
+                              address:
+                                type: string
+                                minLength: 1
+                              dob_day:
+                                type: string
+                                minLength: 1
+                              phone:
+                                type: string
+                                minLength: 1
+                              email:
+                                type: string
+                                minLength: 1
+                              drivers_licence:
+                                type: string
+                                minLength: 1
+                              drivers_licence_state:
+                                type: string
+                                minLength: 1
+                              drivers_licence_expiry:
+                                type: string
+                                minLength: 1
+                              medicare_number:
+                                type: string
+                                minLength: 1
+                              medicare_reference:
+                                type: string
+                                minLength: 1
+                              medicare_name:
+                                type: string
+                                minLength: 1
+                              medicare_colour:
+                                type: string
+                                minLength: 1
+                              medicare_expiry:
+                                type: string
+                                minLength: 1
+                              passport_number:
+                                type: string
+                                minLength: 1
+                              passport_issued_by:
+                                type: string
+                                minLength: 1
+                              avoid_verification:
+                                type: string
+                                minLength: 1
+                              living_situation:
+                                type: string
+                                minLength: 1
+                              shared:
+                                type: string
+                                minLength: 1
+                              dependents:
+                                type: string
+                                minLength: 1
+                            required:
+                              - status
+                              - message
+                              - prospect_id
+                              - title
+                              - fname
+                              - lname
+                              - address
+                              - dob_day
+                              - phone
+                              - email
+                              - drivers_licence
+                              - drivers_licence_state
+                              - drivers_licence_expiry
+                              - medicare_number
+                              - medicare_reference
+                              - medicare_name
+                              - medicare_colour
+                              - medicare_expiry
+                              - passport_number
+                              - passport_issued_by
+                              - avoid_verification
+                              - living_situation
+                              - shared
+                              - dependents
+                        required:
+                          - parameters
+                    required:
+                      - addUserSnaffleResponse
+                required:
+                  - Body
+              examples:
+                Example Response:
+                  value: "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<SOAP-ENV:Envelope xmlns:SOAP-ENV=\"http://schemas.xmlsoap.org/soap/envelope/\">\n\t<SOAP-ENV:Body>\n\t\t<SOAP-ENV:addUserSnaffleResponse>\n\t\t\t<parameters>\n\t\t\t\t<status>200</status>\n\t\t\t\t<message>Prospect Step 3 Completed</message>\n\t\t\t\t<prospect_id>11</prospect_id>\n\t\t\t\t<title>Mr</title>\n\t\t\t\t<fname>test</fname>\n\t\t\t\t<lname>test</lname>\n\t\t\t\t<address>Bayswater Rd, Darlinghurst NSW 2010, Australia</address>\n\t\t\t\t<dob_day>1994-08-07</dob_day>\n\t\t\t\t<phone>0478965432</phone>\n\t\t\t\t<email>test@user.com</email>\n\t\t\t\t<drivers_licence>254789632P</drivers_licence>\n\t\t\t\t<drivers_licence_state>Australia</drivers_licence_state>\n\t\t\t\t<drivers_licence_expiry>1998-09-02</drivers_licence_expiry>\n\t\t\t\t<medicare_number>968573241O</medicare_number>\n\t\t\t\t<medicare_reference>6</medicare_reference>\n\t\t\t\t<medicare_name>test</medicare_name>\n\t\t\t\t<medicare_colour>Gre</medicare_colour>\n\t\t\t\t<medicare_expiry>2025-01-20</medicare_expiry>\n\t\t\t\t<passport_number>N976584</passport_number>\n\t\t\t\t<passport_issued_by>Australia</passport_issued_by>\n\t\t\t\t<avoid_verification>0</avoid_verification>\n\t\t\t\t<living_situation>Rent</living_situation>\n\t\t\t\t<shared>1</shared>\n\t\t\t\t<dependents>1</dependents>\n\t\t\t</parameters>\n\t\t</SOAP-ENV:addUserSnaffleResponse>\n\t</SOAP-ENV:Body>\n</SOAP-ENV:Envelope>"
+      requestBody:
+        content:
+          application/xml:
+            schema:
+              description: ''
+              type: object
+              properties:
+                Header: {}
+                Body:
+                  type: object
+                  properties:
+                    addUserSnaffle:
+                      type: object
+                      properties:
+                        addUserSnaffle:
+                          type: object
+                          properties:
+                            step_no:
+                              type: string
+                              minLength: 1
+                            prospect_id:
+                              type: string
+                              minLength: 1
+                            living_situation:
+                              type: string
+                              minLength: 1
+                            shared:
+                              type: string
+                              minLength: 1
+                            dependents:
+                              type: string
+                              minLength: 1
+                            relationship:
+                              type: string
+                              minLength: 1
+                          required:
+                            - step_no
+                            - prospect_id
+                            - living_situation
+                            - shared
+                            - dependents
+                            - relationship
+                      required:
+                        - addUserSnaffle
+                  required:
+                    - addUserSnaffle
+              required:
+                - Body
+            examples:
+              Example Request:
+                value: |-
+                  <soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:dev="https://esscontacts.newpathstudio.com.au">
+                  <soapenv:Header/>
+                  <soapenv:Body>
+                  <dev:addUserSnaffle>
+                  <dev:addUserSnaffle>
+                  <step_no>3</step_no>
+                  <prospect_id>11</prospect_id>
+                  <living_situation>Rent</living_situation>
+                  <shared>1</shared>
+                  <dependents>1</dependents>
+                  <relationship>Single</relationship>
+                  </dev:addUserSnaffle>
+                  </dev:addUserSnaffle>
+                  </soapenv:Body>
+                  </soapenv:Envelope>
+  /addUserSnaffleStep4:
+    post:
+      summary: ''
+      operationId: post-addUserSnaffleStep4
+      responses:
+        '200':
+          description: Client Updated Data
+          content:
+            application/xml:
+              schema:
+                description: ''
+                type: object
+                properties:
+                  Body:
+                    type: object
+                    properties:
+                      addUserSnaffleResponse:
+                        type: object
+                        properties:
+                          parameters:
+                            type: object
+                            properties:
+                              status:
+                                type: string
+                                minLength: 1
+                              message:
+                                type: string
+                                minLength: 1
+                              prospect_id:
+                                type: string
+                                minLength: 1
+                              title:
+                                type: string
+                                minLength: 1
+                              fname:
+                                type: string
+                                minLength: 1
+                              lname:
+                                type: string
+                                minLength: 1
+                              address:
+                                type: string
+                                minLength: 1
+                              dob_day:
+                                type: string
+                                minLength: 1
+                              phone:
+                                type: string
+                                minLength: 1
+                              email:
+                                type: string
+                                minLength: 1
+                              drivers_licence:
+                                type: string
+                                minLength: 1
+                              drivers_licence_state:
+                                type: string
+                                minLength: 1
+                              drivers_licence_expiry:
+                                type: string
+                                minLength: 1
+                              medicare_number:
+                                type: string
+                                minLength: 1
+                              medicare_reference:
+                                type: string
+                                minLength: 1
+                              medicare_name:
+                                type: string
+                                minLength: 1
+                              medicare_colour:
+                                type: string
+                                minLength: 1
+                              medicare_expiry:
+                                type: string
+                                minLength: 1
+                              passport_number:
+                                type: string
+                                minLength: 1
+                              passport_issued_by:
+                                type: string
+                                minLength: 1
+                              avoid_verification:
+                                type: string
+                                minLength: 1
+                              living_situation:
+                                type: string
+                                minLength: 1
+                              shared:
+                                type: string
+                                minLength: 1
+                              dependents:
+                                type: string
+                                minLength: 1
+                              return_client_income:
+                                type: array
+                                uniqueItems: true
+                                minItems: 1
+                                items:
+                                  required:
+                                    - type
+                                    - frequency
+                                    - amount
+                                  properties:
+                                    type:
+                                      type: string
+                                      minLength: 1
+                                    frequency:
+                                      type: string
+                                      minLength: 1
+                                    amount:
+                                      type: string
+                                      minLength: 1
+                              return_client_deductions:
+                                type: array
+                                uniqueItems: true
+                                minItems: 1
+                                items:
+                                  required:
+                                    - type
+                                    - frequency
+                                    - amount
+                                    - id
+                                  properties:
+                                    type:
+                                      type: string
+                                      minLength: 1
+                                    frequency:
+                                      type: string
+                                      minLength: 1
+                                    amount:
+                                      type: string
+                                      minLength: 1
+                                    id:
+                                      type: string
+                                      minLength: 1
+                            required:
+                              - status
+                              - message
+                              - prospect_id
+                              - title
+                              - fname
+                              - lname
+                              - address
+                              - dob_day
+                              - phone
+                              - email
+                              - drivers_licence
+                              - drivers_licence_state
+                              - drivers_licence_expiry
+                              - medicare_number
+                              - medicare_reference
+                              - medicare_name
+                              - medicare_colour
+                              - medicare_expiry
+                              - passport_number
+                              - passport_issued_by
+                              - avoid_verification
+                              - living_situation
+                              - shared
+                              - dependents
+                              - return_client_income
+                              - return_client_deductions
+                        required:
+                          - parameters
+                    required:
+                      - addUserSnaffleResponse
+                required:
+                  - Body
+              examples:
+                Example Request:
+                  value: "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<SOAP-ENV:Envelope xmlns:SOAP-ENV=\"http://schemas.xmlsoap.org/soap/envelope/\">\n\t<SOAP-ENV:Body>\n\t\t<SOAP-ENV:addUserSnaffleResponse>\n\t\t\t<parameters>\n\t\t\t\t<status>200</status>\n\t\t\t\t<message>Prospect Step 4 Completed</message>\n\t\t\t\t<prospect_id>11</prospect_id>\n\t\t\t\t<title>Mr</title>\n\t\t\t\t<fname>test</fname>\n\t\t\t\t<lname>test</lname>\n\t\t\t\t<address>Bayswater Rd, Darlinghurst NSW 2010, Australia</address>\n\t\t\t\t<dob_day>1994-08-07</dob_day>\n\t\t\t\t<phone>0478965432</phone>\n\t\t\t\t<email>test@user.com</email>\n\t\t\t\t<drivers_licence>254789632P</drivers_licence>\n\t\t\t\t<drivers_licence_state>Australia</drivers_licence_state>\n\t\t\t\t<drivers_licence_expiry>1998-09-02</drivers_licence_expiry>\n\t\t\t\t<medicare_number>968573241O</medicare_number>\n\t\t\t\t<medicare_reference>6</medicare_reference>\n\t\t\t\t<medicare_name>test</medicare_name>\n\t\t\t\t<medicare_colour>Gre</medicare_colour>\n\t\t\t\t<medicare_expiry>2025-01-20</medicare_expiry>\n\t\t\t\t<passport_number>N976584</passport_number>\n\t\t\t\t<passport_issued_by>Australia</passport_issued_by>\n\t\t\t\t<avoid_verification>0</avoid_verification>\n\t\t\t\t<living_situation>Rent</living_situation>\n\t\t\t\t<shared>1</shared>\n\t\t\t\t<dependents>1</dependents>\n\t\t\t\t<return_client_income>\n\t\t\t\t\t<return_income>\n\t\t\t\t\t\t<type>1</type>\n\t\t\t\t\t\t<frequency>1</frequency>\n\t\t\t\t\t\t<amount>100</amount>\n\t\t\t\t\t</return_income>\n\t\t\t\t\t<return_income>\n\t\t\t\t\t\t<type>2</type>\n\t\t\t\t\t\t<frequency>1</frequency>\n\t\t\t\t\t\t<amount>500</amount>\n\t\t\t\t\t</return_income>\n\t\t\t\t</return_client_income>\n\t\t\t\t<return_client_deductions>\n\t\t\t\t\t<return_deductions>\n\t\t\t\t\t\t<type>1</type>\n\t\t\t\t\t\t<frequency>1</frequency>\n\t\t\t\t\t\t<amount>200</amount>\n\t\t\t\t\t\t<id>1</id>\n\t\t\t\t\t</return_deductions>\n\t\t\t\t\t<return_deductions>\n\t\t\t\t\t\t<type>2</type>\n\t\t\t\t\t\t<frequency>1</frequency>\n\t\t\t\t\t\t<amount>400</amount>\n\t\t\t\t\t\t<id>2</id>\n\t\t\t\t\t</return_deductions>\n\t\t\t\t</return_client_deductions>\n\t\t\t</parameters>\n\t\t</SOAP-ENV:addUserSnaffleResponse>\n\t</SOAP-ENV:Body>\n</SOAP-ENV:Envelope>"
+      description: ''
+      requestBody:
+        content:
+          application/xml:
+            schema:
+              description: ''
+              type: object
+              properties:
+                Header: {}
+                Body:
+                  type: object
+                  properties:
+                    addUserSnaffle:
+                      type: object
+                      properties:
+                        addUserSnaffle:
+                          type: object
+                          properties:
+                            step_no:
+                              type: string
+                              minLength: 1
+                            prospect_id:
+                              type: string
+                              minLength: 1
+                            client_income:
+                              type: array
+                              uniqueItems: true
+                              minItems: 1
+                              items:
+                                required:
+                                  - type
+                                  - frequency
+                                  - amount
+                                properties:
+                                  type:
+                                    type: string
+                                    minLength: 1
+                                  frequency:
+                                    type: string
+                                    minLength: 1
+                                  amount:
+                                    type: string
+                                    minLength: 1
+                            client_deductions:
+                              type: array
+                              uniqueItems: true
+                              minItems: 1
+                              items:
+                                required:
+                                  - type
+                                  - frequency
+                                  - amount
+                                  - id
+                                properties:
+                                  type:
+                                    type: string
+                                    minLength: 1
+                                  frequency:
+                                    type: string
+                                    minLength: 1
+                                  amount:
+                                    type: string
+                                    minLength: 1
+                                  id:
+                                    type: string
+                                    minLength: 1
+                          required:
+                            - step_no
+                            - prospect_id
+                            - client_income
+                            - client_deductions
+                      required:
+                        - addUserSnaffle
+                  required:
+                    - addUserSnaffle
+              required:
+                - Body
+            examples:
+              Example Request:
+                value: |-
+                  <soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:dev="https://esscontacts.newpathstudio.com.au">
+                  <soapenv:Header/>
+                  <soapenv:Body>
+                  <dev:addUserSnaffle>
+                  <dev:addUserSnaffle>
+                  <step_no>4</step_no>
+                  <prospect_id>8</prospect_id>
+                  <client_income>
+                  <income>
+                  <type>1</type>
+                  <frequency>1</frequency>
+                  <amount>100</amount>
+                  </income>
+                  <income>
+                  <type>2</type>
+                  <frequency>1</frequency>
+                  <amount>500</amount>
+                  </income>
+                  </client_income>
+                  <client_deductions>
+                  <deductions>
+                  <type>1</type>
+                  <frequency>1</frequency>
+                  <amount>200</amount>
+                  <id>1</id>
+                  </deductions>
+                  <deductions>
+                  <type>2</type>
+                  <frequency>1</frequency>
+                  <amount>400</amount>
+                  <id>2</id>
+                  </deductions>
+                  </client_deductions>
+                  </dev:addUserSnaffle>
+                  </dev:addUserSnaffle>
+                  </soapenv:Body>
+                  </soapenv:Envelope>
+        description: |2-
+
+
+
+
+
+
+           step_no,
+                      prospect_id,
+                      client_income[{
+                            type,
+                            frequency,
+                            amount
+                         },
+                         {
+                            type,
+                            frequency,
+                            amount
+                         }
+                      ],
+                      client_deductions: [
+                         {
+                            type,
+                            frequency,
+                            amount,
+                            id
+                         },
+                         {
+                            type,
+                            frequency,
+                            amount,
+                            id
+                         }
+                      ]
 components:
   schemas: {}
   securitySchemes:
