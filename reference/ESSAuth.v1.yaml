@@ -1308,7 +1308,7 @@ paths:
                   }
                }
             }
-      description: API to add user from Snaffle frontend to BOS in an incremental approach
+      description: 'API to add user from Snaffle frontend to BOS in an incremental approach '
       requestBody:
         content:
           application/xml:
@@ -2132,6 +2132,7 @@ paths:
                   </soapenv:Body>
                   </soapenv:Envelope>
         description: |2-
+
 
 
 

@@ -9,7 +9,7 @@ paths:
     post:
       summary: ''
       operationId: post-addContract
-      description: 'API to add Contract to given client , stores Contract Deatails in BOS Admin site.'
+      description: 'API to add Contract to given client , stores Contract Deatails in BOS Admin site. '
       requestBody:
         content:
           application/xml:

@@ -412,7 +412,7 @@ paths:
                     </SOAP-ENV:addClientResponse>
                     </SOAP-ENV:Body>
                     </SOAP-ENV:Envelope>
-      description: 'API to add client details and Income , Expense Details in BOS admin site'
+      description: 'API to add client details and Income , Expense Details in BOS admin site '
       requestBody:
         content:
           application/xml:
